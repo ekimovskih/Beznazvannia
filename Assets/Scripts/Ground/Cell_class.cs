@@ -15,6 +15,8 @@ public class Cell_class : MonoBehaviour
     [HideInInspector] public bool engaged = false;
     private GameObject ThisObject;
 
+    public GameObject objOnIt = null;
+
 
     public void Set(GameObject Papa, int Width, int Heigh)
     {
@@ -37,13 +39,28 @@ public class Cell_class : MonoBehaviour
         Texture = Parent.GetComponent<GridBuilder_scr>().Textures[0];
         this.gameObject.transform.GetComponent<SpriteRenderer>().sprite = Texture;
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    public void PutObj(GameObject obj)
     {
-
-        if (collision.tag == "Cell")
+        if (objOnIt == null)
         {
-            //Debug.Log(collision.gameObject.GetComponent<Cell_class>().Wposition + ' ' + collision.gameObject.GetComponent<Cell_class>().Hposition);
-            Debug.Log(collision.gameObject.GetComponent<Cell_class>().Wposition + ' ' + collision.gameObject.GetComponent<Cell_class>().Hposition);
+            Instantiate(obj, new Vector3(Wposition + 0.5f, -Hposition - 0.5f, -Hposition), Quaternion.identity, ThisObject.transform);
+            objOnIt = ThisObject.transform.GetChild(0).gameObject;
+        }
+        else
+        {
+            Debug.Log("Cell already busy");
+        }
+    }
+    public void GetObj()
+    {
+        if (objOnIt != null)
+        {
+            Destroy(objOnIt);
+            objOnIt = null;
+        }
+        else
+        {
+            Debug.Log("Cell is empty");
         }
     }
 }

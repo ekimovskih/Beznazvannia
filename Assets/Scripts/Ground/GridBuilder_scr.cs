@@ -52,4 +52,26 @@ public class GridBuilder_scr : MonoBehaviour
         }
     }
 
+    public void PutOnCell(GameObject obj, int width, int high)
+    {
+        if (width>=GridWidth || high >= GridHigh)
+        {
+            Debug.Log("Out of grid");
+        }
+        else
+        {
+            Grid[width, high].GetComponent<Cell_class>().PutObj(obj);
+        }
+    }
+    public void GetFromCell(int width, int high)
+    {
+        if (width >= GridWidth || high >= GridHigh)
+        {
+            Debug.Log("Out of grid");
+        }
+        else
+        {
+            Grid[width, high].GetComponent<Cell_class>().GetObj();
+        }
+    }
 }

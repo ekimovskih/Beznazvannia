@@ -11,9 +11,12 @@ public class Cursor_scr : MonoBehaviour
     public Sprite[] SpritesArray = new Sprite[1];
     private Vector2 cursorpos;
     private Vector2 currentCell;
+    //public float currentCellDistance = 1.5f;
     public GameObject cell = null;
     [HideInInspector] public bool cellActive = true;
+    //public GameObject Player = null;
     public GameObject testobject = null;
+    public GameObject testobject2 = null;
 
     void Start()
     {
@@ -27,13 +30,25 @@ public class Cursor_scr : MonoBehaviour
         transform.position = cursorpos;
         currentCell = new Vector2(ChoseCell(transform.position.x),ChoseCell(-transform.position.y));
 
-        if (cellActive)
-        {
-            cell.transform.position = currentCell*(new Vector2(1,-1));
-        }
+        ShowCurrentCell();
 
 
         PutTreeInCell();
+        MineFromCell();
+    }
+
+    void ShowCurrentCell()
+    {
+        //cellActive = ToPlayerDistance();
+        if (cellActive)
+        {
+            cell.transform.GetComponent<SpriteRenderer>().enabled = cellActive;
+            cell.transform.position = currentCell * (new Vector2(1, -1));
+        }
+        else
+        {
+            cell.transform.GetComponent<SpriteRenderer>().enabled = cellActive;
+        }
     }
 
     int ChoseCell(float axis)
@@ -44,10 +59,18 @@ public class Cursor_scr : MonoBehaviour
 
     void PutTreeInCell()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             //Debug.Log("alalala");
-            Instantiate(testobject, new Vector3(currentCell.x+0.5f, -currentCell.y-0.5f, -currentCell.y), Quaternion.identity);
+            testobject2.transform.GetComponent<GridBuilder_scr>().PutOnCell(testobject, ChoseCell(transform.position.x), ChoseCell(-transform.position.y));
+        }
+    }
+
+    void MineFromCell()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            testobject2.transform.GetComponent<GridBuilder_scr>().GetFromCell(ChoseCell(transform.position.x), ChoseCell(-transform.position.y));
         }
     }
 }
