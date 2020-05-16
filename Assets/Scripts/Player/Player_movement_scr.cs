@@ -40,6 +40,7 @@ public class Player_movement_scr : MonoBehaviour
         }
         transform.Translate(horizInput * (speed + Boost) * Time.deltaTime, 0, 0);
         transform.Translate(0, verticInput * (speed + Boost) * Time.deltaTime, 0);
+        transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.y);
 
         SpriteChanger();
 

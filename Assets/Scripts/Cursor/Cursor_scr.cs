@@ -13,6 +13,7 @@ public class Cursor_scr : MonoBehaviour
     private Vector2 currentCell;
     public GameObject cell = null;
     [HideInInspector] public bool cellActive = true;
+    public GameObject testobject = null;
 
     void Start()
     {
@@ -30,6 +31,9 @@ public class Cursor_scr : MonoBehaviour
         {
             cell.transform.position = currentCell*(new Vector2(1,-1));
         }
+
+
+        PutTreeInCell();
     }
 
     int ChoseCell(float axis)
@@ -38,4 +42,12 @@ public class Cursor_scr : MonoBehaviour
         return System.Convert.ToInt32(axis - axis % 1);
     }
 
+    void PutTreeInCell()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //Debug.Log("alalala");
+            Instantiate(testobject, new Vector3(currentCell.x+0.5f, -currentCell.y-0.5f, -currentCell.y), Quaternion.identity);
+        }
+    }
 }
