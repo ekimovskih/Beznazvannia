@@ -17,6 +17,7 @@ public class Cursor_scr : MonoBehaviour
     //public GameObject Player = null;
     public GameObject testobject = null;
     public GameObject testobject2 = null;
+    public GameObject testobject3 = null;
 
     void Start()
     {
@@ -63,6 +64,11 @@ public class Cursor_scr : MonoBehaviour
         {
             //Debug.Log("alalala");
             testobject2.transform.GetComponent<GridBuilder_scr>().PutOnCell(testobject, ChoseCell(transform.position.x), ChoseCell(-transform.position.y));
+        }
+        if (Input.GetMouseButtonDown(2))
+        {
+            //Debug.Log("alalala");
+            testobject2.transform.GetComponent<GridBuilder_scr>().PutOnCell(testobject3, ChoseCell(transform.position.x), ChoseCell(-transform.position.y));
         }
     }
 

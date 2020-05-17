@@ -55,8 +55,11 @@ public class Cell_class : MonoBehaviour
     {
         if (objOnIt != null)
         {
-            Destroy(objOnIt);
-            objOnIt = null;
+            if (objOnIt.transform.GetComponent<ObjOnCell_scr>().LastHit(5))
+            {
+                objOnIt = null;
+            }
+            
         }
         else
         {

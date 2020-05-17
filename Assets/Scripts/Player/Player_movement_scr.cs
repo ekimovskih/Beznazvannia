@@ -83,4 +83,12 @@ public class Player_movement_scr : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Drop")
+        {
+            collision.transform.GetComponent<Drop_scr>().Bounce(this.gameObject);
+        }
+    }
 }
