@@ -25,7 +25,7 @@ public class Drop_scr : MonoBehaviour
         self = -(other - self);
         float VecLength = Mathf.Sqrt(self.x * self.x + self.y * self.y);
         self /= VecLength;
-        Debug.Log(self);
+        //Debug.Log(self);
         ThisObj.transform.GetComponent<Rigidbody2D>().AddForce(self * BounceStr);
     }
 }
