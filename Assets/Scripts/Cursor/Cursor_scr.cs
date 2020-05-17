@@ -39,7 +39,10 @@ public class Cursor_scr : MonoBehaviour
         PutTreeInCell();
         MineFromCell();
     }
-    //bool 
+    bool InUseArea()
+    {
+        return true;
+    } 
     void ShowCurrentCell()
     {
         //cellActive = ToPlayerDistance();
