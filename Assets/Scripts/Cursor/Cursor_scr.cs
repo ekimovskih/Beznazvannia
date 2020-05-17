@@ -14,13 +14,15 @@ public class Cursor_scr : MonoBehaviour
     //public float currentCellDistance = 1.5f;
     public GameObject cell = null;
     [HideInInspector] public bool cellActive = true;
-    //public GameObject Player = null;
+    private GameObject Player = null;
+
     public GameObject testobject = null;
     public GameObject testobject2 = null;
     public GameObject testobject3 = null;
 
     void Start()
     {
+        Player = GameObject.Find("Player");
         Cursor.visible = false;
         CursorSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
@@ -37,7 +39,7 @@ public class Cursor_scr : MonoBehaviour
         PutTreeInCell();
         MineFromCell();
     }
-
+    //bool 
     void ShowCurrentCell()
     {
         //cellActive = ToPlayerDistance();
