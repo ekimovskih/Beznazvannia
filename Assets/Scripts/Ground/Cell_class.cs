@@ -51,15 +51,19 @@ public class Cell_class : MonoBehaviour
             Debug.Log("Cell already busy");
         }
     }
-    public void GetObj()
+    public void GetObj(GameObject InHand)
     {
         if (objOnIt != null)
         {
-            if (objOnIt.transform.GetComponent<ObjOnCell_scr>().LastHit(5))
+            string ObjType = objOnIt.GetComponent<ObjOnCell_scr>().type;
+            string InHandType = InHand.GetComponent<Drop_scr>().type;
+            if (ObjType.Equals(InHandType))
             {
-                objOnIt = null;
+                if (objOnIt.transform.GetComponent<ObjOnCell_scr>().LastHit(5))
+                {
+                    objOnIt = null;
+                }
             }
-            
         }
         else
         {

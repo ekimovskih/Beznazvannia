@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ObjOnCell_scr : MonoBehaviour
 {
-    public string type = "tree";
+    public string type = "none";
     public string supertype = "default";
     public int health=10;
     public GameObject cell = null;
@@ -29,7 +29,8 @@ public class ObjOnCell_scr : MonoBehaviour
         }
         else
         {
-            Drop(type);
+            StartCoroutine(WaitToDrop());
+            //Drop(type);
             return true;
         }
     }
@@ -69,31 +70,12 @@ public class ObjOnCell_scr : MonoBehaviour
                 }
             }
         }
-        /*switch (resoursce) 
-        {
-            case "tree":
-                switch (supertype)
-                {
-                    case "default":
-                        value = Random.Range(1,3);
-                        choseDrop = Random.Range(0, DroplistLGH-1);
-                        Debug.Log("Droped " + value);
-                        //Instantiate(obj, new Vector3(Wposition + 0.5f, -Hposition - 0.5f, -Hposition), Quaternion.identity, ThisObject.transform);
-                        for (int i = 0; i < value; i++)
-                        {
-                            Instantiate(Droplist[choseDrop],this.gameObject.transform.position+(Vector3.one*i/100), Quaternion.identity, Catalog.transform);
-                        }
-                        break;
-                    default:
-                        Debug.Log("No Drop");
-                        break;
-                }
-                break;
-            default:
-                Debug.Log("No Drop");
-                break;
-        }*/
         Destroy(this.gameObject);
-
+    }
+    IEnumerator WaitToDrop()
+    {
+        yield return new WaitForSeconds(1f);
+        Drop(type);
+        //Destroy(this.gameObject);
     }
 }

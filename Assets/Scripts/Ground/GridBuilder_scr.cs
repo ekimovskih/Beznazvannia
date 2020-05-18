@@ -63,7 +63,7 @@ public class GridBuilder_scr : MonoBehaviour
             Grid[width, high].GetComponent<Cell_class>().PutObj(obj);
         }
     }
-    public void GetFromCell(int width, int high)
+    public void GetFromCell(int width, int high, GameObject InHand)
     {
         if (width >= GridWidth || high >= GridHigh)
         {
@@ -71,7 +71,7 @@ public class GridBuilder_scr : MonoBehaviour
         }
         else
         {
-            Grid[width, high].GetComponent<Cell_class>().GetObj();
+            Grid[width, high].GetComponent<Cell_class>().GetObj(InHand);
         }
     }
 }

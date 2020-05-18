@@ -4,26 +4,37 @@ using UnityEngine;
 
 public class Player_movement_scr : MonoBehaviour
 {
-    private float horizInput;
-    private float verticInput;
-    public float speed=3f;
-    public float ShiftSpeed = 2f; 
+    [HideInInspector] private float horizInput;
+    [HideInInspector] private float verticInput;
+    private bool CanMove = true;
+    public float speed=3f; // сорость бега
+    public float ShiftSpeed = 2f; // + скорость с зажатым LeftShift
     [HideInInspector] public string playerView = "none";
-    public Sprite[] playerStates = new Sprite[3];
+    public Sprite[] playerStates = new Sprite[3]; // стоячие положения игрока
     private SpriteRenderer PlayerSprite;
-    // Start is called before the first frame update
+    public GameObject InHand;
+    public float ActionSpeed = 5f; // определяет перерыв перед совершением следующего действия (в секундах)
+    private GameObject Cursor = null;
+    [HideInInspector] public int CurrInvSlot = 0;
+    public GameObject WorkInd = null;
     void Start()
     {
+        Cursor = GameObject.Find("Cursor");
+        ChangeInHand(CurrInvSlot);
         PlayerSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        Movement();
+        if (CanMove)
+        {
+            Movement();
+        }
     }
     public void Movement()
     {
+        InventoryAction();
         horizInput = Input.GetAxis("Horizontal");
         verticInput = Input.GetAxis("Vertical");
         bool Shift = Input.GetKey(KeyCode.LeftShift);
@@ -42,10 +53,10 @@ public class Player_movement_scr : MonoBehaviour
         transform.Translate(0, verticInput * (speed + Boost) * Time.deltaTime, 0);
         transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.y);
 
-        SpriteChanger();
-
+        
+            SpriteMoveChanger(horizInput, verticInput);
     }
-    public void SpriteChanger()
+    public void SpriteMoveChanger(float horizInput, float verticInput)
     {
         if (horizInput==0 && verticInput == 0)
         {
@@ -84,11 +95,44 @@ public class Player_movement_scr : MonoBehaviour
         }
     }
 
+    public IEnumerator MouseHitAction(float WaitTime, Vector2 CurrDir)
+    {
+        CanMove = false;
+        SpriteMoveChanger(CurrDir.x, -CurrDir.y);
+        yield return new WaitForSeconds(WaitTime);
+        CanMove = true;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Drop")
         {
             collision.transform.GetComponent<Drop_scr>().Bounce(this.gameObject);
         }
+    }
+
+    public void ChangeInHand(int slot)
+    {
+        InHand = WorkInd.GetComponent<WorkIndicator_scr>().FastSlots[slot-1];
+        Cursor.GetComponent<Cursor_scr>().ChangeInHandType(InHand);
+        WorkInd.GetComponent<SpriteRenderer>().sprite = InHand.GetComponent<SpriteRenderer>().sprite;
+    }
+
+    void InventoryAction()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CurrInvSlot = 1;
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CurrInvSlot = 2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            CurrInvSlot = 3;
+        }
+        ChangeInHand(CurrInvSlot);
     }
 }
