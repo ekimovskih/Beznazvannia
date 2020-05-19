@@ -25,7 +25,7 @@ public class Player_movement_scr : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (CanMove)
         {
@@ -98,7 +98,7 @@ public class Player_movement_scr : MonoBehaviour
     public IEnumerator MouseHitAction(float WaitTime, Vector2 CurrDir)
     {
         CanMove = false;
-        SpriteMoveChanger(CurrDir.x, -CurrDir.y);
+        SpriteMoveChanger(CurrDir.x, CurrDir.y);
         yield return new WaitForSeconds(WaitTime);
         CanMove = true;
     }

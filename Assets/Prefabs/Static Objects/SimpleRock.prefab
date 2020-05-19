@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
@@ -42,10 +42,15 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4940420283676534236, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: m_Name
-      value: AAAStaticObj
+      value: SimpleRock
       objectReference: {fileID: 0}
     - target: {fileID: 4940420283676534237, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}

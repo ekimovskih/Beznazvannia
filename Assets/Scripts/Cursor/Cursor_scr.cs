@@ -24,10 +24,8 @@ public class Cursor_scr : MonoBehaviour
     
     void Start()
     {
-        ActionPossible = 0; //возможно возникновение БАГОВ при иге более 1000к часов подряд
-        //cell.transform.GetComponent<SpriteRenderer>().enabled = false;
+        ActionPossible = 0; //возможно возникновение БАГОВ при игhе более 1000к часов подряд
         Player = GameObject.Find("Player");
-        //ChangeInHandType(Player.GetComponent<Player_movement_scr>().InHand);
         Cursor.visible = false;
         CursorSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
@@ -36,7 +34,7 @@ public class Cursor_scr : MonoBehaviour
     {
         cursorpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = cursorpos;
-        currentCell = new Vector2Int(ChoseCell(transform.position.x),ChoseCell(-transform.position.y));
+        currentCell = new Vector2Int(ChoseCell(transform.position.x),ChoseCell(transform.position.y));
 
         //ShowActiveCell();
         ShowCurrentCell();
@@ -68,7 +66,7 @@ public class Cursor_scr : MonoBehaviour
     void InUseArea()
     {
         Vector3 other = Player.transform.position;
-        PlayerCell = new Vector2Int(ChoseCell(other.x), ChoseCell(-other.y));
+        PlayerCell = new Vector2Int(ChoseCell(other.x), ChoseCell(other.y));
         if (Mathf.Abs(currentCell.x- PlayerCell.x)<=1&&(Mathf.Abs(currentCell.y - PlayerCell.y) <= 1))
         {
             ActiveCell = currentCell;
@@ -84,7 +82,7 @@ public class Cursor_scr : MonoBehaviour
             }
             else
             {
-                ActiveCell = PlayerCell + new Vector2Int(0, Math.Sign(y));
+                ActiveCell = PlayerCell - new Vector2Int(0, Math.Sign(y));
             }
         }
     } 
@@ -94,7 +92,7 @@ public class Cursor_scr : MonoBehaviour
         if (cellActive)
         {
             cell.transform.GetComponent<SpriteRenderer>().enabled = cellActive;
-            cell.transform.position = ActiveCell * (new Vector2(1, -1));
+            cell.transform.position = (new Vector3(ActiveCell.x, ActiveCell.y,0));
         }
         else
         {
@@ -112,11 +110,11 @@ public class Cursor_scr : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            testobject2.transform.GetComponent<GridBuilder_scr>().PutOnCell(testobject, ChoseCell(transform.position.x), ChoseCell(-transform.position.y));
+            testobject2.transform.GetComponent<GridBuilder_scr>().PutOnCell(testobject, currentCell.x, currentCell.y);
         }
         if (Input.GetMouseButtonDown(2))
         {
-            testobject2.transform.GetComponent<GridBuilder_scr>().PutOnCell(testobject3, ChoseCell(transform.position.x), ChoseCell(-transform.position.y));
+            testobject2.transform.GetComponent<GridBuilder_scr>().PutOnCell(testobject3, currentCell.x, currentCell.y);
         }
     }
 

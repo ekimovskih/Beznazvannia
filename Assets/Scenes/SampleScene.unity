@@ -315,6 +315,7 @@ MonoBehaviour:
   SpritesArray:
   - {fileID: 0}
   cell: {fileID: 647097678}
+  InHand: {fileID: 0}
   testobject: {fileID: 5276483267051902700, guid: 2a8efe3d043246246801fa501d2b4513,
     type: 3}
   testobject2: {fileID: 1424077160}
@@ -479,8 +480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51228d6db075ea24986b05c5303cc82e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tools:
-  - {fileID: 2716492310657469694, guid: df1a115e9016eec4a88472da008cb652, type: 3}
+  FastSlots:
+  - {fileID: 1209622819895161852, guid: afbab7969cd551142973ec25e1fa7789, type: 3}
   - {fileID: 373575020118841997, guid: bf9e88c0a783add4980059e0ba525c98, type: 3}
   - {fileID: 6406550984765081669, guid: 387827a8b38665a4bb1974bc08d9e13a, type: 3}
 --- !u!1 &519420028
@@ -855,8 +856,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: eb168670863de3645853bbc59a0ac8ab, type: 3}
   - {fileID: 21300000, guid: 2932825f9f241264aa5ba8357c0e3362, type: 3}
   - {fileID: 21300000, guid: 56f466ed71e5aef4f82897284dddbfd1, type: 3}
-  InHand: sword
-  ActionSpeed: 1
+  InHand: {fileID: 0}
+  ActionSpeed: 0.8
+  CurrInvSlot: 1
   WorkInd: {fileID: 459164543}
 --- !u!212 &1621854885
 SpriteRenderer:

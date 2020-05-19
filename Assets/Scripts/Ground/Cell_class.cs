@@ -8,8 +8,9 @@ public class Cell_class : MonoBehaviour
     public bool usable = true;
     public Sprite Texture = null;
     public string property; // ground \ rock \ sand \ etc
-    public int Wposition;
-    public int Hposition;
+    //public float Wposition;
+    //public float Hposition;
+    public Vector2 Position;
     private GameObject Parent;
     private string Location;
     [HideInInspector] public bool engaged = false;
@@ -17,34 +18,22 @@ public class Cell_class : MonoBehaviour
 
     public GameObject objOnIt = null;
 
-
-    public void Set(GameObject Papa, int Width, int Heigh)
+    private void Start()
     {
         ThisObject = this.gameObject;
-        ThisObject.AddComponent<SpriteRenderer>();
-        ThisObject.AddComponent<BoxCollider2D>();
-        Parent = Papa;
-        Wposition = Width;
-        Hposition = Heigh;
-        Location = Parent.GetComponent<GridBuilder_scr>().Location;
-        ThisObject.transform.position = new Vector3(Width, -Heigh, 0);
-        ThisObject.transform.parent = Parent.transform;
-        ThisObject.transform.tag = "Cell";
-
-        SetPropertys();
+        if (objOnIt != null)
+        {
+            objOnIt = Instantiate(objOnIt, new Vector3(Position.x + 0.5f, Position.y + 0.5f, Position.y+0.5f), Quaternion.identity, ThisObject.transform);
+            
+        }
     }
-
-    public void SetPropertys()
-    {
-        Texture = Parent.GetComponent<GridBuilder_scr>().Textures[0];
-        this.gameObject.transform.GetComponent<SpriteRenderer>().sprite = Texture;
-    }
+    
     public void PutObj(GameObject obj)
     {
         if (objOnIt == null)
         {
-            Instantiate(obj, new Vector3(Wposition + 0.5f, -Hposition - 0.5f, -Hposition), Quaternion.identity, ThisObject.transform);
-            objOnIt = ThisObject.transform.GetChild(0).gameObject;
+            objOnIt = Instantiate(obj, new Vector3(Position.x + 0.5f, Position.y + 0.5f, Position.y+0.5f), Quaternion.identity, ThisObject.transform);
+            //objOnIt = ThisObject.transform.GetChild(0).gameObject;
         }
         else
         {
@@ -67,7 +56,32 @@ public class Cell_class : MonoBehaviour
         }
         else
         {
+            Debug.Log(objOnIt);
             Debug.Log("Cell is empty");
         }
     }
+
+    /*
+    public void SetPapa(GameObject Papa, int Width, int Heigh)
+    {
+        ThisObject = this.gameObject;
+        ThisObject.AddComponent<SpriteRenderer>();
+        ThisObject.AddComponent<BoxCollider2D>();
+        Parent = Papa;
+        Wposition = Width;
+        Hposition = Heigh;
+        Location = Parent.GetComponent<GridBuilder_scr>().Location;
+        ThisObject.transform.position = new Vector3(Width, -Heigh, 0);
+        ThisObject.transform.parent = Parent.transform;
+        ThisObject.transform.tag = "Cell";
+
+        SetPropertys();
+    }
+    
+    public void SetPropertys()
+    {
+        Texture = Parent.GetComponent<GridBuilder_scr>().Textures[0];
+        this.gameObject.transform.GetComponent<SpriteRenderer>().sprite = Texture;
+    }
+    */
 }

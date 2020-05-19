@@ -5,12 +5,14 @@ using UnityEngine;
 public class GridBuilder_scr : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject Cell = null;
+    //public GameObject Cell = null;
     public int GridWidth = 2;
     public int GridHigh = 2;
     public bool rebuildable = true;
     public bool builded = false;
     public string Location = "Vilage";
+    public Texture2D LevelMap;
+    public GameObject[] LocationCells;
 
     public Sprite[] Textures = new Sprite[2];
 
@@ -19,18 +21,11 @@ public class GridBuilder_scr : MonoBehaviour
     {
         if (!builded)
         {
+            GameObject thisObject = this.gameObject;
+            GridWidth = LevelMap.width;
+            GridHigh = LevelMap.height;
             Grid = new GameObject[GridWidth, GridHigh];
-            for (int i = 0; i< GridHigh; i++)
-            {
-                for (int k = 0; k < GridWidth; k++)
-                {
-                    Grid[k, i] = new GameObject();
-                    Grid[k, i].AddComponent<Cell_class>();
-                    //Grid[k, i].AddComponent<SpriteRenderer>();
-                    Grid[k, i].GetComponent<Cell_class>().Set(this.gameObject, k, i);
-                    //Grid[k, i].SetPropertys();
-                }
-            }
+            
             BuildGrid();
         }
     }
@@ -40,19 +35,67 @@ public class GridBuilder_scr : MonoBehaviour
     {
         
     }
-
+    
     void BuildGrid()
     {
+        GameObject thisObject = this.gameObject;
+        GridWidth = LevelMap.width;
+        GridHigh = LevelMap.height;
+        Grid = new GameObject[GridWidth, GridHigh];
+        float red, green, blue;
+
         for (int i = 0; i < GridHigh; i++)
         {
-            for (int k = 0; k < GridWidth; k++)
+            for (int j = 0; j < GridWidth; j++)
             {
-                
+                int CellNum;
+                red = (LevelMap.GetPixel(i, j).r);
+                green = (LevelMap.GetPixel(i, j).g);
+                blue = (LevelMap.GetPixel(i, j).b);
+
+                if (Mathf.Max(green, Mathf.Max(red, blue)) == 0)
+                {
+                    CellNum = 0 + CellType(i, j);
+                }
+                else if (blue ==0 / 255f && red==255 / 255f && green == 255 / 255f)
+                {
+                    CellNum = 3;
+                }
+                else
+                {
+                    CellNum = 4;
+                }
+                Grid[j, i] = Instantiate(LocationCells[CellNum], new Vector3(i, j, j), Quaternion.identity, thisObject.transform);
+                Grid[j, i].GetComponent<Cell_class>().Position = new Vector2(i, j);
             }
+            //Debug.Log(i);
         }
     }
+    
 
-    public void PutOnCell(GameObject obj, int width, int high)
+    int CellType(int i, int j)
+    {
+        if (j > 0)
+        {
+            float red = (LevelMap.GetPixel(i, j).r);
+            float redup = (LevelMap.GetPixel(i, j - 1).r);
+            if (red != redup)
+            {
+                return 0;
+            }
+        }
+        if (j < GridHigh-1)
+        {
+            float red = (LevelMap.GetPixel(i, j).r);
+            float redup = (LevelMap.GetPixel(i, j + 1).r);
+            if (red != redup)
+            {
+                return 1;
+            }
+        }
+        return 2;
+    }
+    public void PutOnCell(GameObject obj, int high, int width)
     {
         if (width>=GridWidth || high >= GridHigh)
         {
@@ -63,7 +106,7 @@ public class GridBuilder_scr : MonoBehaviour
             Grid[width, high].GetComponent<Cell_class>().PutObj(obj);
         }
     }
-    public void GetFromCell(int width, int high, GameObject InHand)
+    public void GetFromCell(int high, int width, GameObject InHand)
     {
         if (width >= GridWidth || high >= GridHigh)
         {
