@@ -51,5 +51,7 @@ MonoBehaviour:
   - {x: 40, y: 2}
   Rock_default:
   - {fileID: 1257046861032119396, guid: 92a9be1ce37b4b24e970ad1468cfc74f, type: 3}
+  - {fileID: 6832024348306267429, guid: bf398ccb13f783c4aab82b4872494081, type: 3}
   Rock_default_DR:
   - {x: 100, y: 5}
+  - {x: 20, y: 3}
