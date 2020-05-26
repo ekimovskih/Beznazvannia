@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_movement_scr : MonoBehaviour
 {
+    public int Health = 100;
     [HideInInspector] private float horizInput;
     [HideInInspector] private float verticInput;
     private bool CanMove = true;
@@ -123,7 +124,6 @@ public class Player_movement_scr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CurrInvSlot = 1;
-            
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -134,5 +134,15 @@ public class Player_movement_scr : MonoBehaviour
             CurrInvSlot = 3;
         }
         ChangeInHand(CurrInvSlot);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyAttack")
+        {
+            int dmg = collision.gameObject.GetComponent<EnemyAttack_scr>().Damage; // оставил если придетя визуализировать урон
+            Health -= dmg;
+            Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
+        }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cell
   - Drop
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX
