@@ -153,7 +153,7 @@ public class Player_movement_scr : MonoBehaviour
         {
             int dmg = collision.gameObject.GetComponent<EnemyAttack_scr>().Damage; // оставил если придетя визуализировать урон
             Health -= dmg;
-            Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
+            //Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
         }
     }
 

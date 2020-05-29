@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class Inventory_scr : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Inventory_scr : MonoBehaviour
     private GameObject DropCatalog;
     public Vector3 offset = new Vector3(0.4f, -0.4f, 0);
     private GameObject IVTR;
+    public int ActiveSlot = -1;
 
 
     public int inHand;
@@ -34,7 +36,7 @@ public class Inventory_scr : MonoBehaviour
 
 
     private void Awake()
-    {
+    {  
         cursor = GameObject.Find("Cursor");
         InHandInd = cursor.GetComponent<Cursor_scr>();
         player = GameObject.Find("Player");
@@ -52,6 +54,7 @@ public class Inventory_scr : MonoBehaviour
             InvSlots[i].SlotNumber = i;
         }
         IVTR.SetActive(false);
+        ActivateSlot(0);
     }
     void Start()
     {
@@ -68,12 +71,7 @@ public class Inventory_scr : MonoBehaviour
         {
             IVTR.SetActive(!IVTR.activeSelf);
         }
-
-
-        if (SmthInHand)
-        {
-
-        }
+        SwitchActiveSlot();
     }
 
     void IsInventoryFull()
@@ -131,7 +129,7 @@ public class Inventory_scr : MonoBehaviour
 
     public void TakeItem(int slot)
     {
-        if (InvItems[slot] != null)
+        if (InvItems[slot] != null && IVTR.activeSelf==true)
         {
             inHand = InvItems[slot].GetComponent<Drop_scr>().id;
             inHandCount = ItemsCount[slot];
@@ -142,35 +140,111 @@ public class Inventory_scr : MonoBehaviour
             SmthInHand = true;
             //PreviousSlot = slot;
             IsInventoryFull();
-            Debug.Log("AAAAAA " + slot);
         }
     }
 
     public void PutItem(int slot)
     {
-        //Drop_scr item = inHand.GetComponent<Drop_scr>();
-        if (InvItems[slot] != null)
+        if (IVTR.activeSelf == true)
         {
-            InHandInd.IHindicatorActivity(InvItems[slot].GetComponent<SpriteRenderer>().sprite);
+            if (InvItems[slot] != null)
+            {
+                InHandInd.IHindicatorActivity(InvItems[slot].GetComponent<SpriteRenderer>().sprite);
 
-            inHand2 = InvItems[slot].GetComponent<Drop_scr>().id;
-            inHandCount2 = ItemsCount[slot];
-            InvItems[slot] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(inHand);
-            ItemsCount[slot] = inHandCount;
-            InvSlots[slot].SetCount(inHandCount, InvItems[slot]);
+                inHand2 = InvItems[slot].GetComponent<Drop_scr>().id;
+                inHandCount2 = ItemsCount[slot];
+                InvItems[slot] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(inHand);
+                ItemsCount[slot] = inHandCount;
+                InvSlots[slot].SetCount(inHandCount, InvItems[slot]);
 
-            inHand = inHand2;
-            inHandCount = inHandCount2;
+                inHand = inHand2;
+                inHandCount = inHandCount2;
+            }
+            else
+            {
+                InHandInd.IHindicatorActivity(null);
+                InvItems[slot] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(inHand);
+                ItemsCount[slot] = inHandCount;
+                InvSlots[slot].SetCount(inHandCount, InvItems[slot]);
+                SmthInHand = false;
+            }
+            IsInventoryFull();
         }
-        else
+    }
+
+    void ActivateSlot(int slot)
+    {
+        if(slot != ActiveSlot)
         {
-            InHandInd.IHindicatorActivity(null);
-            InvItems[slot] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(inHand);
-            ItemsCount[slot] = inHandCount;
-            InvSlots[slot].SetCount(inHandCount, InvItems[slot]);
-            SmthInHand = false;
+            InvSlots[ActiveSlot].ActivateSlot(false);
         }
-        IsInventoryFull();
-
+        InvSlots[slot].ActivateSlot(true);
+        ActiveSlot = slot;
+        //Debug.Log(slot);
+    }
+    void SwitchActiveSlot()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ActivateSlot(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ActivateSlot(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ActivateSlot(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            ActivateSlot(3);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            ActivateSlot(4);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            ActivateSlot(5);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            ActivateSlot(6);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            ActivateSlot(7);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            ActivateSlot(8);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            ActivateSlot(9);
+        }
+        else if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            ActivateSlot(10);
+        }
+        else if (Input.GetKeyDown("="))
+        {
+            ActivateSlot(11);
+        }
+        int wheel = System.Convert.ToInt32(Math.Sign(Input.GetAxis("Mouse ScrollWheel")));
+        if (wheel != 0)
+        {
+            int support = ActiveSlot + wheel;
+            if (support < 0)
+            {
+                support = 11;
+            }
+            if (support > 11)
+            {
+                support = 0;
+            }
+            ActivateSlot(support);
+        }
     }
 }

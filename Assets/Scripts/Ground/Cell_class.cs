@@ -55,8 +55,8 @@ public class Cell_class : MonoBehaviour
         }
         else
         {
-            Debug.Log(objOnIt);
-            Debug.Log("Cell is empty");
+            //Debug.Log(objOnIt);
+            //Debug.Log("Cell is empty");
         }
     }
 

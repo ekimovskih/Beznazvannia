@@ -13,6 +13,8 @@ public class InventorySlot : MonoBehaviour
     public bool SlotActive = false;
     private bool Empty = false;
     public Sprite Default;
+    public Sprite Active;
+    //public GameObject Active = null 
     public bool busy = false;
 
     private Text text;
@@ -74,5 +76,19 @@ public class InventorySlot : MonoBehaviour
         {
             Inventory.TakeItem(SlotNumber);
         }
+    }
+    public void ActivateSlot(bool act)
+    {
+        if (!act)
+        {
+            SlotActive = false;
+            this.gameObject.GetComponent<Image>().sprite = Default;
+        }
+        else
+        {
+            SlotActive = true;
+            this.gameObject.GetComponent<Image>().sprite = Active;
+        }
+        //Debug.Log(this.gameObject);
     }
 }
