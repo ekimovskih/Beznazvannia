@@ -27,8 +27,11 @@ public class Inventory : MonoBehaviour
 
     public GameObject backround;
 
+    private GameObject DataBase;
+
     public void Start()
     {
+        DataBase = GameObject.Find("Database");
         if (items.Count == 0)
         {
             AddGraphics();
@@ -113,7 +116,16 @@ public class Inventory : MonoBehaviour
             items[id].itemGameObj.GetComponentInChildren<Text>().text = "";
         }
     }
-    
+    public void AddItem(GameObject drop)
+    {
+        int id = drop.transform.GetComponent<Drop_scr>().id;
+        Item item = DataBase.transform.GetComponent<DataBase>().FindItemDrop(id);
+        items[id].id = item.id;
+        items[id].count = 1;
+        items[id].itemGameObj.GetComponent<Image>().sprite = item.img;
+    }
+
+
     public void AddInventoryItem(int id, ItemInventory invItem)
     {
         items[id].id = invItem.id;

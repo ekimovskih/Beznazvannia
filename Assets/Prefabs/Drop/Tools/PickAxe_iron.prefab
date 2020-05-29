@@ -98,6 +98,16 @@ PrefabInstance:
       propertyPath: type
       value: rock
       objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: id
+      value: 601
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: InStack
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5848539116449080557, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: m_Radius

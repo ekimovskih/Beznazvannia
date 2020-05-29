@@ -18,9 +18,12 @@ public class Player_movement_scr : MonoBehaviour
     private GameObject Cursor = null;
     [HideInInspector] public int CurrInvSlot = 0;
     public GameObject WorkInd = null;
+    private bool InventoryFull;
+    private GameObject Inventory = null;
     void Start()
     {
         Cursor = GameObject.Find("Cursor");
+        Inventory = GameObject.Find("InventoryManager");
         ChangeInHand(CurrInvSlot);
         PlayerSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
@@ -28,6 +31,7 @@ public class Player_movement_scr : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //InventoryFull = Inventory.GetComponent<Inventory_scr>().isFull;
         if (CanMove)
         {
             Movement();
@@ -108,7 +112,14 @@ public class Player_movement_scr : MonoBehaviour
     {
         if (collision.collider.tag == "Drop")
         {
-            collision.transform.GetComponent<Drop_scr>().Bounce(this.gameObject);
+            if (InventoryFull)
+            {
+                collision.transform.GetComponent<Drop_scr>().Bounce(this.gameObject);
+            }
+            else if (Inventory != null)
+            {
+                Inventory.GetComponent<Inventory_scr>().AddItem(collision.gameObject);
+            }
         }
     }
 
@@ -144,5 +155,10 @@ public class Player_movement_scr : MonoBehaviour
             Health -= dmg;
             Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
         }
+    }
+
+    void InventoryCheck(bool logical)
+    {
+        InventoryFull = logical;
     }
 }

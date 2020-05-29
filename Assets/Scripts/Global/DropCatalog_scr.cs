@@ -1,43 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class DropCatalog_scr : MonoBehaviour
 {
-    public GameObject[] Tree_default;
-    public Vector2Int[] Tree_default_DR;
-
-    public GameObject[] Rock_default;
-    public Vector2Int[] Rock_default_DR;
-
-    public GameObject[] GetDropList(string type, string name, GameObject obj)
+    public GameObject[] DROP;
+    private int[] DropID;
+    private int length;
+    private void Start()
     {
-        //GameObject[] result = null;
-        switch (type)
+        length = DROP.Length;
+        DropID = new int[length];
+        for (int i = 0; i< length; i++)
         {
-            case "tree":
-                switch (name)
-                {
-                    case "default":
-                        obj.GetComponent<ObjOnCell_scr>().DropRates = Tree_default_DR;
-                        return Tree_default;
-
-                    default:
-                        return null;
-                }
-
-            case "rock":
-                switch (name)
-                {
-                    case "default":
-                        obj.GetComponent<ObjOnCell_scr>().DropRates = Rock_default_DR;
-                        return Rock_default;
-
-                    default:
-                        return null;
-                }
-            default:
-                return null;
+            if (DROP[i] != null)
+            {
+                DropID[i] = DROP[i].GetComponent<Drop_scr>().id;
+            }
         }
+    }
+
+    public GameObject GetGObyID(int id)
+    {
+        for (int i = 0; i < length; i++)
+        {
+            if (id == DropID[i])
+            {
+                return DROP[i];
+            }
+        }
+        return null;
     }
 }

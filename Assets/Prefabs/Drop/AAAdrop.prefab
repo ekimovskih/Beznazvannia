@@ -68,6 +68,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BounceStr: 40
+  type: none
+  id: 0
+  InStack: 1
+  count: 1
 --- !u!212 &4887054445814681695
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -7,6 +7,9 @@ public class Drop_scr : MonoBehaviour
     // Start is called before the first frame update
     [Range (0,50)]public float BounceStr = 40f;
     public string type = "none";
+    public int id;
+    public int InStack;
+    public int count = 1;
     void Start()
     {
         
@@ -28,5 +31,9 @@ public class Drop_scr : MonoBehaviour
         self /= VecLength;
         //Debug.Log(self);
         ThisObj.transform.GetComponent<Rigidbody2D>().AddForce(self * BounceStr);
+    }
+    public void IsEmpty()
+    {
+        Destroy(this.gameObject);
     }
 }

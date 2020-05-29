@@ -13,6 +13,7 @@ public class ObjOnCell_scr : MonoBehaviour
     public bool isgrowing = false;
     // Start is called before the first frame update
     private GameObject Catalog = null;
+    public GameObject[] Droplist = null;
     public Vector2Int[] DropRates = null;
     void Start()
     {
@@ -40,7 +41,7 @@ public class ObjOnCell_scr : MonoBehaviour
         //System.Random value = new System.Random();
         int value;
         float chance;
-        GameObject[] Droplist = Catalog.transform.GetComponent<DropCatalog_scr>().GetDropList(type, supertype, this.gameObject);
+        //GameObject[] Droplist = Catalog.transform.GetComponent<DropCatalog_scr>().GetDropList(type, supertype, this.gameObject);
         if (Droplist == null)
         {
             Debug.LogError("No droplist for " + type + " " + supertype);

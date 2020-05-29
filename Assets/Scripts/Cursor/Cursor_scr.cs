@@ -16,12 +16,14 @@ public class Cursor_scr : MonoBehaviour
 
     private Vector2Int PlayerCell; // клетка с игроком
     public GameObject InHand;
+    public GameObject InHandIndicator = null;
     private float ActionPossible;
 
     public GameObject testobject = null;
     public GameObject testobject2 = null;
     public GameObject testobject3 = null;
     
+
     void Start()
     {
         ActionPossible = 0; //возможно возникновение БАГОВ при игhе более 1000к часов подряд
@@ -29,7 +31,6 @@ public class Cursor_scr : MonoBehaviour
         Cursor.visible = false;
         CursorSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
-
     void Update()
     {
         cursorpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -39,7 +40,7 @@ public class Cursor_scr : MonoBehaviour
         //ShowActiveCell();
         ShowCurrentCell();
 
-        PutTreeInCell();
+        //PutTreeInCell();
         InUseArea();
         if (ActionPossible<Time.time)
         {
@@ -105,7 +106,7 @@ public class Cursor_scr : MonoBehaviour
         axis = Mathf.Clamp(axis, 0, 100000);
         return System.Convert.ToInt32(axis - axis % 1);
     }
-
+    /*
     void PutTreeInCell()
     {
         if (Input.GetMouseButtonDown(1))
@@ -116,7 +117,7 @@ public class Cursor_scr : MonoBehaviour
         {
             testobject2.transform.GetComponent<GridBuilder_scr>().PutOnCell(testobject3, currentCell.x, currentCell.y);
         }
-    }
+    }*/
 
     void IteracteWithCell()
     {
@@ -145,5 +146,11 @@ public class Cursor_scr : MonoBehaviour
     public void ChangeInHandType(GameObject Hand)
     {
         InHand = Hand;
+    }
+
+    public void IHindicatorActivity(Sprite spr)
+    {
+        //InHandIndicator.SetActive(!InHandIndicator.activeSelf);
+        InHandIndicator.GetComponent<SpriteRenderer>().sprite = spr;
     }
 }

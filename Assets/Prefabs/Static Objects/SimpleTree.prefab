@@ -7,6 +7,48 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: Droplist.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: DropRates.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: Droplist.Array.data[0]
+      value: 
+      objectReference: {fileID: 7719881895007296596, guid: 4f414eb7e8dfdca44a65740a24fb52ee,
+        type: 3}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: Droplist.Array.data[1]
+      value: 
+      objectReference: {fileID: 6616981410377017833, guid: d670b359912c4cd4db16ef26840df1a0,
+        type: 3}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: DropRates.Array.data[0].x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: DropRates.Array.data[0].y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: DropRates.Array.data[1].x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: DropRates.Array.data[1].y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4940420283676534236, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: m_Name
