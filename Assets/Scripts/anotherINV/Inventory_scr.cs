@@ -19,7 +19,7 @@ public class Inventory_scr : MonoBehaviour
     private GameObject cursor;
     private GameObject DropCatalog;
     public Vector3 offset = new Vector3(0.4f, -0.4f, 0);
-    private GameObject IVTR;
+    public GameObject IVTR;
     public int ActiveSlot = -1;
 
 
@@ -36,11 +36,12 @@ public class Inventory_scr : MonoBehaviour
 
 
     private void Awake()
-    {  
+    {
+        IVTR.SetActive(true);
         cursor = GameObject.Find("Cursor");
         InHandInd = cursor.GetComponent<Cursor_scr>();
         player = GameObject.Find("Player");
-        IVTR = GameObject.Find("Inventory");
+        //IVTR = GameObject.Find("Inventory");
         InventorySlot[] FS = GameObject.Find("FastPanel").GetComponentsInChildren<InventorySlot>();
         InventorySlot[] IS = IVTR.GetComponentsInChildren<InventorySlot>();
         for(int i = 0; i < 12; i++)
@@ -120,11 +121,14 @@ public class Inventory_scr : MonoBehaviour
                 }
             }
         }
-        InvItems[firstemptycell] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(id);
-        ItemsCount[firstemptycell] = count;
-        InvSlots[firstemptycell].SetCount(ItemsCount[firstemptycell], InvItems[firstemptycell]);
-        drop.IsEmpty();
-        IsInventoryFull();
+        if (!isFull)
+        {
+            InvItems[firstemptycell] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(id);
+            ItemsCount[firstemptycell] = count;
+            InvSlots[firstemptycell].SetCount(ItemsCount[firstemptycell], InvItems[firstemptycell]);
+            drop.IsEmpty();
+            IsInventoryFull();
+        }
     }
 
     public void TakeItem(int slot)
@@ -174,7 +178,7 @@ public class Inventory_scr : MonoBehaviour
 
     void ActivateSlot(int slot)
     {
-        if(slot != ActiveSlot)
+        if(slot != ActiveSlot && ActiveSlot>=0)
         {
             InvSlots[ActiveSlot].ActivateSlot(false);
         }
