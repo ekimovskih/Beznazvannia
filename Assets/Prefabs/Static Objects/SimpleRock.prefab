@@ -59,6 +59,11 @@ PrefabInstance:
       propertyPath: DropRates.Array.data[1].y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: ItemType
+      value: Pickaxe
+      objectReference: {fileID: 0}
     - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y

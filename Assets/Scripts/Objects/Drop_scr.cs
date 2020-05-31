@@ -10,6 +10,10 @@ public class Drop_scr : MonoBehaviour
     public int id;
     public int InStack;
     public int count = 1;
+
+    public bool Interactive = false;
+    public float ActionSpeed = 0.4f;
+    public int Efficiency = 0;
     void Start()
     {
         

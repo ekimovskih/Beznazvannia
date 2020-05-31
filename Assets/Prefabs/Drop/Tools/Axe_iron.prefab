@@ -76,12 +76,22 @@ PrefabInstance:
     - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
         type: 3}
       propertyPath: type
-      value: tree
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
         type: 3}
       propertyPath: id
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
+        type: 3}
+      propertyPath: Efficiency
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
+        type: 3}
+      propertyPath: Interactive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6097281328156449810, guid: bf9e88c0a783add4980059e0ba525c98,
         type: 3}

@@ -106,7 +106,7 @@ public class GridBuilder_scr : MonoBehaviour
             Grid[width, high].GetComponent<Cell_class>().PutObj(obj);
         }
     }
-    public void GetFromCell(int high, int width, GameObject InHand)
+    public void GetFromCell(int high, int width, Drop_scr InHand)
     {
         if (width >= GridWidth || high >= GridHigh)
         {

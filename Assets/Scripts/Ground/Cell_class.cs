@@ -39,15 +39,15 @@ public class Cell_class : MonoBehaviour
             Debug.Log("Cell already busy");
         }
     }
-    public void GetObj(GameObject InHand)
+    public void GetObj(Drop_scr InHand)
     {
         if (objOnIt != null)
         {
-            string ObjType = objOnIt.GetComponent<ObjOnCell_scr>().type;
-            string InHandType = InHand.GetComponent<Drop_scr>().type;
+            string ObjType = objOnIt.GetComponent<ObjOnCell_scr>().ItemType;
+            string InHandType = InHand.type;
             if (ObjType.Equals(InHandType))
             {
-                if (objOnIt.transform.GetComponent<ObjOnCell_scr>().LastHit(5))
+                if (objOnIt.transform.GetComponent<ObjOnCell_scr>().LastHit(InHand.Efficiency))
                 {
                     objOnIt = null;
                 }
@@ -60,27 +60,4 @@ public class Cell_class : MonoBehaviour
         }
     }
 
-    /*
-    public void SetPapa(GameObject Papa, int Width, int Heigh)
-    {
-        ThisObject = this.gameObject;
-        ThisObject.AddComponent<SpriteRenderer>();
-        ThisObject.AddComponent<BoxCollider2D>();
-        Parent = Papa;
-        Wposition = Width;
-        Hposition = Heigh;
-        Location = Parent.GetComponent<GridBuilder_scr>().Location;
-        ThisObject.transform.position = new Vector3(Width, -Heigh, 0);
-        ThisObject.transform.parent = Parent.transform;
-        ThisObject.transform.tag = "Cell";
-
-        SetPropertys();
-    }
-    
-    public void SetPropertys()
-    {
-        Texture = Parent.GetComponent<GridBuilder_scr>().Textures[0];
-        this.gameObject.transform.GetComponent<SpriteRenderer>().sprite = Texture;
-    }
-    */
 }

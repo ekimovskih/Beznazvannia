@@ -215,8 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4c0c49cbb053b4c93fcec358f731bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InvSlot: {fileID: 0}
-  Count: {fileID: 0}
+  InvSlot: {fileID: 1681103819073354702}
+  Count: {fileID: 1681103818737213445}
   SlotNumber: 0
   SlotActive: 1
   Default: {fileID: 21300000, guid: 0cb62b81ab72c8d4a9c42030aa1b1c91, type: 3}

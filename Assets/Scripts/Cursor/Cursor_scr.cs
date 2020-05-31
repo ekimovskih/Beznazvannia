@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Cursor_scr : MonoBehaviour
 {
@@ -15,38 +16,39 @@ public class Cursor_scr : MonoBehaviour
     private GameObject Player = null;
 
     private Vector2Int PlayerCell; // клетка с игроком
-    public GameObject InHand;
+    public Drop_scr InHand;
     public GameObject InHandIndicator = null;
     private float ActionPossible;
 
-    public GameObject testobject = null;
-    public GameObject testobject2 = null;
-    public GameObject testobject3 = null;
+    //public GameObject testobject = null;
+    public GameObject GridBuilder = null;
+    //public GameObject testobject3 = null;
     
 
     void Start()
     {
         ActionPossible = 0; //возможно возникновение БАГОВ при игhе более 1000к часов подряд
         Player = GameObject.Find("Player");
-        Cursor.visible = false;
+        //Cursor.visible = false;
         CursorSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
     void Update()
     {
         cursorpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = cursorpos;
+        //transform.position = Input.mousePosition; //3333333333333
+        InHandIndicator.transform.position = Input.mousePosition;// + OffsetInHandIndicator;//3333333333333
         currentCell = new Vector2Int(ChoseCell(transform.position.x),ChoseCell(transform.position.y));
 
         //ShowActiveCell();
         ShowCurrentCell();
-
         //PutTreeInCell();
         InUseArea();
         if (ActionPossible<Time.time)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                IteracteWithCell();
+                MouseLMBaction();
 
             }
         }
@@ -119,20 +121,24 @@ public class Cursor_scr : MonoBehaviour
         }
     }*/
 
-    void IteracteWithCell()
+    void MouseLMBaction()
     {
-        testobject2.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InHand);
-        //Debug.Log(Time.time + " Start");
-        float WaitTime = Player.GetComponent<Player_movement_scr>().ActionSpeed;
-        ActionPossible = Time.time + WaitTime;
-        //Debug.Log(ActionPossible + " Needed");
-        StartCoroutine(ShowWork(WaitTime));
+        if (InHand.Interactive)
+        {
+            GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InHand);
+            //Debug.Log(Time.time + " Start");
+            float WaitTime = InHand.ActionSpeed;
+            ActionPossible = Time.time + WaitTime;
+            //Debug.Log(ActionPossible + " Needed");
+            StartCoroutine(ShowWork(WaitTime));
 
-        //Vector3 plpos = Player.transform.position;
-        //Vector2 PlayerDir = new Vector2(plpos.x , plpos.y) * new Vector2(0, -1);
-        Vector2 PlayerDir = ActiveCell - PlayerCell;
+            //Vector3 plpos = Player.transform.position;
+            //Vector2 PlayerDir = new Vector2(plpos.x , plpos.y) * new Vector2(0, -1);
+            Vector2 PlayerDir = ActiveCell - PlayerCell;
+
+            StartCoroutine(Player.GetComponent<Player_movement_scr>().MouseHitAction(WaitTime, PlayerDir));
+        }
         
-        StartCoroutine(Player.GetComponent<Player_movement_scr>().MouseHitAction(WaitTime, PlayerDir));
     }
 
     IEnumerator ShowWork(float WaitTime)
@@ -143,14 +149,14 @@ public class Cursor_scr : MonoBehaviour
         obj.GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    public void ChangeInHandType(GameObject Hand)
+    public void ChangeInHandItem(Drop_scr Hand)
     {
         InHand = Hand;
     }
 
-    public void IHindicatorActivity(Sprite spr)
+    public void IHindicatorActivity(Sprite spr,bool active)
     {
-        //InHandIndicator.SetActive(!InHandIndicator.activeSelf);
-        InHandIndicator.GetComponent<SpriteRenderer>().sprite = spr;
+        InHandIndicator.SetActive(active);
+        InHandIndicator.GetComponent<Image>().sprite = spr;
     }
 }

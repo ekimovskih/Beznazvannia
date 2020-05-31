@@ -51,30 +51,51 @@ public class InventorySlot : MonoBehaviour
         else
         {
             //Inventory.ItemsCount[SlotNumber] = 0;
-            Count.GetComponent<Text>().text = "";
+            text.text = "";
         }
         InvSlot.SetActive(Activation);
     }
     public void SetCount(int count)
     {
-        text.text = count.ToString();
+        if (count == 1)
+        {
+            text.text = "";
+        }
+        else
+        {
+            text.text = count.ToString();
+        }
     }
     public void SetCount(int count, GameObject item)
     {
         sprite.sprite = item.GetComponent<SpriteRenderer>().sprite;
-        text.text = count.ToString();
+        if (count == 1)
+        {
+            text.text = "";
+        }
+        else
+        {
+            text.text = count.ToString();
+        }
         InvSlot.SetActive(true);
     }
 
     public void IteractWithSlot()
     {
-        if (Inventory.SmthInHand)
+        if (Inventory.IVTR.activeSelf)
         {
-            Inventory.PutItem(SlotNumber);
+            if (Inventory.SmthInHand)
+            {
+                Inventory.PutItem(SlotNumber);
+            }
+            else
+            {
+                Inventory.TakeItem(SlotNumber);
+            }
         }
         else
         {
-            Inventory.TakeItem(SlotNumber);
+            Inventory.ActivateSlot(SlotNumber);
         }
     }
     public void ActivateSlot(bool act)

@@ -29,8 +29,8 @@ public class Inventory_scr : MonoBehaviour
     //private int PreviousSlot;
     private Cursor_scr InHandInd;
     //aaaa blyat'
-    public int inHand2;
-    public int inHandCount2;
+    private int inHand2;
+    private int inHandCount2;
 
 
 
@@ -59,6 +59,7 @@ public class Inventory_scr : MonoBehaviour
     }
     void Start()
     {
+        ShowStartInv();
         DropCatalog = GameObject.Find("DropCatalog");
         player = GameObject.Find("Player");
         InvItemsLength = InvItems.Length;
@@ -137,7 +138,7 @@ public class Inventory_scr : MonoBehaviour
         {
             inHand = InvItems[slot].GetComponent<Drop_scr>().id;
             inHandCount = ItemsCount[slot];
-            InHandInd.IHindicatorActivity(InvItems[slot].GetComponent<SpriteRenderer>().sprite);
+            InHandInd.IHindicatorActivity(InvItems[slot].GetComponent<SpriteRenderer>().sprite,true);
             InvSlots[slot].SlotActivation(false);
             ItemsCount[slot] = 0;
             InvItems[slot] = null;
@@ -151,22 +152,49 @@ public class Inventory_scr : MonoBehaviour
     {
         if (IVTR.activeSelf == true)
         {
-            if (InvItems[slot] != null)
+            GameObject iItem = InvItems[slot];
+            if (iItem != null)
             {
-                InHandInd.IHindicatorActivity(InvItems[slot].GetComponent<SpriteRenderer>().sprite);
+                int istack = iItem.GetComponent<Drop_scr>().InStack;
+                if (iItem.GetComponent<Drop_scr>().id == inHand && ItemsCount[slot] + inHandCount <= istack)
+                {
+                    
+                        ItemsCount[slot] += inHandCount;
+                        //drop.IsEmpty();
+                        InHandInd.IHindicatorActivity(null,false);
+                        SmthInHand = false;
+                        InvSlots[slot].SetCount(ItemsCount[slot]);
+                        //IsInventoryFull();
+                        //Debug.Log("AZAZAZAZA");
+                        InvSlots[slot].SetCount(inHandCount, InvItems[slot]);
+                    /*
+                    else
+                    {
+                        inHandCount = ItemsCount[slot] + inHandCount - istack;
+                        ItemsCount[slot] = istack;
+                        InvSlots[slot].SetCount(inHandCount);
+                        Debug.Log(inHandCount);
+                    }*/
+                }
+                else
+                {
+                    InHandInd.IHindicatorActivity(InvItems[slot].GetComponent<SpriteRenderer>().sprite,true);
+                    //InHandInd.IHindicatorActivity(InvItems[slot].GetComponent<Image>().sprite);
+                    inHand2 = InvItems[slot].GetComponent<Drop_scr>().id;
+                    inHandCount2 = ItemsCount[slot];
+                    InvItems[slot] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(inHand);
+                    ItemsCount[slot] = inHandCount;
+                    InvSlots[slot].SetCount(inHandCount, InvItems[slot]);
 
-                inHand2 = InvItems[slot].GetComponent<Drop_scr>().id;
-                inHandCount2 = ItemsCount[slot];
-                InvItems[slot] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(inHand);
-                ItemsCount[slot] = inHandCount;
-                InvSlots[slot].SetCount(inHandCount, InvItems[slot]);
-
-                inHand = inHand2;
-                inHandCount = inHandCount2;
+                    inHand = inHand2;
+                    inHandCount = inHandCount2;
+                    //IsInventoryFull();
+                    //return;
+                }           
             }
             else
             {
-                InHandInd.IHindicatorActivity(null);
+                InHandInd.IHindicatorActivity(null,false);
                 InvItems[slot] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(inHand);
                 ItemsCount[slot] = inHandCount;
                 InvSlots[slot].SetCount(inHandCount, InvItems[slot]);
@@ -176,7 +204,7 @@ public class Inventory_scr : MonoBehaviour
         }
     }
 
-    void ActivateSlot(int slot)
+    public void ActivateSlot(int slot)
     {
         if(slot != ActiveSlot && ActiveSlot>=0)
         {
@@ -184,6 +212,7 @@ public class Inventory_scr : MonoBehaviour
         }
         InvSlots[slot].ActivateSlot(true);
         ActiveSlot = slot;
+        ChangeInHandItem();
         //Debug.Log(slot);
     }
     void SwitchActiveSlot()
@@ -191,50 +220,62 @@ public class Inventory_scr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ActivateSlot(0);
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ActivateSlot(1);
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             ActivateSlot(2);
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             ActivateSlot(3);
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             ActivateSlot(4);
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             ActivateSlot(5);
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             ActivateSlot(6);
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             ActivateSlot(7);
+           
         }
         else if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             ActivateSlot(8);
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             ActivateSlot(9);
+            
         }
         else if (Input.GetKeyDown(KeyCode.Minus))
         {
             ActivateSlot(10);
+            
         }
         else if (Input.GetKeyDown("="))
         {
             ActivateSlot(11);
+            
         }
         int wheel = System.Convert.ToInt32(Math.Sign(Input.GetAxis("Mouse ScrollWheel")));
         if (wheel != 0)
@@ -249,6 +290,22 @@ public class Inventory_scr : MonoBehaviour
                 support = 0;
             }
             ActivateSlot(support);
+        }
+    }
+    void ChangeInHandItem()
+    {
+        cursor.GetComponent<Cursor_scr>().ChangeInHandItem(InvItems[ActiveSlot].GetComponent<Drop_scr>());
+    }
+    void ShowStartInv()
+    {
+        for (int i = 0; i < 48; i++)
+        {
+            if (InvItems[i] != null)
+            {
+                //Debug.Log(i);
+                ItemsCount[i] = InvItems[i].GetComponent<Drop_scr>().count;
+                InvSlots[i].SetCount(ItemsCount[i], InvItems[i]);
+            }
         }
     }
 }

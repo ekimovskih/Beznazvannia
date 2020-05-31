@@ -24,7 +24,7 @@ public class Player_movement_scr : MonoBehaviour
     {
         Cursor = GameObject.Find("Cursor");
         Inventory = GameObject.Find("InventoryManager");
-        ChangeInHand(CurrInvSlot);
+        //ChangeInHand(CurrInvSlot);
         PlayerSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
@@ -39,7 +39,7 @@ public class Player_movement_scr : MonoBehaviour
     }
     public void Movement()
     {
-        InventoryAction();
+        //InventoryAction();
         horizInput = Input.GetAxis("Horizontal");
         verticInput = Input.GetAxis("Vertical");
         bool Shift = Input.GetKey(KeyCode.LeftShift);
@@ -122,14 +122,15 @@ public class Player_movement_scr : MonoBehaviour
             }
         }
     }
-
+    /*
     public void ChangeInHand(int slot)
     {
         InHand = WorkInd.GetComponent<WorkIndicator_scr>().FastSlots[slot-1];
-        Cursor.GetComponent<Cursor_scr>().ChangeInHandType(InHand);
+        Cursor.GetComponent<Cursor_scr>().ChangeInHandItem(InHand);
         WorkInd.GetComponent<SpriteRenderer>().sprite = InHand.GetComponent<SpriteRenderer>().sprite;
     }
-
+    */
+    /*
     void InventoryAction()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -146,6 +147,7 @@ public class Player_movement_scr : MonoBehaviour
         }
         ChangeInHand(CurrInvSlot);
     }
+    */
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -155,10 +157,5 @@ public class Player_movement_scr : MonoBehaviour
             Health -= dmg;
             //Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
         }
-    }
-
-    void InventoryCheck(bool logical)
-    {
-        InventoryFull = logical;
     }
 }

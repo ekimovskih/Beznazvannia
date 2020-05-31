@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ObjOnCell_scr : MonoBehaviour
 {
-    public string type = "none";
-    public string supertype = "default";
+    public string ItemType = "none";
+    //public string fffffffffffffffffffff = "default";
     public int health=10;
     public GameObject cell = null;
     public int radiusSpace = 1;
@@ -44,12 +44,12 @@ public class ObjOnCell_scr : MonoBehaviour
         //GameObject[] Droplist = Catalog.transform.GetComponent<DropCatalog_scr>().GetDropList(type, supertype, this.gameObject);
         if (Droplist == null)
         {
-            Debug.LogError("No droplist for " + type + " " + supertype);
+            Debug.LogError("No droplist for " + this.gameObject);
             return;
         }
         if (DropRates == null)
         {
-            Debug.LogError("No droprates for " + type + " " + supertype);
+            Debug.LogError("No droprates for " + this.gameObject);
             return;
         }
         int DroplistLGH = Droplist.Length;
@@ -76,7 +76,7 @@ public class ObjOnCell_scr : MonoBehaviour
     IEnumerator WaitToDrop()
     {
         yield return new WaitForSeconds(1f);
-        Drop(type);
+        Drop(ItemType);
         //Destroy(this.gameObject);
     }
 }
