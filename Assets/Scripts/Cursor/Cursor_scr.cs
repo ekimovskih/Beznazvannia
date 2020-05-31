@@ -123,7 +123,7 @@ public class Cursor_scr : MonoBehaviour
 
     void MouseLMBaction()
     {
-        if (InHand.Interactive)
+        if (InHand!=null&&InHand.Interactive)
         {
             GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InHand);
             //Debug.Log(Time.time + " Start");

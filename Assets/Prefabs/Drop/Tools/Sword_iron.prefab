@@ -98,5 +98,10 @@ PrefabInstance:
       propertyPath: Efficiency
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: Interactive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99a9096ca7d0a7c408d44b08ebb7950e, type: 3}

@@ -15,6 +15,7 @@ public class Goblin_1_scr : Enemy_propertys_scr
     void Update()
     {
         //this.gameObject.transform.Rotate(new Vector3(0,0,1),AttackDirrection());
+        this.gameObject.transform.LookAt(player.transform);
         Zcorrector();
         IsAgred(player);
         if (distance < AttackRadius)

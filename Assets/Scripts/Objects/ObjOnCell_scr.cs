@@ -20,8 +20,10 @@ public class ObjOnCell_scr : MonoBehaviour
         Catalog = GameObject.Find("DropCatalog");
     }
 
-    public bool LastHit(int strengh)
+    public bool LastHit(Drop_scr item)
     {
+        int strengh = item.Efficiency;
+        float speed = item.ActionSpeed;
         health -= strengh;
         if (health > 0)
         {
@@ -30,7 +32,7 @@ public class ObjOnCell_scr : MonoBehaviour
         }
         else
         {
-            StartCoroutine(WaitToDrop());
+            StartCoroutine(WaitToDrop(speed));
             //Drop(type);
             return true;
         }
@@ -73,9 +75,9 @@ public class ObjOnCell_scr : MonoBehaviour
         }
         Destroy(this.gameObject);
     }
-    IEnumerator WaitToDrop()
+    IEnumerator WaitToDrop(float timer)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(timer);
         Drop(ItemType);
         //Destroy(this.gameObject);
     }

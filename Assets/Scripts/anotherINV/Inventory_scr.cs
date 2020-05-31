@@ -294,7 +294,15 @@ public class Inventory_scr : MonoBehaviour
     }
     void ChangeInHandItem()
     {
-        cursor.GetComponent<Cursor_scr>().ChangeInHandItem(InvItems[ActiveSlot].GetComponent<Drop_scr>());
+        GameObject item = InvItems[ActiveSlot];
+        if (item != null)
+        {
+            cursor.GetComponent<Cursor_scr>().ChangeInHandItem(InvItems[ActiveSlot].GetComponent<Drop_scr>());
+        }
+        else
+        {
+            cursor.GetComponent<Cursor_scr>().ChangeInHandItem(null);
+        }
     }
     void ShowStartInv()
     {

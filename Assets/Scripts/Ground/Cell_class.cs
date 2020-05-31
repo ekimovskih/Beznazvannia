@@ -47,7 +47,7 @@ public class Cell_class : MonoBehaviour
             string InHandType = InHand.type;
             if (ObjType.Equals(InHandType))
             {
-                if (objOnIt.transform.GetComponent<ObjOnCell_scr>().LastHit(InHand.Efficiency))
+                if (objOnIt.transform.GetComponent<ObjOnCell_scr>().LastHit(InHand))
                 {
                     objOnIt = null;
                 }

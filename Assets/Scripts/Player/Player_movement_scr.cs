@@ -7,6 +7,7 @@ public class Player_movement_scr : MonoBehaviour
     public int Health = 100;
     [HideInInspector] private float horizInput;
     [HideInInspector] private float verticInput;
+    [HideInInspector] public Rigidbody2D rb;//asddddddddddddddddddddddddddddddddddddddddddddddddddddd
     private bool CanMove = true;
     public float speed=3f; // сорость бега
     public float ShiftSpeed = 2f; // + скорость с зажатым LeftShift
@@ -14,18 +15,24 @@ public class Player_movement_scr : MonoBehaviour
     public Sprite[] playerStates = new Sprite[3]; // стоячие положения игрока
     private SpriteRenderer PlayerSprite;
     public GameObject InHand;
-    public float ActionSpeed = 5f; // определяет перерыв перед совершением следующего действия (в секундах)
-    private GameObject Cursor = null;
-    [HideInInspector] public int CurrInvSlot = 0;
+    //private GameObject Cursor = null;
+    //[HideInInspector] public int CurrInvSlot = 0;
     public GameObject WorkInd = null;
     private bool InventoryFull;
-    private GameObject Inventory = null;
+    private Inventory_scr Inventory = null;
+    private Transform PlayerStuff;
+
+    private void Awake()
+    {
+        PlayerStuff = GameObject.Find("PlayerStuff").transform;
+    }
     void Start()
     {
-        Cursor = GameObject.Find("Cursor");
-        Inventory = GameObject.Find("InventoryManager");
+        //Cursor = GameObject.Find("Cursor");
+        Inventory = GameObject.Find("InventoryManager").GetComponent<Inventory_scr>();
         //ChangeInHand(CurrInvSlot);
         PlayerSprite = this.gameObject.GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();//asdasdadadadddddddddddddddddddddddddddddddddddddddddddd
     }
 
     // Update is called once per frame
@@ -54,12 +61,23 @@ public class Player_movement_scr : MonoBehaviour
                 Boost = 0f;
             }
         }
-        transform.Translate(horizInput * (speed + Boost) * Time.deltaTime, 0, 0);
-        transform.Translate(0, verticInput * (speed + Boost) * Time.deltaTime, 0);
-        transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.y);
-
+        //transform.Translate(horizInput * (speed + Boost) * Time.deltaTime, 0, 0);
+        //transform.Translate(0, verticInput * (speed + Boost) * Time.deltaTime, 0);
         
-            SpriteMoveChanger(horizInput, verticInput);
+
+        float x = horizInput * (speed + Boost) * Time.deltaTime;
+        float y = verticInput * (speed + Boost) * Time.deltaTime;
+        Vector2 Move = new Vector3(x,y);
+
+        //rb.MovePosition(transform.position + Move * Time.deltaTime);
+        rb.velocity = Move;
+        PlayerStuff.position = new Vector3(0,0,transform.position.y);
+        //transform.;
+
+
+
+
+        SpriteMoveChanger(horizInput, verticInput);
     }
     public void SpriteMoveChanger(float horizInput, float verticInput)
     {
@@ -118,7 +136,7 @@ public class Player_movement_scr : MonoBehaviour
             }
             else if (Inventory != null)
             {
-                Inventory.GetComponent<Inventory_scr>().AddItem(collision.gameObject);
+                Inventory.AddItem(collision.gameObject);
             }
         }
     }
@@ -154,8 +172,13 @@ public class Player_movement_scr : MonoBehaviour
         if (collision.gameObject.tag == "EnemyAttack")
         {
             int dmg = collision.gameObject.GetComponent<EnemyAttack_scr>().Damage; // оставил если придетя визуализировать урон
-            Health -= dmg;
+            TakeDamage(dmg);
             //Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
         }
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        Health -= dmg;
     }
 }
