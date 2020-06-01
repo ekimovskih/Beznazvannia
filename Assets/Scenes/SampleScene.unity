@@ -10863,6 +10863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DropCatalog: {fileID: 1489694745}
   Inventory: {fileID: 1195393459}
+  CraftSlots: []
   ResultSlots: {fileID: 1076590489}
 --- !u!1001 &1209144636
 PrefabInstance:
@@ -18107,7 +18108,7 @@ PrefabInstance:
     - target: {fileID: 3246081614342384306, guid: 4941113e1b0540448ae74cb79e488fcd,
         type: 3}
       propertyPath: CraftPanelSize
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3246081614342384306, guid: 4941113e1b0540448ae74cb79e488fcd,
         type: 3}
