@@ -95,6 +95,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
+      propertyPath: Recipe.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: RecipeCount.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
       propertyPath: BounceStr
       value: 25
       objectReference: {fileID: 0}
@@ -108,5 +118,21 @@ PrefabInstance:
       propertyPath: InStack
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: ResultCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: RecipeCount.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: Recipe.Array.data[0]
+      value: 
+      objectReference: {fileID: 1257046861032119396, guid: 92a9be1ce37b4b24e970ad1468cfc74f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99a9096ca7d0a7c408d44b08ebb7950e, type: 3}

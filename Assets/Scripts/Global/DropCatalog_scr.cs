@@ -7,6 +7,11 @@ public class DropCatalog_scr : MonoBehaviour
     private int[] DropID;
     public GameObject[] Craftable;
     [HideInInspector]public int length;
+
+    private void Awake()
+    {
+        length = DROP.Length;
+    }
     private void Start()
     {
         length = DROP.Length;

@@ -22,9 +22,8 @@ public class InventorySlot : MonoBehaviour
     private Image sprite;
     private void Awake()
     {
-        
-        InvSlot = this.gameObject.transform.GetChild(0).gameObject;
-        Count = InvSlot.gameObject.transform.GetChild(0).gameObject;
+        //InvSlot = this.gameObject.transform.GetChild(0).gameObject;
+        //Count = InvSlot.gameObject.transform.GetChild(0).gameObject;
         text = Count.GetComponent<Text>();
         sprite = InvSlot.GetComponent<Image>();
 
@@ -34,16 +33,11 @@ public class InventorySlot : MonoBehaviour
         InventoryComponent = Inventory.GetComponent<Inventory_scr>();
         //Inventory = GameObject.Find("Inventory");
     }
+    public void SlotCreation(bool Activation)
+    {
+        this.gameObject.SetActive(Activation);
+    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void SetSlot(GameObject Item, int Count)
-    {
-        //InvSlot.GetComponent<Image>().sprite = Default;
-    }
     public void SlotActivation(bool Activation)
     {
         //Debug.Log(text.text + SlotNumber);
@@ -52,11 +46,6 @@ public class InventorySlot : MonoBehaviour
             //InventoryComponent.ItemsCount[SlotNumber] = 0;
             text.text = "";
             //Debug.Log(text.text + SlotNumber);
-        }
-        else
-        {
-            
-            
         }
         InvSlot.SetActive(Activation);
     }
@@ -115,6 +104,5 @@ public class InventorySlot : MonoBehaviour
             SlotActive = true;
             this.gameObject.GetComponent<Image>().sprite = Active;
         }
-        //Debug.Log(this.gameObject);
     }
 }

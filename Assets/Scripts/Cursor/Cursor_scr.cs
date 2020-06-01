@@ -26,7 +26,12 @@ public class Cursor_scr : MonoBehaviour
     //public GameObject testobject = null;
     public GameObject GridBuilder = null;
     //public GameObject testobject3 = null;
-    
+
+    public int HandContainer;
+    public int HandContainerCount;
+    public bool HandContainerFull = false;
+
+
 
     void Start()
     {
@@ -156,12 +161,37 @@ public class Cursor_scr : MonoBehaviour
     {
         InHand = Hand;
     }
-
-    public void IHindicatorActivity(Sprite spr,bool active)
+    /*
+    public void CursorContainerActivation(Sprite spr,bool active)
     {
         InHandIndicator.SetActive(active);
         InHandIndicator.GetComponent<Image>().sprite = spr;
     }
+    */
+    public void CursorContainerActivation()
+    {
+        InHandIndicator.SetActive(false);
+        InHandIndicator.GetComponent<Image>().sprite = null;
+        HandContainer = 0;
+        HandContainerCount = 0;
+        HandContainerFull = false;
+        //return false;
+
+    }
+    public void CursorContainerActivation(GameObject item, int count)
+    {
+        InHandIndicator.SetActive(true);
+        InHandIndicator.GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
+        HandContainer = item.GetComponent<Drop_scr>().id;
+        HandContainerCount = count;
+        HandContainerFull = true;
+        //return true;
+    }
+    public void CursorContainerActivation(int count)
+    {
+        HandContainerCount += count;
+    }
+
 
     private bool MouseOverUi()
     {

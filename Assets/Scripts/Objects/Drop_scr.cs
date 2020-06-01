@@ -13,7 +13,8 @@ public class Drop_scr : MonoBehaviour
 
     public bool Craftable = false;
     public GameObject[] Recipe;
-    public int RecipeCount;
+    public int[] RecipeCount;
+    public int ResultCount;
 
     public bool Interactive = false;
     public float ActionSpeed = 0.4f;

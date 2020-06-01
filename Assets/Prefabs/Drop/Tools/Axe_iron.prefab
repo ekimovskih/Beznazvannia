@@ -75,6 +75,16 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
         type: 3}
+      propertyPath: Recipe.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
+        type: 3}
+      propertyPath: RecipeCount.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
+        type: 3}
       propertyPath: type
       value: Axe
       objectReference: {fileID: 0}
@@ -92,6 +102,33 @@ PrefabInstance:
         type: 3}
       propertyPath: Interactive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
+        type: 3}
+      propertyPath: ResultCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
+        type: 3}
+      propertyPath: Recipe.Array.data[0]
+      value: 
+      objectReference: {fileID: 7719881895007296596, guid: 4f414eb7e8dfdca44a65740a24fb52ee,
+        type: 3}
+    - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
+        type: 3}
+      propertyPath: Recipe.Array.data[1]
+      value: 
+      objectReference: {fileID: 1257046861032119396, guid: 92a9be1ce37b4b24e970ad1468cfc74f,
+        type: 3}
+    - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
+        type: 3}
+      propertyPath: RecipeCount.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481689309177529357, guid: bf9e88c0a783add4980059e0ba525c98,
+        type: 3}
+      propertyPath: RecipeCount.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6097281328156449810, guid: bf9e88c0a783add4980059e0ba525c98,
         type: 3}

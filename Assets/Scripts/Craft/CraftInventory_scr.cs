@@ -11,6 +11,7 @@ public class CraftInventory_scr : Inventory_scr
     public GameObject CraftTable = null;
     private void Awake()
     {
+
         InvItems = new GameObject[numofslots];
         ItemsCount = new int[numofslots];
         DropCatalog = GameObject.Find("DropCatalog");
