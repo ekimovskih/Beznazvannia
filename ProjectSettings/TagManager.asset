@@ -8,6 +8,7 @@ TagManager:
   - Drop
   - EnemyAttack
   - Cursor
+  - UI
   layers:
   - Default
   - TransparentFX

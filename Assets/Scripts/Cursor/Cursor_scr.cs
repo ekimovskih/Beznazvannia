@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+
 
 public class Cursor_scr : MonoBehaviour
 {
@@ -123,7 +126,7 @@ public class Cursor_scr : MonoBehaviour
 
     void MouseLMBaction()
     {
-        if (InHand!=null&&InHand.Interactive)
+        if (InHand !=null && InHand.Interactive && !MouseOverUi())
         {
             GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InHand);
             //Debug.Log(Time.time + " Start");
@@ -158,5 +161,23 @@ public class Cursor_scr : MonoBehaviour
     {
         InHandIndicator.SetActive(active);
         InHandIndicator.GetComponent<Image>().sprite = spr;
+    }
+
+    private bool MouseOverUi()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = Input.mousePosition;
+
+        List<RaycastResult> raycastResList = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, raycastResList);
+        for (int i = 0; i < raycastResList.Count; i++)
+        {
+            if (raycastResList[i].gameObject.tag != "UI")
+            {
+                raycastResList.RemoveAt(i);
+                i--;
+            }
+        }
+        return raycastResList.Count > 0;
     }
 }

@@ -25,14 +25,15 @@ public class Player_movement_scr : MonoBehaviour
     private void Awake()
     {
         PlayerStuff = GameObject.Find("PlayerStuff").transform;
+        rb = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
         //Cursor = GameObject.Find("Cursor");
         Inventory = GameObject.Find("InventoryManager").GetComponent<Inventory_scr>();
+        InventoryFull = Inventory.isFull;
         //ChangeInHand(CurrInvSlot);
         PlayerSprite = this.gameObject.GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();//asdasdadadadddddddddddddddddddddddddddddddddddddddddddd
     }
 
     // Update is called once per frame

@@ -43,15 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 002eec4d4297bb349a75368556862246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tree_default:
-  - {fileID: 7719881895007296596, guid: 4f414eb7e8dfdca44a65740a24fb52ee, type: 3}
+  DROP:
   - {fileID: 6616981410377017833, guid: d670b359912c4cd4db16ef26840df1a0, type: 3}
-  Tree_default_DR:
-  - {x: 100, y: 3}
-  - {x: 40, y: 2}
-  Rock_default:
-  - {fileID: 1257046861032119396, guid: 92a9be1ce37b4b24e970ad1468cfc74f, type: 3}
   - {fileID: 6832024348306267429, guid: bf398ccb13f783c4aab82b4872494081, type: 3}
-  Rock_default_DR:
-  - {x: 100, y: 5}
-  - {x: 20, y: 3}
+  - {fileID: 7719881895007296596, guid: 4f414eb7e8dfdca44a65740a24fb52ee, type: 3}
+  - {fileID: 1257046861032119396, guid: 92a9be1ce37b4b24e970ad1468cfc74f, type: 3}
+  - {fileID: 6406550984765081669, guid: 387827a8b38665a4bb1974bc08d9e13a, type: 3}
+  - {fileID: 373575020118841997, guid: bf9e88c0a783add4980059e0ba525c98, type: 3}
+  - {fileID: 1209622819895161852, guid: afbab7969cd551142973ec25e1fa7789, type: 3}
+  length: 0

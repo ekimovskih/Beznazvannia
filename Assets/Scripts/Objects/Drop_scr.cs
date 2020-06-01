@@ -11,9 +11,14 @@ public class Drop_scr : MonoBehaviour
     public int InStack;
     public int count = 1;
 
+    public bool Craftable = false;
+    public GameObject[] Recipe;
+    public int RecipeCount;
+
     public bool Interactive = false;
     public float ActionSpeed = 0.4f;
     public int Efficiency = 0;
+    public int Armor = 0;
     void Start()
     {
         
@@ -40,4 +45,13 @@ public class Drop_scr : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+    /*
+    int CheckRecipe(int[] CraftSlots, int numberOFslots)
+    {
+        int RecipeLength = Recipe.Length;
+        int coincidences = 0;
+        for (int i)
+        return coincidences;
+    }
+    */
 }

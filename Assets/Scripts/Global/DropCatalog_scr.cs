@@ -5,16 +5,28 @@ public class DropCatalog_scr : MonoBehaviour
 {
     public GameObject[] DROP;
     private int[] DropID;
-    private int length;
+    public GameObject[] Craftable;
+    [HideInInspector]public int length;
     private void Start()
     {
         length = DROP.Length;
+        Craftable = new GameObject[length];
         DropID = new int[length];
         for (int i = 0; i< length; i++)
         {
             if (DROP[i] != null)
             {
                 DropID[i] = DROP[i].GetComponent<Drop_scr>().id;
+
+                /*
+                Drop_scr current = GetComponent<Drop_scr>();
+                DropID[i] = current.id;
+                if (current.Craftable)
+                {
+                    Craftable[CraftableSlot] = DROP[i];
+                    CraftableSlot++;
+                }
+                */
             }
         }
     }

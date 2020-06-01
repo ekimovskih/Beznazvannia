@@ -17,10 +17,9 @@ public class Inventory_scr : MonoBehaviour
     private int firstemptycell;
     private GameObject player;
     private GameObject cursor;
-    private GameObject DropCatalog;
-    public Vector3 offset = new Vector3(0.4f, -0.4f, 0);
-    public GameObject IVTR;
-    public int ActiveSlot = -1;
+    [HideInInspector] public GameObject DropCatalog;
+    public GameObject IVTR; //инвентарь в канвасе
+    [HideInInspector] public int ActiveSlot = -1;
 
 
     public int inHand;
@@ -32,37 +31,54 @@ public class Inventory_scr : MonoBehaviour
     private int inHand2;
     private int inHandCount2;
 
-
+    public InventorySlot[] CraftSlots;
+    public GameObject[] CraftItems = new GameObject[4];
+    public int[] CraftCounts = new int[4];
+    public GameObject CraftTab;
 
 
     private void Awake()
     {
         IVTR.SetActive(true);
+        CraftTab.SetActive(true);
+
         cursor = GameObject.Find("Cursor");
         InHandInd = cursor.GetComponent<Cursor_scr>();
         player = GameObject.Find("Player");
         //IVTR = GameObject.Find("Inventory");
         InventorySlot[] FS = GameObject.Find("FastPanel").GetComponentsInChildren<InventorySlot>();
         InventorySlot[] IS = IVTR.GetComponentsInChildren<InventorySlot>();
-        for(int i = 0; i < 12; i++)
+        InventorySlot[] CS = CraftTab.GetComponentsInChildren<InventorySlot>();
+        for (int i = 0; i < 12; i++)
         {
             InvSlots[i] = FS[i];
             InvSlots[i].SlotNumber = i;
+            InvSlots[i].Inventory = this.gameObject;
         }
         for (int i = 12; i < 48; i++)
         {
             InvSlots[i] = IS[i-12];
             InvSlots[i].SlotNumber = i;
+            InvSlots[i].Inventory = this.gameObject;
         }
-        IVTR.SetActive(false);
+        for (int i = 0; i < 4; i++)
+        {
+            CraftSlots[i] = CS[i];
+            CraftSlots[i].SlotNumber = i+50;
+            CraftSlots[i].Inventory = this.gameObject;
+        }
+
+
         ActivateSlot(0);
     }
     void Start()
     {
-        ShowStartInv();
+        IVTR.SetActive(false);
+        CraftTab.SetActive(false);
         DropCatalog = GameObject.Find("DropCatalog");
         player = GameObject.Find("Player");
         InvItemsLength = InvItems.Length;
+        ShowStartInv();
         IsInventoryFull();
     }
 
@@ -72,6 +88,7 @@ public class Inventory_scr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             IVTR.SetActive(!IVTR.activeSelf);
+            CraftTab.SetActive(!CraftTab.activeSelf);
         }
         SwitchActiveSlot();
     }
@@ -89,6 +106,7 @@ public class Inventory_scr : MonoBehaviour
             }
             else if (InvItems[i] == null)
             {
+                //Debug.Log(InvItems[i]);
                 InvSlots[i].SlotActivation(false);
             }
         }
@@ -150,9 +168,19 @@ public class Inventory_scr : MonoBehaviour
 
     public void PutItem(int slot)
     {
+        //Debug.Log(IVTR);
         if (IVTR.activeSelf == true)
         {
-            GameObject iItem = InvItems[slot];
+            GameObject iItem;
+            int[] iItemCount;
+            if (slot < 50)
+            {
+                iItem = InvItems[slot];
+            }
+            else
+            {
+                iItem = CraftItems[slot - 50];
+            }
             if (iItem != null)
             {
                 int istack = iItem.GetComponent<Drop_scr>().InStack;

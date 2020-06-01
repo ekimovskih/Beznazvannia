@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Inventory_scr Inventory;
+    public GameObject Inventory = null;
+    private Inventory_scr InventoryComponent;
     public GameObject InvSlot;
     public GameObject Count;
     public int SlotNumber;
     public bool SlotActive = false;
-    private bool Empty = false;
+    //private bool Empty = false;
     public Sprite Default;
     public Sprite Active;
     //public GameObject Active = null 
@@ -21,7 +22,7 @@ public class InventorySlot : MonoBehaviour
     private Image sprite;
     private void Awake()
     {
-        Inventory = GameObject.Find("InventoryManager").GetComponent<Inventory_scr>();
+        
         InvSlot = this.gameObject.transform.GetChild(0).gameObject;
         Count = InvSlot.gameObject.transform.GetChild(0).gameObject;
         text = Count.GetComponent<Text>();
@@ -30,6 +31,7 @@ public class InventorySlot : MonoBehaviour
     }
     void Start()
     {
+        InventoryComponent = Inventory.GetComponent<Inventory_scr>();
         //Inventory = GameObject.Find("Inventory");
     }
 
@@ -44,14 +46,17 @@ public class InventorySlot : MonoBehaviour
     }
     public void SlotActivation(bool Activation)
     {
-        if (Activation)
+        //Debug.Log(text.text + SlotNumber);
+        if (!Activation)
         {
-
+            //InventoryComponent.ItemsCount[SlotNumber] = 0;
+            text.text = "";
+            //Debug.Log(text.text + SlotNumber);
         }
         else
         {
-            //Inventory.ItemsCount[SlotNumber] = 0;
-            text.text = "";
+            
+            
         }
         InvSlot.SetActive(Activation);
     }
@@ -82,20 +87,20 @@ public class InventorySlot : MonoBehaviour
 
     public void IteractWithSlot()
     {
-        if (Inventory.IVTR.activeSelf)
+        if (Inventory.activeSelf)
         {
-            if (Inventory.SmthInHand)
+            if (InventoryComponent.SmthInHand)
             {
-                Inventory.PutItem(SlotNumber);
+                InventoryComponent.PutItem(SlotNumber);
             }
             else
             {
-                Inventory.TakeItem(SlotNumber);
+                InventoryComponent.TakeItem(SlotNumber);
             }
         }
         else
         {
-            Inventory.ActivateSlot(SlotNumber);
+            InventoryComponent.ActivateSlot(SlotNumber);
         }
     }
     public void ActivateSlot(bool act)
