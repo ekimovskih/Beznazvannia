@@ -7,6 +7,7 @@ public class Slime_1_scr : Enemy_propertys_scr
     // Start is called before the first frame update
     //private GameObject player = null;
     //private Vector3 playerPosition;
+    public float JumpMoveWaitTime = 1f;
     
     
     void Start()
@@ -23,12 +24,12 @@ public class Slime_1_scr : Enemy_propertys_scr
         {
             if (CanAttack)
             {
-                StartCoroutine(Attack());
+                StartCoroutine(JumpAttack());
             }
         }
         else if (CanAttack && Agred)
         {
-            StartCoroutine(Jump(dirrection));
+            StartCoroutine(Jump(dirrection,JumpMoveWaitTime));
             //SimpleMovement();
         }
         else if (CanAttack && !Agred)
@@ -39,37 +40,7 @@ public class Slime_1_scr : Enemy_propertys_scr
             float value = Mathf.Sqrt(valuex * valuex + valuey * valuey);
             //value = 1f;
             Vector2 NewDir = new Vector2(valuex / value, valuey / value);
-            StartCoroutine(Jump(NewDir));
+            StartCoroutine(Jump(NewDir, JumpMoveWaitTime));
         }
-    }
-    
-    IEnumerator Attack()
-    {
-        CanAttack = false;
-        //Debug.Log("Prepare");
-        yield return new WaitForSeconds(1f);
-        //Debug.Log("Jump attack");
-
-        this.gameObject.GetComponent<Rigidbody2D>().AddForce(dirrection * AttackSpeed);
-        AttackZone.SetActive(true);
-        yield return new WaitForSeconds(0.8f);
-        AttackZone.SetActive(false);
-        //Debug.Log("Brfrfrfrf");
-        yield return new WaitForSeconds(2f);
-        CanAttack = true;
-    }
-    
-    IEnumerator Jump(Vector2 dir)
-    {
-        //Debug.Log("Jump move");
-        CanAttack = false;
-        this.gameObject.GetComponent<Rigidbody2D>().AddForce(dir * MovementSpeed);
-        //transform.Translate(dirrection * Time.deltaTime);
-        yield return new WaitForSeconds(2f);
-        CanAttack = true;
-    }
-    void SimpleMovement()
-    {
-        transform.Translate(dirrection * Time.deltaTime * 1.5f);
     }
 }

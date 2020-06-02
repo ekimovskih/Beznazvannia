@@ -6,7 +6,7 @@ public class Enemy_propertys_scr : MonoBehaviour
 {
     public float Health = 100f;
     //public float Damage;
-    public float AttackSpeed = 2f;
+    
     public float MovementSpeed = 50f;
     public float AgroRadius;
     public float DisAgroRadius;
@@ -16,6 +16,11 @@ public class Enemy_propertys_scr : MonoBehaviour
     [HideInInspector] public Vector2 dirrection;
     public bool CanAttack = true;
     public GameObject AttackZone = null;
+    public float AttackRotatiionSpeed = 10;
+    public float JumpAttackSpeed = 2f;
+    public float AttackPrepare = 3f;
+    public float AttackDuration = 3f;
+    public float AttackRelax =3f;
 
     [HideInInspector]public GameObject player = null;
 
@@ -46,19 +51,59 @@ public class Enemy_propertys_scr : MonoBehaviour
         Health -= dmg;
     }
 
-    public float AttackDirrection()
+    public void AttackDirrection()
     {
-        Vector3 Self = this.gameObject.transform.position;
-        Vector3 Other = player.transform.position;
-        float x = Other.x - Self.x;
-        float y = Other.y - Self.y;
-        float r = Mathf.Sqrt(x * x + y * y);
-        Debug.Log(Mathf.Acos((x / r) / 180f) * Mathf.PI);
-        return Mathf.Acos(x / r);
+        Transform trans = AttackZone.transform;
+        Vector3 vectorToTarget = player.transform.position - trans.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        trans.rotation = Quaternion.Slerp(trans.rotation, q, Time.deltaTime * AttackRotatiionSpeed);
+        trans.position = transform.position;
+    }
+
+    public IEnumerator JumpAttack()
+    {
+        CanAttack = false;
+        yield return new WaitForSeconds(AttackPrepare);
+        this.gameObject.GetComponent<Rigidbody2D>().AddForce(dirrection * JumpAttackSpeed);
+        AttackZone.SetActive(true);
+        yield return new WaitForSeconds(AttackDuration);
+        AttackZone.SetActive(false);
+        yield return new WaitForSeconds(AttackRelax);
+        CanAttack = true;
+    }
+
+    public IEnumerator RadiusAttack()
+    {
+        CanAttack = false;
+        //Debug.Log("Prepare");
+        yield return new WaitForSeconds(AttackPrepare);
+        //Debug.Log("Attack");
         /*
-        Vector3 Self = this.gameObject.transform.RotateAround(;
-        Vector3 Other = player.transform.position;
-        return new Vector3(Other.x, Other.y, Self.z);
-    */
+        AttackZone.GetComponent<EnemyAttack_scr>().CanDealDMG = true;
+        yield return new WaitForSeconds(AttackDuration);
+        AttackZone.GetComponent<EnemyAttack_scr>().CanDealDMG = false;
+        */
+        //AttackZone.SetActive(true);
+        AttackZone.GetComponent<EnemyAttack_scr>().Attack();
+        yield return new WaitForSeconds(AttackDuration);
+        AttackZone.GetComponent<EnemyAttack_scr>().Attack();
+        //AttackZone.SetActive(false);
+        //Debug.Log("Brfrfrfrf");
+        yield return new WaitForSeconds(AttackRelax);
+        CanAttack = true;
+    }
+    public void SimpleMovement()
+    {
+        transform.Translate(dirrection * Time.deltaTime * MovementSpeed);
+    }
+    public IEnumerator Jump(Vector2 dir, float waitTime)
+    {
+        //Debug.Log("Jump move");
+        CanAttack = false;
+        this.gameObject.GetComponent<Rigidbody2D>().AddForce(dir * MovementSpeed);
+        //transform.Translate(dirrection * Time.deltaTime);
+        yield return new WaitForSeconds(waitTime);
+        CanAttack = true;
     }
 }

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &186320388
 Transform:
   m_ObjectHideFlags: 0
@@ -158,7 +158,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.3
+  m_Mass: 8
   m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -195,8 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d8885b7fc4b104da228e4913456c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
-  Damage: 0
+  Health: 20
+  MovementSpeed: 910
   AgroRadius: 5
   DisAgroRadius: 10
   Agred: 0
@@ -205,5 +205,10 @@ MonoBehaviour:
   dirrection: {x: 0, y: 0}
   CanAttack: 1
   AttackZone: {fileID: 186320386}
-  AttackSpeed: 150
-  MovementSpeed: 35
+  AttackRotatiionSpeed: 10
+  JumpAttackSpeed: 4500
+  AttackPrepare: 1
+  AttackDuration: 0.8
+  AttackRelax: 2
+  player: {fileID: 0}
+  JumpMoveWaitTime: 1

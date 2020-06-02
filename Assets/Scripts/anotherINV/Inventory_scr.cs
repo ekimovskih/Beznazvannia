@@ -433,10 +433,12 @@ public class Inventory_scr : MonoBehaviour
         if (item != null)
         {
             cursor.GetComponent<Cursor_scr>().ChangeInHandItem(item.GetComponent<Drop_scr>());
+            player.GetComponent<Player_movement_scr>().WorkInd.GetComponent<SpriteRenderer>().sprite = item.GetComponent<SpriteRenderer>().sprite;
         }
         else
         {
             cursor.GetComponent<Cursor_scr>().ChangeInHandItem(null);
+            player.GetComponent<Player_movement_scr>().WorkInd.GetComponent<SpriteRenderer>().sprite = null;
         }
     }
     void ShowStartInv()

@@ -19,7 +19,7 @@ public class Cursor_scr : MonoBehaviour
     private GameObject Player = null;
 
     private Vector2Int PlayerCell; // клетка с игроком
-    public Drop_scr InHand;
+    
     public GameObject InHandIndicator = null;
     private float ActionPossible;
 
@@ -27,6 +27,7 @@ public class Cursor_scr : MonoBehaviour
     public GameObject GridBuilder = null;
     //public GameObject testobject3 = null;
 
+    public Drop_scr InHand;
     public int HandContainer;
     public int HandContainerCount;
     public bool HandContainerFull = false;
@@ -180,9 +181,10 @@ public class Cursor_scr : MonoBehaviour
     }
     public void CursorContainerActivation(GameObject item, int count)
     {
+        InHand = item.GetComponent<Drop_scr>();
         InHandIndicator.SetActive(true);
         InHandIndicator.GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
-        HandContainer = item.GetComponent<Drop_scr>().id;
+        HandContainer = InHand.id;
         HandContainerCount = count;
         HandContainerFull = true;
         //return true;

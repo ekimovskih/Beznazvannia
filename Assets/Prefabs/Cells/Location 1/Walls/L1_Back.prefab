@@ -93,6 +93,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: L1_Back
       objectReference: {fileID: 0}
+    - target: {fileID: 7854153480221651049, guid: 651ba6235e35e044f82db63a3d21dbfc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8911519964420547093, guid: 651ba6235e35e044f82db63a3d21dbfc,
         type: 3}
       propertyPath: m_Sprite

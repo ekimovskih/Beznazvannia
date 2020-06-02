@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: L1_wall0
       objectReference: {fileID: 0}
+    - target: {fileID: 5281053628121513136, guid: 61786f7f22b327546bc5d6333237ee8b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6780600797587353292, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_Sprite
