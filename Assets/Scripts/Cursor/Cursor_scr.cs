@@ -17,6 +17,8 @@ public class Cursor_scr : MonoBehaviour
     public GameObject cell = null;
     private bool cellActive = true;
     private GameObject Player = null;
+    private Player_movement_scr PlayerComponent;
+    private DropCatalog_scr DropCatalog;
 
     private Vector2Int PlayerCell; // клетка с игроком
     
@@ -26,18 +28,24 @@ public class Cursor_scr : MonoBehaviour
     //public GameObject testobject = null;
     public GameObject GridBuilder = null;
     //public GameObject testobject3 = null;
-
+    public Drop_scr EmptyHand;
     public Drop_scr InHand;
+    //private bool InvOpen = false;
     public int HandContainer;
     public int HandContainerCount;
     public bool HandContainerFull = false;
 
 
-
+    private void Awake()
+    {
+        Player = GameObject.Find("Player");
+        DropCatalog = GameObject.Find("DropCatalog").GetComponent<DropCatalog_scr>();
+        PlayerComponent = Player.GetComponent<Player_movement_scr>();
+        //InHandIndicator = GameObject.Find("WorkIndicator");
+    }
     void Start()
     {
         ActionPossible = 0; //возможно возникновение БАГОВ при игhе более 1000к часов подряд
-        Player = GameObject.Find("Player");
         //Cursor.visible = false;
         CursorSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
@@ -118,7 +126,7 @@ public class Cursor_scr : MonoBehaviour
         return System.Convert.ToInt32(axis - axis % 1);
     }
     /*
-    void PutTreeInCell()
+    void PutTreeInCell() //НЕТ НЕЕЕЕЕЕЕУДООООООООЛЯЯЙЙЙЙЙЙ!!!!!!!!!!!!!!!!!!!!!! ААААААААААААААААААААААААААААААААААААА!
     {
         if (Input.GetMouseButtonDown(1))
         {
@@ -132,22 +140,47 @@ public class Cursor_scr : MonoBehaviour
 
     void MouseLMBaction()
     {
-        if (InHand !=null && InHand.Interactive && !MouseOverUi())
+        if (!MouseOverUi())
         {
-            GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InHand);
-            //Debug.Log(Time.time + " Start");
-            float WaitTime = InHand.ActionSpeed;
-            ActionPossible = Time.time + WaitTime;
-            //Debug.Log(ActionPossible + " Needed");
-            StartCoroutine(ShowWork(WaitTime));
+            if (InHand != null && InHand.Interactive && PlayerComponent.CanMove && !HandContainerFull)
+            {
 
-            //Vector3 plpos = Player.transform.position;
-            //Vector2 PlayerDir = new Vector2(plpos.x , plpos.y) * new Vector2(0, -1);
-            Vector2 PlayerDir = ActiveCell - PlayerCell;
+                float WaitTime = InHand.ActionSpeed;
+                ActionPossible = Time.time + WaitTime;
+                if (InHand.type == "Weapon")
+                {
+                    Instantiate(InHand.AttackZone, Player.transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InHand);
+                    //Debug.Log(Time.time + " Start");
+                    //float WaitTime = InHand.ActionSpeed;
 
-            StartCoroutine(Player.GetComponent<Player_movement_scr>().MouseHitAction(WaitTime, PlayerDir));
+                    //Debug.Log(ActionPossible + " Needed");
+
+                }
+                StartCoroutine(ShowWork(WaitTime));
+
+                //Vector3 plpos = Player.transform.position;
+                //Vector2 PlayerDir = new Vector2(plpos.x , plpos.y) * new Vector2(0, -1);
+                Vector2 PlayerDir = ActiveCell - PlayerCell;
+
+                StartCoroutine(PlayerComponent.MouseHitAction(WaitTime, PlayerDir));
+                return;
+            }
+            else if (HandContainerFull)
+            {
+                Vector3 newDirr = (transform.position - Player.transform.position).normalized;
+                //Debug.Log(newDirr);
+                GameObject newDrop = Instantiate(DropCatalog.GetGObyID(HandContainer), Player.transform.position+ newDirr*5f, Quaternion.identity);
+                CursorContainerActivation();
+                //Vector3 newDirr = transform.position - Player.transform.position;
+                newDrop.GetComponent<Rigidbody2D>().AddForce(newDirr * 1f);
+                
+            }
         }
-        
+        //Debug.Log("U CANT");
     }
 
     IEnumerator ShowWork(float WaitTime)
@@ -171,11 +204,15 @@ public class Cursor_scr : MonoBehaviour
     */
     public void CursorContainerActivation()
     {
-        InHandIndicator.SetActive(false);
-        InHandIndicator.GetComponent<Image>().sprite = null;
+        if (InHandIndicator != null)
+        {
+            InHandIndicator.SetActive(false);
+            InHandIndicator.GetComponent<Image>().sprite = null;
+        }
         HandContainer = 0;
         HandContainerCount = 0;
         HandContainerFull = false;
+        Debug.Log("Hand Empty");
         //return false;
 
     }

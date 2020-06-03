@@ -9,11 +9,13 @@ public class Player_movement_scr : MonoBehaviour
     [HideInInspector] private float verticInput;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] private bool Vulnerable = true;
-    private bool CanMove = true;
+    public bool CanMove = true;
+    //public bool CanIteract = true;
     public float speed=3f; // сорость бега
     public float ShiftSpeed = 2f; // + скорость с зажатым LeftShift
     public float JumpStrengh = 3000f;
     public float JMPImune = 1f;
+    private bool CanJump = true;
     [HideInInspector] public string playerView = "none";
     public Sprite[] playerStates = new Sprite[3]; // стоячие положения игрока
     private SpriteRenderer PlayerSprite;
@@ -23,14 +25,14 @@ public class Player_movement_scr : MonoBehaviour
     public GameObject WorkInd = null;
     private bool InventoryFull;
     private Inventory_scr Inventory = null;
-    private Transform PlayerStuff;
+    private Transform PlayerContainer;
     public GameObject AttackZone = null;
     public Transform Cursor;
 
     private void Awake()
     {
         Cursor = GameObject.Find("Cursor").transform;
-        PlayerStuff = GameObject.Find("PlayerStuff").transform;
+        PlayerContainer = GameObject.Find("PlayerContainer").transform;
         rb = GetComponent<Rigidbody2D>();
     }
     void Start()
@@ -48,13 +50,24 @@ public class Player_movement_scr : MonoBehaviour
         //InventoryFull = Inventory.GetComponent<Inventory_scr>().isFull;
         if (CanMove)
         {
-            Movement();
+            Movement(speed);
         }
-        AttackDirrection();
+        else
+        {
+            Movement(speed/4);
+        }
     }
-    public void Movement()
+    private void Update()
     {
         Jump();
+        if (Health < 0)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+    public void Movement(float speed)
+    {
+        
         //InventoryAction();
         horizInput = Input.GetAxis("Horizontal");
         verticInput = Input.GetAxis("Vertical");
@@ -81,17 +94,19 @@ public class Player_movement_scr : MonoBehaviour
         ///rb.MovePosition(transform.position + Move * Time.deltaTime);
         //rb.velocity = Move;
 
-        PlayerStuff.position = new Vector3(0,0,transform.position.y);
+        PlayerContainer.position = new Vector3(0,0,transform.position.y);
         //transform.;
 
 
 
-
-        SpriteMoveChanger(horizInput, verticInput);
+        if (CanMove)
+        {
+            SpriteMoveChanger(horizInput, verticInput);
+        }
     }
 
     void Jump()
-    { if (Input.GetKeyDown(KeyCode.Space))
+    { if (Input.GetKeyDown(KeyCode.Space) && CanJump && CanMove)
         {
             //Vector2 Move = new Vector2(JumpStrengh * horizInput, JumpStrengh * verticInput);
             
@@ -100,7 +115,7 @@ public class Player_movement_scr : MonoBehaviour
             StartCoroutine(JumpImune(JMPImune));
             
             //rb.velocity = Move;
-            Debug.Log("Jump");
+            //Debug.Log("Jump");
         }
     }
     public void SpriteMoveChanger(float horizInput, float verticInput)
@@ -145,9 +160,11 @@ public class Player_movement_scr : MonoBehaviour
     public IEnumerator MouseHitAction(float WaitTime, Vector2 CurrDir)
     {
         CanMove = false;
+        //CanIteract = false;
         SpriteMoveChanger(CurrDir.x, CurrDir.y);
         yield return new WaitForSeconds(WaitTime);
         CanMove = true;
+        //CanIteract = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -156,7 +173,8 @@ public class Player_movement_scr : MonoBehaviour
         {
             if (InventoryFull)
             {
-                collision.transform.GetComponent<Drop_scr>().Bounce(this.gameObject);
+                //collision.transform.GetComponent<Drop_scr>().Bounce(this.gameObject);
+                collision.transform.GetComponent<CircleCollider2D>().isTrigger = true;
             }
             else if (Inventory != null)
             {
@@ -167,16 +185,14 @@ public class Player_movement_scr : MonoBehaviour
     /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Vulnerable)
+        if (InventoryFull)
         {
-            if (collision.gameObject.tag == "EnemyAttack")
-            {
-                EnemyAttack_scr attack = collision.gameObject.GetComponent<EnemyAttack_scr>();
-                int dmg = attack.Damage; // оставил если придетя визуализировать урон
-                InertionFromEnAttack(collision.gameObject.transform, attack.Strength);
-                TakeDamage(dmg);
-                Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
-            }
+            //collision.transform.GetComponent<Drop_scr>().Bounce(this.gameObject);
+            collision.transform.GetComponent<CircleCollider2D>().isTrigger = true;
+        }
+        else if (Inventory != null)
+        {
+            Inventory.AddItem(collision.gameObject);
         }
     }
     */
@@ -198,42 +214,45 @@ public class Player_movement_scr : MonoBehaviour
             StartCoroutine(Imune());
             Health -= dmg;
             Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
-            InertionFromEnAttack(point, strength);
+            KnockBackFromEnAttack(point, strength);
+        }
+    }
+
+    public void DealDamage(Drop_scr item)
+    {
+        if (CanMove)
+        {
+            int dmg = item.DMG;
+
         }
     }
     IEnumerator Imune()
     {
         Vulnerable = false;
-        yield return new WaitForSeconds(0.5f);
+        CanMove = false;
+        yield return new WaitForSeconds(JMPImune);
         CanMove = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1 - JMPImune);
         Vulnerable = true;
+
     }
     IEnumerator JumpImune(float time)
     {
         Vulnerable = false;
         CanMove = false;
+        CanJump = false;
+        //Debug.Log("cant JUMP");
         yield return new WaitForSeconds(time);
         CanMove = true;
         Vulnerable = true;
-        Debug.Log("NoImune");
+        yield return new WaitForSeconds(0.5f);
+        CanJump = true;
+        //Debug.Log("CAN JUMP");
     }
-    void AttackDirrection()
+    
+    void KnockBackFromEnAttack(Transform point, float strength)
     {
-        Transform trans = AttackZone.transform;
-        Vector3 vectorToTarget = Cursor.transform.position - trans.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        trans.rotation = Quaternion.Slerp(trans.rotation, q, Time.deltaTime * 100);
-        trans.position = transform.position;
-    }
-    void InertionFromEnAttack(Transform point, float strength)
-    {
-        CanMove = false;
-        //Debug.Log("Uletai");
         Vector3 dirrection = transform.position - point.position;
-        Vector2 dir = new Vector2(dirrection.x, dirrection.y);
-        rb.AddForce(dir.normalized * strength);
-        //this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(dir * strength);
+        rb.AddForce(dirrection.normalized * strength);
     }
 }

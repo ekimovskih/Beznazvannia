@@ -11,32 +11,31 @@ public class Goblin_1_scr : Enemy_propertys_scr
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        AttackDirrection();
         Zcorrector();
-        IsAgred(player);
-        if (distance < AttackRadius)
+        if (CanMove)
         {
-            if (CanAttack)
+            IsAgred(player);
+            if (distance < AttackRadius)
             {
-                StartCoroutine(RadiusAttack());
+                if (CanAttack && CanMove)
+                {
+                    StartCoroutine(RadiusAttack());
+                }
+            }
+            else if (CanAttack && Agred && CanMove)
+            {
+                //StartCoroutine(Jump(dirrection));
+                AgredMovement();
+            }
+            else if (!Agred && CanMove)
+            {
+                //Debug.Log("Tupa otdihaem");
+                SimplePatrole();
             }
         }
-        else if (CanAttack && Agred)
-        {
-            //StartCoroutine(Jump(dirrection));
-            SimpleMovement();
-        }
-        else if (CanAttack && !Agred)
-        {
-            float valuex = Random.Range(-1f, 1f);
-            float valuey = Random.Range(-1f, 1f);
-            //Debug.Log(valuex + " " + valuey);
-            float value = Mathf.Sqrt(valuex * valuex + valuey * valuey);
-            //value = 1f;
-            Vector2 NewDir = new Vector2(valuex / value, valuey / value);
-            //StartCoroutine(Jump(NewDir));
-        }
     }
+
+
 }

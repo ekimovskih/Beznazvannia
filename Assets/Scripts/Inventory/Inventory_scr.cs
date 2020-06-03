@@ -21,7 +21,7 @@ public class Inventory_scr : MonoBehaviour
     public GameObject IVTR; //инвентарь в канвасе
     [HideInInspector] public int ActiveSlot = -1;
 
-    public bool SmthInHand = false;
+    //public bool SmthnHand = false;
 
     private Cursor_scr Cursor;
 
@@ -205,7 +205,7 @@ public class Inventory_scr : MonoBehaviour
                 }
             }                
         }
-        SmthInHand = true;
+        //SmthInHand = true;
         CraftSlotsCheker();
         UpdateInventory();
     }
@@ -232,7 +232,7 @@ public class Inventory_scr : MonoBehaviour
         if (Items[slot] != null && IVTR.activeSelf == true)
         {
             Cursor.CursorContainerActivation(Items[slot], Counts[slot]);
-            SmthInHand = true;
+            //SmthInHand = true;
             Slots[slot].SlotActivation(false);
             Counts[slot] = 0;
             Items[slot] = null;
@@ -280,7 +280,7 @@ public class Inventory_scr : MonoBehaviour
                     if (Counts[slot] + HandCount <= istack)
                     {
                         Counts[slot] += HandCount;
-                        SmthInHand = false;
+                        //SmthInHand = false;
                         Cursor.CursorContainerActivation();
                         Slots[slot].SetCount(Counts[slot]);
                         //Debug.Log("Fit");
@@ -311,7 +311,7 @@ public class Inventory_scr : MonoBehaviour
                     Counts[slot] = Cursor.HandContainerCount;
                     Slots[slot].SetCount(Counts[slot], Items[slot]);
 
-                    SmthInHand = true;
+                    //SmthInHand = true;
                     Cursor.CursorContainerActivation(SwitchHandContainer, SwitchHandCount);
                 }           
             }
@@ -330,7 +330,7 @@ public class Inventory_scr : MonoBehaviour
                 {
                     Counts[slot] = Cursor.HandContainerCount;
                     Slots[slot].SetCount(Counts[slot], Items[slot]);
-                    SmthInHand = false;
+                    //SmthInHand = false;
                     Cursor.CursorContainerActivation();
                 }
             }
@@ -468,5 +468,25 @@ public class Inventory_scr : MonoBehaviour
         }
         //Debug.Log("Clear Slots");
         this.gameObject.GetComponent<WorkBench_scr>().UpdateSlots();
+    }
+
+    public bool HaveRoomForThisDrop(GameObject item)
+    {
+        Drop_scr drop = item.GetComponent<Drop_scr>();
+        int count = drop.count;
+        int id = drop.id;
+        for (int i = 0; i < InvItemsLength; i++)
+        {
+            GameObject iItem = InvItems[i];
+            if (iItem != null && iItem.GetComponent<Drop_scr>().id.Equals(id))
+            {
+                int istack = iItem.GetComponent<Drop_scr>().InStack;
+                if (ItemsCount[i] < istack)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

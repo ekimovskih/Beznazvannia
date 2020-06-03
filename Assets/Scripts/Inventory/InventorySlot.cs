@@ -17,13 +17,16 @@ public class InventorySlot : MonoBehaviour
     public Sprite Active;
     //public GameObject Active = null 
     public bool busy = false;
-
+    private GameObject Cursor;
+    private Cursor_scr CursorComponent;
     private Text text;
     private Image sprite;
     private void Awake()
     {
         //InvSlot = this.gameObject.transform.GetChild(0).gameObject;
         //Count = InvSlot.gameObject.transform.GetChild(0).gameObject;
+        Cursor = GameObject.Find("Cursor");
+        CursorComponent = Cursor.GetComponent<Cursor_scr>();
         text = Count.GetComponent<Text>();
         sprite = InvSlot.GetComponent<Image>();
 
@@ -78,7 +81,7 @@ public class InventorySlot : MonoBehaviour
     {
         if (Inventory.activeSelf)
         {
-            if (InventoryComponent.SmthInHand)
+            if (CursorComponent.HandContainerFull)
             {
                 InventoryComponent.PutItem(SlotNumber);
             }

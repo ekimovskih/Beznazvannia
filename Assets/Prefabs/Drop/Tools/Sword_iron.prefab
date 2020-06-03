@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword_iron
       objectReference: {fileID: 0}
+    - target: {fileID: 1434255855223802021, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1613987228802755208, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -132,7 +137,18 @@ PrefabInstance:
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: ActionSpeed
-      value: 0.3
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: AttackZone
+      value: 
+      objectReference: {fileID: 8288114285599022, guid: ed848c2ccd3f30a488c5c91ede34bed5,
+        type: 3}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: knockBack
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99a9096ca7d0a7c408d44b08ebb7950e, type: 3}

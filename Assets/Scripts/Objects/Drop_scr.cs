@@ -18,6 +18,9 @@ public class Drop_scr : MonoBehaviour
 
     public bool Interactive = false;
     public float ActionSpeed = 0.4f;
+    public int DMG = 1;
+    public float knockBack = 910f;
+    public GameObject AttackZone = null;
     public int Efficiency = 0;
     public int Armor = 0;
     void Start()

@@ -46,7 +46,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.15
+  m_Mass: 0.001
   m_LinearDrag: 4
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -72,6 +72,17 @@ MonoBehaviour:
   id: 0
   InStack: 1
   count: 1
+  Craftable: 0
+  Recipe: []
+  RecipeCount: 
+  ResultCount: 0
+  Interactive: 0
+  ActionSpeed: 0.4
+  DMG: 1
+  knockBack: 910
+  AttackZone: {fileID: 0}
+  Efficiency: 0
+  Armor: 0
 --- !u!212 &4887054445814681695
 SpriteRenderer:
   m_ObjectHideFlags: 0

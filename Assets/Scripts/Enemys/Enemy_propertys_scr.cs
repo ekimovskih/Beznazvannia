@@ -15,6 +15,10 @@ public class Enemy_propertys_scr : MonoBehaviour
     public float AttackRadius;
     [HideInInspector] public Vector2 dirrection;
     public bool CanAttack = true;
+    [HideInInspector] public bool CanChillWalk = false;
+    [HideInInspector] public bool SupportBool = true;
+    [HideInInspector] public bool TookDMG = false;
+    public bool CanMove = true;
     public GameObject AttackZone = null;
     public float AttackRotatiionSpeed = 10;
     public float JumpAttackSpeed = 2f;
@@ -46,57 +50,140 @@ public class Enemy_propertys_scr : MonoBehaviour
 
     }
 
-    public void TakeDamage(float dmg)
+    public void CheckLives()
     {
-        Health -= dmg;
+        if (Health<1)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    public void AttackDirrection()
+    public void TakeDamage(int dmg, float KnockBack, Vector3 point)
     {
-        Transform trans = AttackZone.transform;
-        Vector3 vectorToTarget = player.transform.position - trans.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        trans.rotation = Quaternion.Slerp(trans.rotation, q, Time.deltaTime * AttackRotatiionSpeed);
-        trans.position = transform.position;
+        Health -= dmg;
+        TookDMG = true;
+        Debug.Log(this.gameObject + " took dmg " + dmg);
+        StopAllCoroutines();
+        StartCoroutine(Stopattck());
+        CheckLives();
+        GetComponent<Rigidbody2D>().AddForce((transform.position - point)* KnockBack); 
     }
+    public IEnumerator Stopattck()
+    {
+        if (!SupportBool)
+        {
+            SupportBool = false;
+           
+            //StopAllCoroutines();
+            Debug.Log("# Start Stop " + Time.time);
+            //StopCoroutine(Stopattck());
+            //StopCoroutine(Stopattck());
+            //StopCoroutine(Stopattck());
+
+            //CanAttack = false;
+            yield return new WaitForSeconds(AttackRelax);
+            CanMove = true;
+            CanAttack = true;
+            SupportBool = true; ;
+            Debug.Log("# Stop Stop " + Time.time);
+        }
+        else if (TookDMG)
+        {
+            //StopAllCoroutines();
+            //StopCoroutine(Stopattck());
+            TookDMG = false;
+            SupportBool = false;
+            //Debug.Log("# Start Stop " + Time.time);
+            //StopAllCoroutines();
+            //StopCoroutine(Stopattck());
+            //StopCoroutine(Stopattck());
+            CanAttack = false;
+            CanMove = false;
+            //CanAttack = false;
+            yield return new WaitForSeconds(AttackRelax);
+            CanMove = true;
+            CanAttack = true;
+            SupportBool = true; ;
+            //Debug.Log("# Stop Stop " + Time.time);
+        }
+        /*
+        StopCoroutine(Stopattck());
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Hello");
+        */
+    }
+
 
     public IEnumerator JumpAttack()
     {
-        CanAttack = false;
-        yield return new WaitForSeconds(AttackPrepare);
-        this.gameObject.GetComponent<Rigidbody2D>().AddForce(dirrection * JumpAttackSpeed);
-        AttackZone.SetActive(true);
-        yield return new WaitForSeconds(AttackDuration);
-        AttackZone.SetActive(false);
-        yield return new WaitForSeconds(AttackRelax);
-        CanAttack = true;
+        if (SupportBool)
+        {
+            CanAttack = false;
+            CanMove = false;
+            SupportBool = false; 
+            yield return new WaitForSeconds(AttackPrepare);
+            StartCoroutine(Stopattck());
+            this.gameObject.GetComponent<Rigidbody2D>().AddForce(dirrection * JumpAttackSpeed);
+            Instantiate(AttackZone, this.gameObject.transform);
+            //StartCoroutine(Stopattck());
+            //Debug.Log("Attack " + Time.time);
+        }
     }
 
     public IEnumerator RadiusAttack()
     {
-        CanAttack = false;
-        //Debug.Log("Prepare");
-        yield return new WaitForSeconds(AttackPrepare);
-        //Debug.Log("Attack");
         /*
-        AttackZone.GetComponent<EnemyAttack_scr>().CanDealDMG = true;
-        yield return new WaitForSeconds(AttackDuration);
-        AttackZone.GetComponent<EnemyAttack_scr>().CanDealDMG = false;
-        */
-        //AttackZone.SetActive(true);
-        AttackZone.GetComponent<EnemyAttack_scr>().Attack();
-        yield return new WaitForSeconds(AttackDuration);
-        AttackZone.GetComponent<EnemyAttack_scr>().Attack();
-        //AttackZone.SetActive(false);
-        //Debug.Log("Brfrfrfrf");
+        Debug.Log("Start Attak " + Time.time);
+        CanAttack = false;
+        CanMove = false;
+        StopCoroutine(Stopattck());
+        //StartCoroutine(Stopattck());
+        yield return new WaitForSeconds(AttackPrepare);
+        if (!CanMove)
+        {
+            Instantiate(AttackZone, this.gameObject.transform.position, Quaternion.identity, this.gameObject.transform);
+        }
+        
         yield return new WaitForSeconds(AttackRelax);
         CanAttack = true;
+        CanMove = true;
+        Debug.Log("Stop Attak " + Time.time);
+        */
+        //Debug.Log("Start Attak " + Time.time);
+        if (SupportBool)
+        {
+            CanAttack = false;
+            CanMove = false;
+            SupportBool = false; 
+            yield return new WaitForSeconds(AttackPrepare);
+            StartCoroutine(Stopattck());
+            Instantiate(AttackZone, this.gameObject.transform.position, Quaternion.identity, this.gameObject.transform);
+            //StartCoroutine(Stopattck());
+            //Debug.Log("Attack " + Time.time);
+        }
+        
     }
-    public void SimpleMovement()
+    public void AgredMovement()
     {
         transform.Translate(dirrection * Time.deltaTime * MovementSpeed);
     }
+    public void SimplePatrole()
+    {
+        if (CanChillWalk)
+        {
+            Debug.Log("Just move");
+            transform.Translate(dirrection * Time.deltaTime * MovementSpeed/2);
+        }
+        else
+        {
+            if (SupportBool)
+            {
+                Debug.Log("New dirrection");
+                StartCoroutine(NewPatroleDirrection(4f));
+            }
+        }
+    }
+
     public IEnumerator Jump(Vector2 dir, float waitTime)
     {
         //Debug.Log("Jump move");
@@ -105,5 +192,27 @@ public class Enemy_propertys_scr : MonoBehaviour
         //transform.Translate(dirrection * Time.deltaTime);
         yield return new WaitForSeconds(waitTime);
         CanAttack = true;
+    }
+    public IEnumerator NewPatroleDirrection(float timer)
+    {
+        SupportBool = false;
+        float valuex = Random.Range(-1f, 1f);
+        float valuey = Random.Range(-1f, 1f);
+        dirrection = new Vector2(valuex, valuey).normalized;
+        CanChillWalk = false;
+        yield return new WaitForSeconds(timer/2);
+        CanChillWalk = true;
+        yield return new WaitForSeconds(timer);
+        CanChillWalk = false;
+        SupportBool = true;
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (CanChillWalk)
+        {
+            StopAllCoroutines();
+            StartCoroutine(NewPatroleDirrection(2f));
+        }     
     }
 }
