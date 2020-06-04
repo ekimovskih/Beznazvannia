@@ -7,14 +7,23 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="anotherINV" t="Include">
-            <e p="DataBase.cs" t="Include" />
-            <e p="Inventory.cs" t="Include" />
+          <e p="Craft" t="Include">
+            <e p="CraftInventory_scr.cs" t="Include" />
+            <e p="CraftSlot.cs" t="Include" />
+            <e p="WorkBench_scr.cs" t="Include" />
           </e>
           <e p="Cursor" t="Include">
             <e p="Cursor_scr.cs" t="Include" />
           </e>
+          <e p="Enemys" t="Include">
+            <e p="Enemy_propertys_scr.cs" t="Include" />
+            <e p="EnemyArrow.cs" t="Include" />
+            <e p="EnemyAttack_scr.cs" t="Include" />
+            <e p="Goblin_1_scr.cs" t="Include" />
+            <e p="Slime_1_scr.cs" t="Include" />
+          </e>
           <e p="Global" t="Include">
+            <e p="CameraFollow.cs" t="Include" />
             <e p="DropCatalog_scr.cs" t="Include" />
             <e p="GlobalTime_scr.cs" t="Include" />
           </e>
@@ -22,12 +31,22 @@
             <e p="Cell_class.cs" t="Include" />
             <e p="GridBuilder_scr.cs" t="Include" />
           </e>
+          <e p="Inventory" t="Include">
+            <e p="Bin_scr.cs" t="Include" />
+            <e p="DataBase.cs" t="Include" />
+            <e p="Inventory.cs" t="Include" />
+            <e p="Inventory_scr.cs" t="Include" />
+            <e p="InventorySlot.cs" t="Include" />
+          </e>
           <e p="Objects" t="Include">
             <e p="Drop_scr.cs" t="Include" />
             <e p="ObjOnCell_scr.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
+            <e p="DropMagnit_scr.cs" t="Include" />
+            <e p="HealthBar.cs" t="Include" />
             <e p="Player_movement_scr.cs" t="Include" />
+            <e p="PlayerAttack_scr.cs" t="Include" />
             <e p="WorkIndicator_scr.cs" t="Include" />
           </e>
         </e>
