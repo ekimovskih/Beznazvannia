@@ -14,7 +14,7 @@ public class CraftInventory_scr : Inventory_scr
 
         InvItems = new GameObject[numofslots];
         ItemsCount = new int[numofslots];
-        DropCatalog = GameObject.Find("DropCatalog");
+        //DropCatalog = GameObject.Find("DropCatalog");
         //IVTR = this.gameObject;
         CraftSlots = CraftTable.GetComponentsInChildren<InventorySlot>();
         for (int i = 0; i < numofslots; i++)

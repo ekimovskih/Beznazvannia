@@ -16,13 +16,13 @@ public class CraftSlot : MonoBehaviour
 
     private void Awake()
     {
-        SetSlot();
+        
         //InventoryComponent = Inventory.GetComponent<Inventory_scr>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetSlot();
     }
 
     // Update is called once per frame

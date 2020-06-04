@@ -96,23 +96,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902a96929d8534241a2be608bef84cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
+  Health: 150
   MovementSpeed: 1.5
   AgroRadius: 5
   DisAgroRadius: 10
   Agred: 0
   distance: 0
-  AttackRadius: 1.2
+  AttackRadius: 1
   dirrection: {x: 0, y: 0}
   CanAttack: 1
   CanChillWalk: 0
   SupportBool: 1
+  TookDMG: 0
   CanMove: 1
   AttackZone: {fileID: 3540433786328180095, guid: c202bc73b959e914c8c8dc43ab37ce71,
     type: 3}
   AttackRotatiionSpeed: 10
   JumpAttackSpeed: 2
-  AttackPrepare: 0.8
+  AttackPrepare: 1
   AttackDuration: 0.5
   AttackRelax: 1
   player: {fileID: 0}
@@ -129,7 +130,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 50
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

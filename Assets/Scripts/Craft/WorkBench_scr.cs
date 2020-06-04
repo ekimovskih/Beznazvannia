@@ -6,8 +6,8 @@ public class WorkBench_scr : MonoBehaviour
 {
     public DropCatalog_scr DropCatalog = null;
     private int DClength;
-    public GameObject Inventory = null;
-    private Inventory_scr InventoryComponent;
+    // GameObject Inventory = null;
+    public Inventory_scr InventoryComponent;
     private int size = 60;
     private GameObject[] CanCraftItems;
     private GameObject[] MayCraftItems;
@@ -19,17 +19,25 @@ public class WorkBench_scr : MonoBehaviour
     private int CurrentAlmostCanSlot = 0;
     //public GameObject[] CraftItems = null;
     //public int[] CraftCount= null;
-
+    private void Awake()
+    {
+        //ResultSlots = GameObject.Find("ResultSlots");
+        //Debug.Log(ResultSlots);
+        CraftSlots = ResultSlots.GetComponentsInChildren<CraftSlot>();
+    }
     void Start()
     {
+        /*
         if (Inventory == null)
         {
             Inventory = GameObject.Find("InventoryManager");
             ResultSlots = GameObject.Find("ResultSlots");
         }
-        CraftSlots = ResultSlots.GetComponentsInChildren<CraftSlot>();
+        */
+        //CraftSlots = ResultSlots.GetComponentsInChildren<CraftSlot>();
+        Debug.Log(CraftSlots.Length);
         DClength = DropCatalog.length;
-        InventoryComponent = Inventory.GetComponent<Inventory_scr>();
+        //InventoryComponent = Inventory.GetComponent<Inventory_scr>();
     }
 
     // Update is called once per frame
@@ -58,6 +66,7 @@ public class WorkBench_scr : MonoBehaviour
         AlmostCanCraftItems = new GameObject[size];
         int Sum = 0;
         GameObject[] Items = InventoryComponent.CraftItems;
+        //GameObject[] Items = InventoryComponent.InvItems;
         int[] Counts = InventoryComponent.CraftCounts;
         //Debug.Log("poneslas");
 
@@ -94,6 +103,8 @@ public class WorkBench_scr : MonoBehaviour
             {
                 break;
             }
+            //Debug.Log(CraftSlots[Sum]);
+            //Debug.Log(Sum + " " + i);
             CraftSlots[Sum].SetSlot(MayCraftItems[i], 3);
             Sum++;
         }

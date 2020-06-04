@@ -17,7 +17,7 @@ public class PlayerAttack_scr : MonoBehaviour
         Item = Cursor.GetComponent<Cursor_scr>().InHand;
         damage = Item.DMG;
         KnockBack = Item.knockBack;
-        lifetime = Item.ActionSpeed/3f;
+        lifetime = 0.1f;//Item.ActionSpeed/3f;
     }
     private void Start()
     {

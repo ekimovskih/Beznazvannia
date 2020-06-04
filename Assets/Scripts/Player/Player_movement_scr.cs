@@ -47,6 +47,7 @@ public class Player_movement_scr : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Camera.main.transform.position = transform.position + new Vector3(0,0,-30);
         //InventoryFull = Inventory.GetComponent<Inventory_scr>().isFull;
         if (CanMove)
         {
@@ -63,6 +64,7 @@ public class Player_movement_scr : MonoBehaviour
         if (Health < 0)
         {
             this.gameObject.SetActive(false);
+            
         }
     }
     public void Movement(float speed)
@@ -159,10 +161,11 @@ public class Player_movement_scr : MonoBehaviour
 
     public IEnumerator MouseHitAction(float WaitTime, Vector2 CurrDir)
     {
+        StopCoroutine("MouseHitAction");
         CanMove = false;
         //CanIteract = false;
         SpriteMoveChanger(CurrDir.x, CurrDir.y);
-        yield return new WaitForSeconds(WaitTime);
+        yield return new WaitForSeconds(WaitTime+ WaitTime*0.5f);
         CanMove = true;
         //CanIteract = true;
     }

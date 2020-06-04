@@ -17,7 +17,7 @@ public class Inventory_scr : MonoBehaviour
     private int firstemptycell;
     private GameObject player;
     private GameObject cursor;
-    [HideInInspector] public GameObject DropCatalog;
+    
     public GameObject IVTR; //инвентарь в канвасе
     [HideInInspector] public int ActiveSlot = -1;
 
@@ -30,7 +30,11 @@ public class Inventory_scr : MonoBehaviour
     public GameObject[]     CraftItems = new GameObject[4];
     public int[]            CraftCounts = new int[4];
     public GameObject CraftTab;
+    public GameObject FastPanel;
+    public DropCatalog_scr DropCatalog;
     public GameObject ResultSlots;
+    public GameObject bin;
+    //public CraftSlot[] ResultSlotss;
 
 
     private void Awake()
@@ -38,11 +42,15 @@ public class Inventory_scr : MonoBehaviour
         IVTR.SetActive(true);
         CraftTab.SetActive(true);
 
+        //ResultSlots = GameObject.Find("ResultSlots");
+        //ResultSlotss = GameObject.Find("ResultSlots").GetComponentsInChildren<CraftSlot>();
+        //Debug.Log(ResultSlotss.Length);
+
         cursor = GameObject.Find("Cursor");
         Cursor = cursor.GetComponent<Cursor_scr>();
         player = GameObject.Find("Player");
         //IVTR = GameObject.Find("Inventory");
-        InventorySlot[] FS = GameObject.Find("FastPanel").GetComponentsInChildren<InventorySlot>();
+        InventorySlot[] FS = FastPanel.GetComponentsInChildren<InventorySlot>();
         InventorySlot[] IS = IVTR.GetComponentsInChildren<InventorySlot>();
         InventorySlot[] CS = CraftTab.GetComponentsInChildren<InventorySlot>();
         for (int i = 0; i < 12; i++)
@@ -69,9 +77,9 @@ public class Inventory_scr : MonoBehaviour
     }
     void Start()
     {
-        IVTR.SetActive(false);
+        IVTR.SetActive(false); 
+        bin.SetActive(false);
         CraftTab.SetActive(false);
-        DropCatalog = GameObject.Find("DropCatalog");
         player = GameObject.Find("Player");
         InvItemsLength = InvItems.Length;
         ShowStartInv();
@@ -84,8 +92,9 @@ public class Inventory_scr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             IVTR.SetActive(!IVTR.activeSelf);
+            bin.SetActive(IVTR.activeSelf);
             CraftTab.SetActive(!CraftTab.activeSelf);
-            ResultSlots.SetActive(CraftTab.activeSelf);
+            //ResultSlots.SetActive(CraftTab.activeSelf);
 
             UpdateInventory();
         }
@@ -180,12 +189,13 @@ public class Inventory_scr : MonoBehaviour
         }
         if (!isFull)
         {
-            InvItems[firstemptycell] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(id);
+            InvItems[firstemptycell] = DropCatalog.GetGObyID(id);
             ItemsCount[firstemptycell] = count;
             InvSlots[firstemptycell].SetCount(ItemsCount[firstemptycell], InvItems[firstemptycell]);
             drop.IsEmpty();
             UpdateInventory();
         }
+        //ChangeInHandItem();
     }
 
     public void TakeItem(Drop_scr drop)
@@ -307,7 +317,7 @@ public class Inventory_scr : MonoBehaviour
                     GameObject SwitchHandContainer = Items[slot];
                     int SwitchHandCount = Counts[slot];
 
-                    Items[slot] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(Cursor.HandContainer);
+                    Items[slot] = DropCatalog.GetGObyID(Cursor.HandContainer);
                     Counts[slot] = Cursor.HandContainerCount;
                     Slots[slot].SetCount(Counts[slot], Items[slot]);
 
@@ -317,7 +327,7 @@ public class Inventory_scr : MonoBehaviour
             }
             else
             {
-                Items[slot] = DropCatalog.GetComponent<DropCatalog_scr>().GetGObyID(Cursor.HandContainer);
+                Items[slot] = DropCatalog.GetGObyID(Cursor.HandContainer);
                 int stack = Items[slot].GetComponent<Drop_scr>().InStack;
                 if (Cursor.HandContainerCount > stack)
                 {
@@ -336,6 +346,7 @@ public class Inventory_scr : MonoBehaviour
             }
             UpdateInventory();
             CraftSlotsCheker();
+            ChangeInHandItem();
         }
     }
 

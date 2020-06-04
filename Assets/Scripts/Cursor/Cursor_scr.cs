@@ -49,12 +49,16 @@ public class Cursor_scr : MonoBehaviour
         //Cursor.visible = false;
         CursorSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
+    private void FixedUpdate()
+    {
+        InHandIndicator.transform.position = Input.mousePosition;
+    }
     void Update()
     {
         cursorpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = cursorpos;
         //transform.position = Input.mousePosition; //3333333333333
-        InHandIndicator.transform.position = Input.mousePosition;// + OffsetInHandIndicator;//3333333333333
+        //// + OffsetInHandIndicator;//3333333333333
         currentCell = new Vector2Int(ChoseCell(transform.position.x),ChoseCell(transform.position.y));
 
         //ShowActiveCell();
@@ -172,7 +176,7 @@ public class Cursor_scr : MonoBehaviour
             else if (HandContainerFull)
             {
                 Vector3 newDirr = (transform.position - Player.transform.position).normalized;
-                //Debug.Log(newDirr);
+                Debug.Log(MouseOverUi());
                 GameObject newDrop = Instantiate(DropCatalog.GetGObyID(HandContainer), Player.transform.position+ newDirr*5f, Quaternion.identity);
                 CursorContainerActivation();
                 //Vector3 newDirr = transform.position - Player.transform.position;

@@ -88,6 +88,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6780600797587353292, guid: 61786f7f22b327546bc5d6333237ee8b,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6836438649235395954, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_SpriteTilingProperty.border.w

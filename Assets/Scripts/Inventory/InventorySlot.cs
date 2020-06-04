@@ -19,16 +19,16 @@ public class InventorySlot : MonoBehaviour
     public bool busy = false;
     private GameObject Cursor;
     private Cursor_scr CursorComponent;
-    private Text text;
-    private Image sprite;
+    public Text text;
+    public Image sprite;
     private void Awake()
     {
         //InvSlot = this.gameObject.transform.GetChild(0).gameObject;
         //Count = InvSlot.gameObject.transform.GetChild(0).gameObject;
         Cursor = GameObject.Find("Cursor");
         CursorComponent = Cursor.GetComponent<Cursor_scr>();
-        text = Count.GetComponent<Text>();
-        sprite = InvSlot.GetComponent<Image>();
+        //text = Count.GetComponent<Text>();
+        //sprite = InvSlot.GetComponent<Image>();
 
     }
     void Start()

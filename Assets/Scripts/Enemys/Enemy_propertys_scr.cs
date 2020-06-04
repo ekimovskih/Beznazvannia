@@ -75,7 +75,7 @@ public class Enemy_propertys_scr : MonoBehaviour
             SupportBool = false;
            
             //StopAllCoroutines();
-            Debug.Log("# Start Stop " + Time.time);
+            //Debug.Log("# Start Stop " + Time.time);
             //StopCoroutine(Stopattck());
             //StopCoroutine(Stopattck());
             //StopCoroutine(Stopattck());
@@ -85,7 +85,7 @@ public class Enemy_propertys_scr : MonoBehaviour
             CanMove = true;
             CanAttack = true;
             SupportBool = true; ;
-            Debug.Log("# Stop Stop " + Time.time);
+            //Debug.Log("# Stop Stop " + Time.time);
         }
         else if (TookDMG)
         {
@@ -171,14 +171,14 @@ public class Enemy_propertys_scr : MonoBehaviour
     {
         if (CanChillWalk)
         {
-            Debug.Log("Just move");
+            //Debug.Log("Just move");
             transform.Translate(dirrection * Time.deltaTime * MovementSpeed/2);
         }
         else
         {
             if (SupportBool)
             {
-                Debug.Log("New dirrection");
+                //Debug.Log("New dirrection");
                 StartCoroutine(NewPatroleDirrection(4f));
             }
         }

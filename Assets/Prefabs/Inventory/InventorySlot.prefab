@@ -223,6 +223,8 @@ MonoBehaviour:
   Default: {fileID: 21300000, guid: 0cb62b81ab72c8d4a9c42030aa1b1c91, type: 3}
   Active: {fileID: 21300000, guid: 8d5426a9abf4b7542b396be69f1c725a, type: 3}
   busy: 0
+  text: {fileID: 1681103818737213451}
+  sprite: {fileID: 1681103819073354700}
 --- !u!114 &1681103818955641066
 MonoBehaviour:
   m_ObjectHideFlags: 0
