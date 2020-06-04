@@ -11,6 +11,8 @@ TagManager:
   - UI
   - Enemy
   - PlayerAttack
+  - Arrow
+  - UpWall
   layers:
   - Default
   - TransparentFX

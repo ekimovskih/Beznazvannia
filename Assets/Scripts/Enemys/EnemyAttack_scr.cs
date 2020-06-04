@@ -31,6 +31,7 @@ public class EnemyAttack_scr : MonoBehaviour
             transform.localPosition = Vector3.zero;
         }
     }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -38,6 +39,7 @@ public class EnemyAttack_scr : MonoBehaviour
             collision.GetComponent<Player_movement_scr>().TakeDamage(Damage, Strength, transform);
         }
     }
+    
     public void AttackDirrection()
     {
         Vector3 vectorToTarget = player.transform.position - transform.position;
@@ -46,7 +48,7 @@ public class EnemyAttack_scr : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 1000);
         //transform.position = new Vector3(0, 0, 0);
     }
-    IEnumerator SelfDestroy(float time)
+    public IEnumerator SelfDestroy(float time)
     {
         yield return new WaitForSeconds(time/2);
         Destroy(this.gameObject);

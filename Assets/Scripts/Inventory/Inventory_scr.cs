@@ -328,6 +328,7 @@ public class Inventory_scr : MonoBehaviour
             else
             {
                 Items[slot] = DropCatalog.GetGObyID(Cursor.HandContainer);
+                Debug.Log(Items[slot].GetComponent<Drop_scr>().InStack);
                 int stack = Items[slot].GetComponent<Drop_scr>().InStack;
                 if (Cursor.HandContainerCount > stack)
                 {

@@ -29,13 +29,6 @@ public class GridBuilder_scr : MonoBehaviour
             BuildGrid();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     void BuildGrid()
     {
         GameObject thisObject = this.gameObject;

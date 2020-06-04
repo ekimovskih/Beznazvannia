@@ -93,6 +93,7 @@ public class InventorySlot : MonoBehaviour
         else
         {
             InventoryComponent.ActivateSlot(SlotNumber);
+            Debug.Log("^)");
         }
     }
     public void ActivateSlot(bool act)

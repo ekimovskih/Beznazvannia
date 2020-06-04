@@ -8,7 +8,7 @@ public class Player_movement_scr : MonoBehaviour
     [HideInInspector] private float horizInput;
     [HideInInspector] private float verticInput;
     [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] private bool Vulnerable = true;
+    public bool Vulnerable = true;
     public bool CanMove = true;
     //public bool CanIteract = true;
     public float speed=3f; // сорость бега
@@ -111,7 +111,7 @@ public class Player_movement_scr : MonoBehaviour
     { if (Input.GetKeyDown(KeyCode.Space) && CanJump && CanMove)
         {
             //Vector2 Move = new Vector2(JumpStrengh * horizInput, JumpStrengh * verticInput);
-            
+
             Vector2 f = new Vector2(horizInput, verticInput);
             this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(f.normalized * JumpStrengh);
             StartCoroutine(JumpImune(JMPImune));
@@ -165,7 +165,7 @@ public class Player_movement_scr : MonoBehaviour
         CanMove = false;
         //CanIteract = false;
         SpriteMoveChanger(CurrDir.x, CurrDir.y);
-        yield return new WaitForSeconds(WaitTime+ WaitTime*0.5f);
+        yield return new WaitForSeconds(WaitTime);//+ WaitTime*0.5f);
         CanMove = true;
         //CanIteract = true;
     }
@@ -184,21 +184,20 @@ public class Player_movement_scr : MonoBehaviour
                 Inventory.AddItem(collision.gameObject);
             }
         }
+        
     }
     /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (InventoryFull)
+        if (collision.tag == "EnemyAttack"&& Vulnerable)
         {
-            //collision.transform.GetComponent<Drop_scr>().Bounce(this.gameObject);
-            collision.transform.GetComponent<CircleCollider2D>().isTrigger = true;
-        }
-        else if (Inventory != null)
-        {
-            Inventory.AddItem(collision.gameObject);
+            EnemyAttack_scr attack = collision.gameObject.GetComponent<EnemyAttack_scr>();
+            TakeDamage(attack.Damage, attack.Strength, collision.transform);
+            //Destroy(collision.gameObject);
         }
     }
     */
+    
 
     public void TakeDamage(int dmg)
     {

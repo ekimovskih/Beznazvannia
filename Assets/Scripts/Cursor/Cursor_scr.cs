@@ -49,12 +49,9 @@ public class Cursor_scr : MonoBehaviour
         //Cursor.visible = false;
         CursorSprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
-    private void FixedUpdate()
-    {
-        InHandIndicator.transform.position = Input.mousePosition;
-    }
     void Update()
     {
+        InHandIndicator.transform.position = Input.mousePosition;
         cursorpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = cursorpos;
         //transform.position = Input.mousePosition; //3333333333333

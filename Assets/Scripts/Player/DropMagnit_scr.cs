@@ -14,12 +14,6 @@ public class DropMagnit_scr : MonoBehaviour
     {
         Inventory = GameObject.Find("InventoryManager").GetComponent<Inventory_scr>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Drop")

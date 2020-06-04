@@ -24,13 +24,6 @@ public class CraftSlot : MonoBehaviour
     {
         SetSlot();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetSlot(GameObject item, int CraftPossibility)
     {
         this.gameObject.SetActive(true);

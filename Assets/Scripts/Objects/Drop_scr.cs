@@ -11,7 +11,7 @@ public class Drop_scr : MonoBehaviour
     public int InStack;
     public int count = 1;
 
-    public bool Craftable = false;
+    //public bool Craftable = false;
     public GameObject[] Recipe;
     public int[] RecipeCount;
     public int ResultCount;

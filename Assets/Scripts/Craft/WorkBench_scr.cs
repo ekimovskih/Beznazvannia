@@ -35,15 +35,9 @@ public class WorkBench_scr : MonoBehaviour
         }
         */
         //CraftSlots = ResultSlots.GetComponentsInChildren<CraftSlot>();
-        Debug.Log(CraftSlots.Length);
+        //Debug.Log(CraftSlots.Length);
         DClength = DropCatalog.length;
         //InventoryComponent = Inventory.GetComponent<Inventory_scr>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpdateSlots()
