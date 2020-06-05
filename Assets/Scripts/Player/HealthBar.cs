@@ -11,6 +11,7 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         fill = 1f;
+        bar = GameObject.Find("Bar").GetComponent<Image>();
     }
     
     void Update()

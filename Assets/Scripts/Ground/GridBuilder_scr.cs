@@ -34,6 +34,7 @@ public class GridBuilder_scr : MonoBehaviour
         GameObject thisObject = this.gameObject;
         GridWidth = LevelMap.width;
         GridHigh = LevelMap.height;
+        Debug.Log(GridWidth);
         Grid = new GameObject[GridWidth, GridHigh];
         float red, green, blue;
 
@@ -58,6 +59,7 @@ public class GridBuilder_scr : MonoBehaviour
                 {
                     CellNum = 4;
                 }
+                //Debug.Log(i + "  " + j + "  " + CellNum);
                 Grid[j, i] = Instantiate(LocationCells[CellNum], new Vector3(i, j, j), Quaternion.identity, thisObject.transform);
                 Grid[j, i].GetComponent<Cell_class>().Position = new Vector2(i, j);
             }

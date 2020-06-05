@@ -30,7 +30,7 @@ public class Arrow : MonoBehaviour
         else
         {
             Target = "Player";
-            TrgetPos = GameObject.Find("Player").GetComponentInParent<Transform>().position + Vector3.up*0.5f;
+            TrgetPos = GameObject.Find("Player").GetComponentInParent<Transform>().position + Vector3.up*0.2f;
         }
         Vector3 dirrection = (TrgetPos - transform.position).normalized;
         Vector3 dir = dirrection;
