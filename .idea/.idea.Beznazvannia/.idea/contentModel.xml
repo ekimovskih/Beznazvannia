@@ -6,6 +6,9 @@
     <e p="C:\Users\CapitanBaklawan\Desktop\Новая папка\Beznazvannia" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="FreePixelGear" t="Include">
+          <e p="ReadMe.txt" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="Craft" t="Include">
             <e p="CraftInventory_scr.cs" t="Include" />
@@ -15,9 +18,10 @@
           <e p="Cursor" t="Include">
             <e p="Cursor_scr.cs" t="Include" />
           </e>
+          <e p="DontDestroy_scr.cs" t="Include" />
           <e p="Enemys" t="Include">
+            <e p="Arrow.cs" t="Include" />
             <e p="Enemy_propertys_scr.cs" t="Include" />
-            <e p="EnemyArrow.cs" t="Include" />
             <e p="EnemyAttack_scr.cs" t="Include" />
             <e p="Goblin_1_scr.cs" t="Include" />
             <e p="Slime_1_scr.cs" t="Include" />
@@ -26,6 +30,7 @@
             <e p="CameraFollow.cs" t="Include" />
             <e p="DropCatalog_scr.cs" t="Include" />
             <e p="GlobalTime_scr.cs" t="Include" />
+            <e p="Portal_scr.cs" t="Include" />
           </e>
           <e p="Ground" t="Include">
             <e p="Cell_class.cs" t="Include" />
