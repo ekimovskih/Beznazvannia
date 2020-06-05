@@ -67,5 +67,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: L1_Grass
       objectReference: {fileID: 0}
+    - target: {fileID: 8911519964420547093, guid: 651ba6235e35e044f82db63a3d21dbfc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c14d2de771de6e41b377d4b1c6c4f78,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 651ba6235e35e044f82db63a3d21dbfc, type: 3}

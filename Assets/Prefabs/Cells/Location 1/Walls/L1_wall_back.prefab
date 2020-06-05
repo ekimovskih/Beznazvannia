@@ -91,12 +91,12 @@ PrefabInstance:
     - target: {fileID: 3394933270011760627, guid: 651ba6235e35e044f82db63a3d21dbfc,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1511
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7854153480221651049, guid: 651ba6235e35e044f82db63a3d21dbfc,
         type: 3}
       propertyPath: m_Name
-      value: L1_Back
+      value: L1_wall_back
       objectReference: {fileID: 0}
     - target: {fileID: 7854153480221651049, guid: 651ba6235e35e044f82db63a3d21dbfc,
         type: 3}
@@ -117,7 +117,7 @@ PrefabInstance:
     - target: {fileID: 8911519964420547093, guid: 651ba6235e35e044f82db63a3d21dbfc,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 651ba6235e35e044f82db63a3d21dbfc, type: 3}

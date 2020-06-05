@@ -6,7 +6,7 @@ public class Cell_class : MonoBehaviour
 {
 
     public bool usable = true;
-    public Sprite Texture = null;
+    //public Sprite Texture = null;
     public string property; // ground \ rock \ sand \ etc
     //public float Wposition;
     //public float Hposition;

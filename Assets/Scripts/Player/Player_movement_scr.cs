@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_movement_scr : MonoBehaviour
 {
     public int Health = 100;
+    public int Stamina = 20;
     [HideInInspector] private float horizInput;
     [HideInInspector] private float verticInput;
     [HideInInspector] public Rigidbody2D rb;
@@ -14,6 +15,7 @@ public class Player_movement_scr : MonoBehaviour
     public float speed=3f; // сорость бега
     public float ShiftSpeed = 2f; // + скорость с зажатым LeftShift
     public float JumpStrengh = 3000f;
+    public int JumpWaste = 5;
     public float JMPImune = 1f;
     private bool CanJump = true;
     [HideInInspector] public string playerView = "none";
@@ -28,6 +30,9 @@ public class Player_movement_scr : MonoBehaviour
     private Transform PlayerContainer;
     public GameObject AttackZone = null;
     public Transform Cursor;
+    private bool regenerate = true;
+    public int RegenHP = 0;
+    public int RegenSTM = 1;
 
     private void Awake()
     {
@@ -66,6 +71,7 @@ public class Player_movement_scr : MonoBehaviour
             this.gameObject.SetActive(false);
             
         }
+        StartCoroutine(Regen());
     }
     public void Movement(float speed)
     {
@@ -108,10 +114,10 @@ public class Player_movement_scr : MonoBehaviour
     }
 
     void Jump()
-    { if (Input.GetKeyDown(KeyCode.Space) && CanJump && CanMove)
+    { if (Input.GetKeyDown(KeyCode.Space) && CanJump && (Stamina- JumpWaste > 0))
         {
             //Vector2 Move = new Vector2(JumpStrengh * horizInput, JumpStrengh * verticInput);
-
+            Stamina -= JumpWaste;
             Vector2 f = new Vector2(horizInput, verticInput);
             this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(f.normalized * JumpStrengh);
             StartCoroutine(JumpImune(JMPImune));
@@ -256,5 +262,17 @@ public class Player_movement_scr : MonoBehaviour
     {
         Vector3 dirrection = transform.position - point.position;
         rb.AddForce(dirrection.normalized * strength);
+    }
+    IEnumerator Regen()
+    {
+        if (regenerate)
+        {
+            regenerate = false;
+            yield return new WaitForSeconds(1f);
+            Health += RegenHP;
+            Stamina += RegenSTM;
+            regenerate = true;
+
+        }
     }
 }

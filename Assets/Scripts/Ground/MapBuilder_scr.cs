@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridBuilder_scr : MonoBehaviour
+public class MapBuilder_scr : MonoBehaviour
 {
+
     // Start is called before the first frame update
     //public GameObject Cell = null;
     public int GridWidth = 2;
@@ -25,7 +26,7 @@ public class GridBuilder_scr : MonoBehaviour
             GridWidth = LevelMap.width;
             GridHigh = LevelMap.height;
             Grid = new GameObject[GridWidth, GridHigh];
-            
+            //GetComponent<GridLayout>()
             BuildGrid();
         }
     }
@@ -50,7 +51,7 @@ public class GridBuilder_scr : MonoBehaviour
                 {
                     CellNum = 0 + CellType(i, j);
                 }
-                else if (blue ==0 / 255f && red==255 / 255f && green == 255 / 255f)
+                else if (blue == 0 / 255f && red == 255 / 255f && green == 255 / 255f)
                 {
                     CellNum = 3;
                 }
@@ -58,97 +59,17 @@ public class GridBuilder_scr : MonoBehaviour
                 {
                     CellNum = 4;
                 }
-                Grid[j, i] = Instantiate(LocationCells[CellNum], new Vector3(i, j, j), Quaternion.identity, thisObject.transform);
+                Grid[j, i] = Instantiate(LocationCells[CellNum], thisObject.transform);
                 Grid[j, i].GetComponent<Cell_class>().Position = new Vector2(i, j);
             }
             //Debug.Log(i);
         }
     }
-    
+
 
     int CellType(int i, int j)
     {
-        //float cur;
-        float u1=1, u2=1,u3=1,m1=1,m3=1,d1=1,d2=1,d3=1;
-        if(j < GridHigh)
-        {
-            if (i > 0)
-            {
-                u1 = LevelMap.GetPixel(i-1, j+1).r;
-            }
-            if (i < GridWidth)
-            {
-                u3 = LevelMap.GetPixel(i+1, j+1).r;
-            }
-            u2 = LevelMap.GetPixel(i, j +1).r; ;
-        }
-        if (i > 0)
-        {
-            m1 = LevelMap.GetPixel(i - 1, j).r;
-        }
-        if (i < GridWidth)
-        {
-            m3 = LevelMap.GetPixel(i + 1, j).r;
-        }
         if (j > 0)
-        {
-            if (i > 0)
-            {
-                d1 = LevelMap.GetPixel(i - 1, j - 1).r;
-            }
-            if (i < GridWidth)
-            {
-                d3 = LevelMap.GetPixel(i + 1, j - 1).r;
-            }
-            d2 = LevelMap.GetPixel(i, j - 1).r; ;
-        }
-
-
-
-
-
-
-        if (Mathf.Max(u1, u2 , u3 , m1 , m3, d1, d2, d3) == 0 || i==0||j==0||i == GridWidth||j== GridHigh)
-        {
-            return 2;
-        }
-        if (u2 != 0)
-        {
-            if (0 != m3)
-            {
-                return 10;
-            }
-            if (m1 != 0)
-            {
-                return 9;
-            }
-            return 1;
-        }
-        if (d2 != 0)
-        {
-            if (0 != m3)
-            {
-                return 8;
-            }
-            if (m1 != 0)
-            {
-                return 7;
-            }
-            return 0;
-        }
-        if (m3 != 0)
-        {
-            return 6;
-        }
-        if (m1 != 0)
-        {
-            return 5;
-        }
-
-        return 2;
-
-
-        /*
         {
             float red = (LevelMap.GetPixel(i, j).r);
             float redup = (LevelMap.GetPixel(i, j - 1).r);
@@ -157,7 +78,7 @@ public class GridBuilder_scr : MonoBehaviour
                 return 0;
             }
         }
-        if (j < GridHigh-1)
+        if (j < GridHigh - 1)
         {
             float red = (LevelMap.GetPixel(i, j).r);
             float redup = (LevelMap.GetPixel(i, j + 1).r);
@@ -166,11 +87,11 @@ public class GridBuilder_scr : MonoBehaviour
                 return 1;
             }
         }
-        return 2;*/
+        return 2;
     }
     public void PutOnCell(GameObject obj, int high, int width)
     {
-        if (width>=GridWidth || high >= GridHigh)
+        if (width >= GridWidth || high >= GridHigh)
         {
             Debug.Log("Out of grid");
         }

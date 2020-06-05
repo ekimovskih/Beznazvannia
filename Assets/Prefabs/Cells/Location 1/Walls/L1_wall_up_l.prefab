@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7308886075034681476
+--- !u!1001 &6221770046610175817
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -25,17 +25,17 @@ PrefabInstance:
     - target: {fileID: 768045581704545066, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 768045581704545066, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 768045581704545066, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 768045581704545066, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
@@ -65,7 +65,12 @@ PrefabInstance:
     - target: {fileID: 5281053628121513136, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_Name
-      value: L1_wall0
+      value: L1_wall_up_l
+      objectReference: {fileID: 0}
+    - target: {fileID: 5281053628121513136, guid: 61786f7f22b327546bc5d6333237ee8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5281053628121513136, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
@@ -76,7 +81,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 299ebe1870e4fe846b6a19d7c8080631,
+      objectReference: {fileID: 21300000, guid: 6e9281530cedcf740b57583e23e47d54,
         type: 3}
     - target: {fileID: 6780600797587353292, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
@@ -91,12 +96,27 @@ PrefabInstance:
     - target: {fileID: 6780600797587353292, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836438649235395954, guid: 61786f7f22b327546bc5d6333237ee8b,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836438649235395954, guid: 61786f7f22b327546bc5d6333237ee8b,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836438649235395954, guid: 61786f7f22b327546bc5d6333237ee8b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 6836438649235395954, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0
+      value: -0.00019999655
       objectReference: {fileID: 0}
     - target: {fileID: 6836438649235395954, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
@@ -111,12 +131,17 @@ PrefabInstance:
     - target: {fileID: 6836438649235395954, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_Offset.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6836438649235395954, guid: 61786f7f22b327546bc5d6333237ee8b,
         type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836438649235395954, guid: 61786f7f22b327546bc5d6333237ee8b,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.090909116
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61786f7f22b327546bc5d6333237ee8b, type: 3}

@@ -11,7 +11,7 @@ public class Goblin_1_scr : Enemy_propertys_scr
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Zcorrector();
         if (CanMove)
