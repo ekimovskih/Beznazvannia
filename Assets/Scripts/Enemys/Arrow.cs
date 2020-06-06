@@ -35,7 +35,7 @@ public class Arrow : MonoBehaviour
         Vector3 dirrection = (TrgetPos - transform.position).normalized;
         Vector3 dir = dirrection;
         transform.position += new Vector3(0, 0.3f, -0.3f);// + dirrection*5;
-        Debug.Log(Target + dirrection);
+        //Debug.Log(Target + dirrection);
         //Parent = GetComponentInParent<Transform>();
         //Enemy_propertys_scr ggTimer = GetComponentInParent<Enemy_propertys_scr>();
         AttackDirrection();
@@ -54,7 +54,7 @@ public class Arrow : MonoBehaviour
             else if (collision.gameObject.GetComponent<Player_movement_scr>().Vulnerable)
             {
                 collision.GetComponent<Player_movement_scr>().TakeDamage(Damage, Strength, transform);
-                Debug.Log(collision.gameObject);
+                //Debug.Log(collision.gameObject);
                 Destroy(this.gameObject);
             }
 

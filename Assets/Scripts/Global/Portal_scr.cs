@@ -10,13 +10,14 @@ public class Portal_scr : MonoBehaviour
     public GameObject[] Symbols;
     [Range(0, 5)] public int sequence = 0;
     public string WhereToPort;
+    private bool can = false;
     void Start()
     {
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player"&&can)
         {
             StopAllCoroutines();
             StartCoroutine(Plus());
@@ -29,6 +30,7 @@ public class Portal_scr : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(Minus());
         }
+        can = true;
     }
     IEnumerator Plus()
     {

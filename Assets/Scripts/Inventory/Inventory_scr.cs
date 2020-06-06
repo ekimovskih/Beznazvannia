@@ -353,6 +353,10 @@ public class Inventory_scr : MonoBehaviour
 
     public void ActivateSlot(int slot)
     {
+        if (slot > 11)
+        {
+            return;
+        }
         if(slot != ActiveSlot && ActiveSlot>=0)
         {
             InvSlots[ActiveSlot].ActivateSlot(false);
@@ -360,7 +364,7 @@ public class Inventory_scr : MonoBehaviour
         InvSlots[slot].ActivateSlot(true);
         ActiveSlot = slot;
         ChangeInHandItem();
-        //Debug.Log(slot);
+        Debug.Log(slot);
     }
     void SwitchActiveSlot()
     {

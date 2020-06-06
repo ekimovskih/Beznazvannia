@@ -4,26 +4,44 @@ using UnityEngine;
 
 public class GridBuilder_scr : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //public GameObject Cell = null;
     public int GridWidth = 2;
     public int GridHigh = 2;
-    public bool rebuildable = true;
-    public bool builded = false;
-    public string Location = "Vilage";
-    public Texture2D LevelMap;
+    //public bool rebuildable = true;
+    //public bool builded = false;
+    //public string Location = "Vilage";
+    public Texture2D RoomMap;
     public GameObject[] LocationCells;
+    private GameObject[,] LocationGrids;
+    private int xONmap;
+    private int yONmap;
 
     public Sprite[] Textures = new Sprite[2];
 
     private GameObject[,] Grid;
-    void Start()
+    private void Start()
     {
-        if (!builded)
+        Build();
+    }
+    public void TeleportPlayer()
+    {
+
+    }
+
+    public void Set(Texture2D spr, int x, int y, GameObject[,] FullMap)
+    {
+        RoomMap = spr;
+        LocationGrids = FullMap;
+        xONmap = x;
+        yONmap = y;
+        Build();
+    }
+    void Build()
+    {
+        if (RoomMap!=null)
         {
             GameObject thisObject = this.gameObject;
-            GridWidth = LevelMap.width;
-            GridHigh = LevelMap.height;
+            GridWidth = RoomMap.width;
+            GridHigh = RoomMap.height;
             Grid = new GameObject[GridWidth, GridHigh];
             
             BuildGrid();
@@ -32,8 +50,8 @@ public class GridBuilder_scr : MonoBehaviour
     void BuildGrid()
     {
         GameObject thisObject = this.gameObject;
-        GridWidth = LevelMap.width;
-        GridHigh = LevelMap.height;
+        GridWidth = RoomMap.width;
+        GridHigh = RoomMap.height;
         Debug.Log(GridWidth);
         Grid = new GameObject[GridWidth, GridHigh];
         float red, green, blue;
@@ -43,9 +61,9 @@ public class GridBuilder_scr : MonoBehaviour
             for (int j = 0; j < GridWidth; j++)
             {
                 int CellNum;
-                red = (LevelMap.GetPixel(i, j).r);
-                green = (LevelMap.GetPixel(i, j).g);
-                blue = (LevelMap.GetPixel(i, j).b);
+                red = (RoomMap.GetPixel(i, j).r);
+                green = (RoomMap.GetPixel(i, j).g);
+                blue = (RoomMap.GetPixel(i, j).b);
 
                 if (Mathf.Max(green, Mathf.Max(red, blue)) == 0)
                 {
@@ -68,7 +86,7 @@ public class GridBuilder_scr : MonoBehaviour
     }
     
 
-    int CellType(int i, int j)
+    int CellType(int i, int j) //можно переписать на считывание 4 ячеек (просто оно работало и ладно)
     {
         //float cur;
         float u1=1, u2=1,u3=1,m1=1,m3=1,d1=1,d2=1,d3=1;
@@ -76,33 +94,33 @@ public class GridBuilder_scr : MonoBehaviour
         {
             if (i > 0)
             {
-                u1 = LevelMap.GetPixel(i-1, j+1).r;
+                u1 = RoomMap.GetPixel(i-1, j+1).r;
             }
             if (i < GridWidth)
             {
-                u3 = LevelMap.GetPixel(i+1, j+1).r;
+                u3 = RoomMap.GetPixel(i+1, j+1).r;
             }
-            u2 = LevelMap.GetPixel(i, j +1).r; ;
+            u2 = RoomMap.GetPixel(i, j +1).r; ;
         }
         if (i > 0)
         {
-            m1 = LevelMap.GetPixel(i - 1, j).r;
+            m1 = RoomMap.GetPixel(i - 1, j).r;
         }
         if (i < GridWidth)
         {
-            m3 = LevelMap.GetPixel(i + 1, j).r;
+            m3 = RoomMap.GetPixel(i + 1, j).r;
         }
         if (j > 0)
         {
             if (i > 0)
             {
-                d1 = LevelMap.GetPixel(i - 1, j - 1).r;
+                d1 = RoomMap.GetPixel(i - 1, j - 1).r;
             }
             if (i < GridWidth)
             {
-                d3 = LevelMap.GetPixel(i + 1, j - 1).r;
+                d3 = RoomMap.GetPixel(i + 1, j - 1).r;
             }
-            d2 = LevelMap.GetPixel(i, j - 1).r; ;
+            d2 = RoomMap.GetPixel(i, j - 1).r; ;
         }
 
 
