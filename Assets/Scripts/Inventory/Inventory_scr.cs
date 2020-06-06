@@ -364,7 +364,7 @@ public class Inventory_scr : MonoBehaviour
         InvSlots[slot].ActivateSlot(true);
         ActiveSlot = slot;
         ChangeInHandItem();
-        Debug.Log(slot);
+        //Debug.Log(slot);
     }
     void SwitchActiveSlot()
     {

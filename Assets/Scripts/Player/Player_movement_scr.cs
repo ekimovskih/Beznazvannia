@@ -68,10 +68,14 @@ public class Player_movement_scr : MonoBehaviour
         Jump();
         if (Health < 0)
         {
+            StopAllCoroutines();
             this.gameObject.SetActive(false);
             
         }
-        StartCoroutine(Regen());
+        else
+        {
+            StartCoroutine(Regen());
+        }
     }
     public void Movement(float speed)
     {

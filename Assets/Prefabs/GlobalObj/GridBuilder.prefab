@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4683030305729760073
 Transform:
   m_ObjectHideFlags: 0
@@ -44,12 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ed950bff145ab4ba2b9b9fcd52b817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cell: {fileID: 7854153480221651049, guid: 651ba6235e35e044f82db63a3d21dbfc, type: 3}
   GridWidth: 10
   GridHigh: 10
-  rebuildable: 1
-  builded: 0
-  Location: Vilage
+  RoomMap: {fileID: 2800000, guid: ae73dfe33bf14fe45a3b01dda00404aa, type: 3}
+  LocationCells:
+  - {fileID: 3180794103080533044, guid: ef2a8182136face4aabdd57053970bcd, type: 3}
+  - {fileID: 3291675310829901740, guid: 83eb70e4e420541479b41852cd0be183, type: 3}
+  - {fileID: 7956963191106228856, guid: a19418c053c661b4ab6b052d242113e0, type: 3}
+  - {fileID: 5392946439418936936, guid: 17f49904b0e0a8d4a8726310f7f7e254, type: 3}
+  - {fileID: 8754629995583581758, guid: 90c5ce9f4bbad8f4192c17f7f145d635, type: 3}
+  - {fileID: 3493018907616523442, guid: 722d27ba9fae14b48a5b1c94bfcc485e, type: 3}
+  - {fileID: 5248265446088007364, guid: d121eec23f6629747b1ad8a72a5512b0, type: 3}
+  - {fileID: 2403085642017152968, guid: 28bf82468d1006c4cb5c9124cf8b5481, type: 3}
+  - {fileID: 373624713561638923, guid: bad014ab7b979eb49876d5c44c12838d, type: 3}
+  - {fileID: 2238914293215333369, guid: 8aabd727451c4f54193a2723bd074fb7, type: 3}
+  - {fileID: 7980262938915752986, guid: bd8d61274e16fdb42a2e649076411a89, type: 3}
   Textures:
   - {fileID: 21300000, guid: f26b14c12c4cf85418d1f3211f2efb9d, type: 3}
   - {fileID: 0}

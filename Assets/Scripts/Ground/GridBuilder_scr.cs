@@ -20,7 +20,7 @@ public class GridBuilder_scr : MonoBehaviour
     private GameObject[,] Grid;
     private void Start()
     {
-        Build();
+        //Build();
     }
     public void TeleportPlayer()
     {
@@ -52,7 +52,7 @@ public class GridBuilder_scr : MonoBehaviour
         GameObject thisObject = this.gameObject;
         GridWidth = RoomMap.width;
         GridHigh = RoomMap.height;
-        Debug.Log(GridWidth);
+        //Debug.Log(GridWidth);
         Grid = new GameObject[GridWidth, GridHigh];
         float red, green, blue;
 
@@ -77,7 +77,7 @@ public class GridBuilder_scr : MonoBehaviour
                 {
                     CellNum = 4;
                 }
-                //Debug.Log(i + "  " + j + "  " + CellNum);
+                //Debug.Log(Grid[j, 0]);
                 Grid[j, i] = Instantiate(LocationCells[CellNum], new Vector3(i, j, j), Quaternion.identity, thisObject.transform);
                 Grid[j, i].GetComponent<Cell_class>().Position = new Vector2(i, j);
             }
