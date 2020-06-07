@@ -191,7 +191,7 @@ public class DungeonBuilder_scr : MonoBehaviour
         }
         if (blue == 1)
         {
-            Debug.Log("Blue" + blue + " red" + red + " green" + green + " state" + state);
+            //Debug.Log("Blue" + blue + " red" + red + " green" + green + " state" + state);
             //Debug.Log(Grids[x, y]);
             //Grids[x, y] = Grids[x, y].AddComponent< GridBuilder_scr(ExPortal[Random.Range(0, ExPortal.Length - 1)], x, y, Grids) > as GridBuilder_scr;
             Grids[x, y].GetComponent<GridBuilder_scr>().Set(ExPortal[Random.Range(0, ExPortal.Length - 1)], x, y, Grids);
@@ -201,19 +201,39 @@ public class DungeonBuilder_scr : MonoBehaviour
         }
         if (red == 1)
         {
-            Debug.Log("Blue" + blue + " red" + red + " green" + green + " state" + state);
+            //Debug.Log("Blue" + blue + " red" + red + " green" + green + " state" + state);
             Grids[x, y].GetComponent<GridBuilder_scr>().Set(EnPortal[Random.Range(0, EnPortal.Length - 1)], x, y, Grids);
             Grids[x, y].SetActive(true);
+            GameObject.Find("Cursor").GetComponent<Cursor_scr>().GridBuilder = Grids[x, y];
             //Grids[x, y] = new GridBuilder_scr(EnPortal[Random.Range(0, EnPortal.Length - 1)], x, y, Grids);
             return;
         }
         else
         {
-            Debug.Log("Blue" + blue + " red" + red + " green" + green + " state" + state);
+            //Debug.Log("Blue" + blue + " red" + red + " green" + green + " state" + state);
             Grids[x, y].GetComponent<GridBuilder_scr>().Set(Room[Random.Range(0, Room.Length - 1)], x, y, Grids);
             Grids[x, y].SetActive(false);
             //Grids[x, y] = new GridBuilder_scr(Room[Random.Range(0, Room.Length - 1)], x, y, Grids);
             return;
         }
     }
+    /*
+    void Unactivate(int xx, int yy)
+    {
+        for (int x = 0; x < MapWidth; x++)
+        {
+            for (int y = 0; y < MapHigh; y++)
+            {
+                if (xx == x && yy == y)
+                {
+                    Grids[x, y].SetActive(true);
+                }
+                else
+                {
+                    Grids[x, y].SetActive(false);
+                }
+            }
+        }
+    }
+    */
 }

@@ -46,19 +46,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridWidth: 10
   GridHigh: 10
-  RoomMap: {fileID: 2800000, guid: ae73dfe33bf14fe45a3b01dda00404aa, type: 3}
+  RoomMap: {fileID: 0}
   LocationCells:
   - {fileID: 3180794103080533044, guid: ef2a8182136face4aabdd57053970bcd, type: 3}
   - {fileID: 3291675310829901740, guid: 83eb70e4e420541479b41852cd0be183, type: 3}
   - {fileID: 7956963191106228856, guid: a19418c053c661b4ab6b052d242113e0, type: 3}
-  - {fileID: 5392946439418936936, guid: 17f49904b0e0a8d4a8726310f7f7e254, type: 3}
-  - {fileID: 8754629995583581758, guid: 90c5ce9f4bbad8f4192c17f7f145d635, type: 3}
   - {fileID: 3493018907616523442, guid: 722d27ba9fae14b48a5b1c94bfcc485e, type: 3}
   - {fileID: 5248265446088007364, guid: d121eec23f6629747b1ad8a72a5512b0, type: 3}
   - {fileID: 2403085642017152968, guid: 28bf82468d1006c4cb5c9124cf8b5481, type: 3}
   - {fileID: 373624713561638923, guid: bad014ab7b979eb49876d5c44c12838d, type: 3}
   - {fileID: 2238914293215333369, guid: 8aabd727451c4f54193a2723bd074fb7, type: 3}
   - {fileID: 7980262938915752986, guid: bd8d61274e16fdb42a2e649076411a89, type: 3}
+  - {fileID: 8754629995583581758, guid: 90c5ce9f4bbad8f4192c17f7f145d635, type: 3}
+  - {fileID: 5392946439418936936, guid: 17f49904b0e0a8d4a8726310f7f7e254, type: 3}
+  - {fileID: 4233430375551667500, guid: bf9c53105e9fa4e41b415fb8c7a19b5c, type: 3}
+  - {fileID: 413546801522310293, guid: 2813b517e949d04408632e833ff9c7fc, type: 3}
+  - {fileID: 9168789614455439660, guid: 126bd784e012fa5499432d24a66f60da, type: 3}
+  - {fileID: 7002775988220913675, guid: d2a616411e4f537449928209e48c520d, type: 3}
+  - {fileID: 3885004541575932442, guid: 0778756f2f9364b4e896a157b43cb0d9, type: 3}
+  - {fileID: 3401876218679600061, guid: 9acf431ced9d1ca45841100862b86c94, type: 3}
+  - {fileID: 8716724384436928667, guid: 4e9357da7c0a93c4b8e38e8996c0ecad, type: 3}
+  - {fileID: 2144493034765341276, guid: 1deccdb1e17bac94fb728633ad8cbde4, type: 3}
+  - {fileID: 1661863958118238265, guid: 0f17e9a5c72593a47bb35733ac5a330b, type: 3}
+  - {fileID: 8945448871303963229, guid: 05c46af652364484284dab977bcbafc3, type: 3}
+  - {fileID: 8696218187028175196, guid: a2b6e490f74109a4f884748ba1961bc9, type: 3}
+  - {fileID: 1527720221203010175, guid: 1afefcd8e15df1b4ca5bb52c4bb33194, type: 3}
+  door1: {x: 0, y: 0}
   Textures:
   - {fileID: 21300000, guid: f26b14c12c4cf85418d1f3211f2efb9d, type: 3}
   - {fileID: 0}

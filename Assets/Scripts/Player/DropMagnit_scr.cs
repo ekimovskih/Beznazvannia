@@ -21,6 +21,7 @@ public class DropMagnit_scr : MonoBehaviour
             if ((!Inventory.isFull || Inventory.HaveRoomForThisDrop(collision.gameObject)))
             {
                 Transform collis = collision.gameObject.transform;
+                Debug.Log((this.gameObject.transform.position - collis.position).magnitude);
                 collis.GetComponent<Rigidbody2D>().AddForce(Vector3.Normalize(this.gameObject.transform.position - collis.position) * MagnitSTR);
             }
             else

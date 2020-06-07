@@ -18,6 +18,9 @@ public class ObjOnCell_scr : MonoBehaviour
     void Start()
     {
         Catalog = GameObject.Find("DropCatalog");
+        
+        //transform.position = GetComponentInParent<Cell_class>().transform.position + new Vector3(0.5f, 0.5f, 0.5f);
+        //Debug.Log(transform.position);
     }
 
     public bool LastHit(Drop_scr item)
@@ -65,7 +68,7 @@ public class ObjOnCell_scr : MonoBehaviour
                 if (chance < DropRates[k].x)
                 {
                     //Debug.Log(i + " " + chance);
-                    Instantiate(Droplist[k], this.gameObject.transform.position + (Vector3.one * (i+k*10) / 100), Quaternion.identity, Catalog.transform);
+                    Instantiate(Droplist[k], this.gameObject.transform.position + (Vector3.one * (i+k*10) / 100), Quaternion.identity, GetComponentInParent<Cell_class>().transform);
                 }
                 else
                 {

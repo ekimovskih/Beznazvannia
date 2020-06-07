@@ -17,7 +17,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f26b14c12c4cf85418d1f3211f2efb9d,
+      objectReference: {fileID: 21300000, guid: 3c14d2de771de6e41b377d4b1c6c4f78,
         type: 3}
     - target: {fileID: 3426881153147651991, guid: 26fe5684608fc9d4c9f0fe52febcdf38,
         type: 3}
@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 4097467021456578027, guid: 26fe5684608fc9d4c9f0fe52febcdf38,
         type: 3}
       propertyPath: m_Name
-      value: Cell_WithObj
+      value: L1_Grass_rock
       objectReference: {fileID: 0}
     - target: {fileID: 8880983719620029041, guid: 26fe5684608fc9d4c9f0fe52febcdf38,
         type: 3}

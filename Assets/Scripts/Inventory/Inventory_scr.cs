@@ -10,7 +10,7 @@ public class Inventory_scr : MonoBehaviour
     // Start is called before the first frame update
     public bool open = false;
     public bool isFull = false;
-    public GameObject[]     InvItems = new GameObject[48];
+    public GameObject[] InvItems;//= new GameObject[48];
     public InventorySlot[]  InvSlots;
     public int[]            ItemsCount = new int[48];
     private int InvItemsLength;
@@ -53,15 +53,19 @@ public class Inventory_scr : MonoBehaviour
         InventorySlot[] FS = FastPanel.GetComponentsInChildren<InventorySlot>();
         InventorySlot[] IS = IVTR.GetComponentsInChildren<InventorySlot>();
         InventorySlot[] CS = CraftTab.GetComponentsInChildren<InventorySlot>();
-        for (int i = 0; i < 12; i++)
+        int FSlen = FS.Length, ISlen = IS.Length;
+        InvItemsLength = FSlen + ISlen;
+        //InvItems = new GameObject[FSlen + ISlen];
+        for (int i = 0; i < FSlen; i++)
         {
             InvSlots[i] = FS[i];
             InvSlots[i].SlotNumber = i;
             InvSlots[i].Inventory = this.gameObject;
         }
-        for (int i = 12; i < 48; i++)
+        //Debug.Log(IS.Length);
+        for (int i = 12; i < IS.Length + FSlen; i++)
         {
-            InvSlots[i] = IS[i-12];
+            InvSlots[i] = IS[i- FSlen];
             InvSlots[i].SlotNumber = i;
             InvSlots[i].Inventory = this.gameObject;
         }
@@ -81,7 +85,7 @@ public class Inventory_scr : MonoBehaviour
         bin.SetActive(false);
         CraftTab.SetActive(false);
         player = GameObject.Find("Player");
-        InvItemsLength = InvItems.Length;
+        //InvItemsLength = InvItems.Length;
         ShowStartInv();
         UpdateInventory();
     }
@@ -459,7 +463,7 @@ public class Inventory_scr : MonoBehaviour
     }
     void ShowStartInv()
     {
-        for (int i = 0; i < 48; i++)
+        for (int i = 0; i < InvItemsLength; i++)
         {
             if (InvItems[i] != null)
             {

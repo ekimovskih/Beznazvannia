@@ -27,12 +27,14 @@ public class Player_movement_scr : MonoBehaviour
     public GameObject WorkInd = null;
     private bool InventoryFull;
     private Inventory_scr Inventory = null;
-    private Transform PlayerContainer;
+    [HideInInspector] public Transform PlayerContainer;
     public GameObject AttackZone = null;
     public Transform Cursor;
     private bool regenerate = true;
     public int RegenHP = 0;
     public int RegenSTM = 1;
+
+    public Vector3 CameraOffset = new Vector3(0, 5, -30);
 
     private void Awake()
     {
@@ -52,7 +54,7 @@ public class Player_movement_scr : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Camera.main.transform.position = transform.position + new Vector3(0,0,-30);
+        Camera.main.transform.position = transform.position + CameraOffset;
         //InventoryFull = Inventory.GetComponent<Inventory_scr>().isFull;
         if (CanMove)
         {

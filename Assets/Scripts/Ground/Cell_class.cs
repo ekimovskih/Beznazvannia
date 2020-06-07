@@ -17,14 +17,15 @@ public class Cell_class : MonoBehaviour
     private GameObject ThisObject;
 
     public GameObject objOnIt = null;
-
     private void Start()
     {
         ThisObject = this.gameObject;
+        
         if (objOnIt != null)
         {
-            objOnIt = Instantiate(objOnIt, new Vector3(Position.x + 0.5f, Position.y + 0.5f, Position.y+0.5f), Quaternion.identity, ThisObject.transform);
+            objOnIt = Instantiate(objOnIt, new Vector3(Position.x + 0.5f, Position.y + 0.5f, Position.y + 0.5f), Quaternion.identity, ThisObject.transform);
         }
+        
     }
     
     public void PutObj(GameObject obj)
