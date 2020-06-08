@@ -7,19 +7,20 @@ public class HealthBar : MonoBehaviour
 {
     public Image bar;
     public float fill;
-    public GameObject go = null;
+    private GameObject go = null;
+    private Player_movement_scr hpController;
 
 
     void Start()
     {
-        go = GameObject.Find("Player");
+        go = this.gameObject;
+        hpController = go.GetComponent<Player_movement_scr>();
         fill = 1f;
-        bar = GameObject.Find("HPBar").GetComponent<Image>();
+        //bar = GameObject.Find("HPBar").GetComponent<Image>();
     }
     
     void Update()
     {
-        Player_movement_scr hpController = go.GetComponent<Player_movement_scr>();
         float currentHP = hpController.Health;
         fill = currentHP / 100; 
         bar.fillAmount = fill;

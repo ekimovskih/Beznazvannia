@@ -35,6 +35,11 @@ public class Goblin_1_scr : Enemy_propertys_scr
                 SimplePatrole();
             }
         }
+        if (player == null)
+        {
+            StopAllCoroutines();
+            CanMove = false;
+        }
     }
 
 

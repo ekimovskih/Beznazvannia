@@ -27,10 +27,14 @@ public class Portal_scr : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            if (WhereToPort != null)
+            {
+                can = true;
+            } 
             StopAllCoroutines();
             StartCoroutine(Minus());
         }
-        can = true;
+        
     }
     IEnumerator Plus()
     {
@@ -41,7 +45,6 @@ public class Portal_scr : MonoBehaviour
         //StopCoroutine("Minus");
         for (int i = sequence; i < 5; i++)
         {
-            
             yield return new WaitForSeconds(1f);
             Symbols[i].SetActive(true);
             sequence++;
