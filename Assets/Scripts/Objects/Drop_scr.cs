@@ -7,6 +7,7 @@ public class Drop_scr : MonoBehaviour
     // Start is called before the first frame update
     [Range (0,50)]public float BounceStr = 40f;
     public string type = "none";
+    public string sypertype;
     public int id;
     public int InStack;
     public int count = 1;

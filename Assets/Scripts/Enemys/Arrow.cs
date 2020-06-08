@@ -15,6 +15,8 @@ public class Arrow : MonoBehaviour
     private Vector3 TrgetPos;
     private bool kostil = false;
     // Start is called before the first frame update
+
+    
     void Start()
     {
         
@@ -32,15 +34,17 @@ public class Arrow : MonoBehaviour
             Target = "Player";
             TrgetPos = GameObject.Find("Player").GetComponentInParent<Transform>().position + Vector3.up*0.2f;
         }
-        Vector3 dirrection = (TrgetPos - transform.position).normalized;
-        Vector3 dir = dirrection;
+        Vector3 dirrection = (TrgetPos - transform.position);
+        //dirrection = new Vector3(dirrection.x, dirrection)
+        Vector2 dir = new Vector2(dirrection.x, dirrection.y).normalized;
+        //Debug.Log(dir + " " + dir.magnitude);
         transform.position += new Vector3(0, 0.3f, -0.3f);// + dirrection*5;
         //Debug.Log(Target + dirrection);
         //Parent = GetComponentInParent<Transform>();
         //Enemy_propertys_scr ggTimer = GetComponentInParent<Enemy_propertys_scr>();
         AttackDirrection();
         GetComponent<Rigidbody2D>().AddForce(dir * Strength);
-        StartCoroutine(SelfDestroy());
+        StartCoroutine(SelfDestroy(10f));
     }   
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -53,7 +57,7 @@ public class Arrow : MonoBehaviour
             }
             else if (collision.gameObject.GetComponent<Player_movement_scr>().Vulnerable)
             {
-                collision.GetComponent<Player_movement_scr>().TakeDamage(Damage, Strength, transform);
+                collision.GetComponent<Player_movement_scr>().TakeDamage(Damage, Strength*15f, transform);
                 //Debug.Log(collision.gameObject);
                 Destroy(this.gameObject);
             }
@@ -70,6 +74,13 @@ public class Arrow : MonoBehaviour
             collision.transform.GetComponent<Enemy_propertys_scr>().TakeDamage(Damage/2, Strength, transform.position);
             Destroy(this.gameObject);
         }
+        if (collision.gameObject.tag.Equals("Cell"))
+        {
+            
+            //SelfDestroy();
+            Destroy(this.gameObject, 0.09f);
+            
+        }
     }
     
     public void AttackDirrection()
@@ -84,8 +95,13 @@ public class Arrow : MonoBehaviour
     IEnumerator SelfDestroy()
     {
         yield return new WaitForSeconds(0.5f);
-        kostil = true;
-        yield return new WaitForSeconds(10f);
+        
+        Destroy(this.gameObject);
+        
+    }
+    IEnumerator SelfDestroy(float timer)
+    {
+        yield return new WaitForSeconds(timer);
         Destroy(this.gameObject);
         //Debug.Log("selfdestroy");
     }

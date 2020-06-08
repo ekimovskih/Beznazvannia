@@ -79,7 +79,7 @@ public class InventorySlot : MonoBehaviour
 
     public void IteractWithSlot()
     {
-        if (Inventory.activeSelf)
+        if (InventoryComponent.Backpack.activeSelf)
         {
             if (CursorComponent.HandContainerFull)
             {
@@ -89,6 +89,10 @@ public class InventorySlot : MonoBehaviour
             {
                 InventoryComponent.TakeItem(SlotNumber);
             }
+            
+        }
+        else
+        {
             InventoryComponent.ActivateSlot(SlotNumber);
         }
     }

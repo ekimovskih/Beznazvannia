@@ -36,6 +36,7 @@ public class Cursor_scr : MonoBehaviour
     public bool HandContainerFull = false;
 
 
+
     private void Awake()
     {
         Player = GameObject.Find("Player");
@@ -151,6 +152,8 @@ public class Cursor_scr : MonoBehaviour
                 if (InHand.type == "Weapon")
                 {
                     Instantiate(InHand.AttackZone, Player.transform.position, Quaternion.identity);
+                    ShowWork();
+                    return;
                 }
                 else
                 {
@@ -166,7 +169,6 @@ public class Cursor_scr : MonoBehaviour
                 //Vector3 plpos = Player.transform.position;
                 //Vector2 PlayerDir = new Vector2(plpos.x , plpos.y) * new Vector2(0, -1);
                 Vector2 PlayerDir = ActiveCell - PlayerCell;
-
                 StartCoroutine(PlayerComponent.MouseHitAction(WaitTime, PlayerDir));
                 return;
             }
@@ -186,10 +188,14 @@ public class Cursor_scr : MonoBehaviour
 
     IEnumerator ShowWork(float WaitTime)
     {
-        GameObject obj = Player.GetComponent<Player_movement_scr>().WorkInd;
+        GameObject obj = PlayerComponent.WorkInd;
         obj.GetComponent<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(WaitTime);
         obj.GetComponent<SpriteRenderer>().enabled = false;
+    }
+    void ShowWork()
+    {
+        PlayerComponent.WorkInd.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void ChangeInHandItem(Drop_scr Hand)
@@ -213,7 +219,7 @@ public class Cursor_scr : MonoBehaviour
         HandContainer = 0;
         HandContainerCount = 0;
         HandContainerFull = false;
-        Debug.Log("Hand Empty");
+        //Debug.Log("Hand Empty");
         //return false;
 
     }

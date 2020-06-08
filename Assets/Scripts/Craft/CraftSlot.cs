@@ -67,7 +67,6 @@ public class CraftSlot : MonoBehaviour
         InvSlot.transform.GetComponent<Image>().color = Color.white;
         this.gameObject.SetActive(false);
     }
-
     public void IteractWithSlot()
     {
         Cursor_scr Cursor = GameObject.Find("Cursor").GetComponent<Cursor_scr>();

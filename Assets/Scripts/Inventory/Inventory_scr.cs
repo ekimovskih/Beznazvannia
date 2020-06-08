@@ -84,6 +84,7 @@ public class Inventory_scr : MonoBehaviour
     }
     void Start()
     {
+        //CraftSlotsCheker();
         //CraftPanel.SetActive(false);
         //CraftTab.SetActive(false); 
         Backpack.SetActive(false);
@@ -256,7 +257,10 @@ public class Inventory_scr : MonoBehaviour
             Items[slot] = null;
             UpdateInventory();
             ChangeInHandItem();
-            CraftSlotsCheker();
+            if (CraftTab.activeSelf)
+            {
+                CraftSlotsCheker();
+            }
         }
     }
 
@@ -336,7 +340,7 @@ public class Inventory_scr : MonoBehaviour
             else
             {
                 Items[slot] = DropCatalog.GetGObyID(Cursor.HandContainer);
-                Debug.Log(Items[slot].GetComponent<Drop_scr>().InStack);
+                //Debug.Log(Items[slot].GetComponent<Drop_scr>().InStack);
                 int stack = Items[slot].GetComponent<Drop_scr>().InStack;
                 if (Cursor.HandContainerCount > stack)
                 {
@@ -354,7 +358,11 @@ public class Inventory_scr : MonoBehaviour
                 }
             }
             UpdateInventory();
-            CraftSlotsCheker();
+            if (CraftTab.activeSelf)
+            {
+                CraftSlotsCheker();
+                Debug.Log("Craft check");
+            }
             ChangeInHandItem();
         }
     }
@@ -437,7 +445,7 @@ public class Inventory_scr : MonoBehaviour
             
         }
         int wheel = System.Convert.ToInt32(Math.Sign(Input.GetAxis("Mouse ScrollWheel")));
-        if (wheel != 0)
+        if (wheel != 0 && Backpack.activeSelf == false)
         {
             int support = ActiveSlot + wheel;
             if (support < 0)

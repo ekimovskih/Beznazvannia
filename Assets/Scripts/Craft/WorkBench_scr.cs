@@ -24,6 +24,7 @@ public class WorkBench_scr : MonoBehaviour
         //ResultSlots = GameObject.Find("ResultSlots");
         //Debug.Log(ResultSlots);
         CraftSlots = ResultSlots.GetComponentsInChildren<CraftSlot>();
+        //UpdateSlots();
     }
     void Start()
     {
@@ -72,6 +73,7 @@ public class WorkBench_scr : MonoBehaviour
             //Debug.Log("poneslas");
             CheckRecipe(Items, drop, Counts);
         }
+        //Debug.Log(MayCraftItems[0]);
         //Sum = CurrentCanSlot + CurrentMaySlot + CurrentAlmostCanSlot;
         for (int i = 0; i < CurrentCanSlot; i++)
         {
@@ -82,6 +84,7 @@ public class WorkBench_scr : MonoBehaviour
             CraftSlots[Sum].SetSlot(CanCraftItems[i], 1);
             Sum++;
         }
+        //Debug.Log(CurrentCanSlot);
         for (int i = 0; i < CurrentAlmostCanSlot; i++)
         {
             if (Sum >= size)
@@ -106,6 +109,8 @@ public class WorkBench_scr : MonoBehaviour
         {
             CraftSlots[k].SetSlot();
         }
+        //Destroy( CraftSlots[0].gameObject);
+        Debug.Log(CraftSlots[Sum-1].CraftItem);
     }
 
     public void CheckRecipe(GameObject[] craft, GameObject item, int[] Counts)

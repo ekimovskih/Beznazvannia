@@ -12,7 +12,7 @@ public class Player_movement_scr : MonoBehaviour
     public bool Vulnerable = true;
     public bool CanMove = true;
     //public bool CanIteract = true;
-    public float speed=3f; // сорость бега
+    public float speed = 3f; // сорость бега
     public float ShiftSpeed = 2f; // + скорость с зажатым LeftShift
     public float JumpStrengh = 3000f;
     public int JumpWaste = 5;
@@ -33,6 +33,7 @@ public class Player_movement_scr : MonoBehaviour
     private bool regenerate = true;
     public int RegenHP = 0;
     public int RegenSTM = 1;
+    [HideInInspector] public bool wasHited = false;
 
     public Vector3 CameraOffset = new Vector3(0, 5, -30);
 
@@ -59,6 +60,7 @@ public class Player_movement_scr : MonoBehaviour
         if (CanMove)
         {
             Movement(speed);
+            Jump();
         }
         else
         {
@@ -67,7 +69,7 @@ public class Player_movement_scr : MonoBehaviour
     }
     private void Update()
     {
-        Jump();
+        
         if (Health < 0)
         {
             StopAllCoroutines();
@@ -175,6 +177,7 @@ public class Player_movement_scr : MonoBehaviour
     {
         StopCoroutine("MouseHitAction");
         CanMove = false;
+        Debug.Log("ghjfghf");
         //CanIteract = false;
         SpriteMoveChanger(CurrDir.x, CurrDir.y);
         yield return new WaitForSeconds(WaitTime);//+ WaitTime*0.5f);
@@ -217,7 +220,9 @@ public class Player_movement_scr : MonoBehaviour
         {
             StartCoroutine(Imune());
             Health -= dmg;
-            Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
+            //wasHited = true;
+            Debug.Log("You took dmg " + dmg + " Now Your health " + Health + " "+ wasHited);
+            //wasHited = false;
 
         }
     }
@@ -226,9 +231,11 @@ public class Player_movement_scr : MonoBehaviour
         if (Vulnerable)
         {
             StartCoroutine(Imune());
+            //
             Health -= dmg;
-            Debug.Log("You took dmg " + dmg + " Now Your health " + Health);
+            Debug.Log("You took dmg " + dmg + " Now Your health " + Health + " " + wasHited);
             KnockBackFromEnAttack(point, strength);
+            //
         }
     }
 
@@ -244,8 +251,10 @@ public class Player_movement_scr : MonoBehaviour
     {
         Vulnerable = false;
         CanMove = false;
+        wasHited = true;
         yield return new WaitForSeconds(JMPImune);
         CanMove = true;
+        wasHited = false;
         yield return new WaitForSeconds(1 - JMPImune);
         Vulnerable = true;
 
