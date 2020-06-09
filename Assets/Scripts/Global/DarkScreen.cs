@@ -8,8 +8,8 @@ public class DarkScreen : MonoBehaviour
     // Start is called before the first frame update
     private Image sprite;
     bool can = true;
-    Vector3 on = new Vector3(0, -285,0);
-    Vector3 off = new Vector3(0, -830,0);
+    Vector3 on = new Vector3(200, 0,0);
+    Vector3 off = new Vector3(200, -1000,0);
     public GameObject Parent;
     void Start()
     {
@@ -21,7 +21,7 @@ public class DarkScreen : MonoBehaviour
     {
         if (can)
         {
-            Parent.transform.position = Vector3.zero;
+            Parent.transform.position = on;
             can = false;
             for (int i = 0; i < 100; i++)
             {

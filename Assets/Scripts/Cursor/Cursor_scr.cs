@@ -151,7 +151,7 @@ public class Cursor_scr : MonoBehaviour
                 ActionPossible = Time.time + WaitTime;
                 if (InActiveSlot.type == "Weapon")
                 {
-                    Instantiate(InActiveSlot.AttackZone, Player.transform.position, Quaternion.identity);
+                    Instantiate(InActiveSlot.AttackZone, Player.transform.position, Quaternion.identity, Player.transform);
                     ShowWork();
                     return;
                 }

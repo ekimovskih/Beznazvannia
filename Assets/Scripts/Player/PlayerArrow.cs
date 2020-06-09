@@ -20,6 +20,7 @@ public class PlayerArrow : MonoBehaviour
     private GameObject player;
     private Player_movement_scr playerComponent;
     public GameObject Arrow;
+    private Color inc = Color.red;
     // Start is called before the first frame update
 
     private void Awake()
@@ -35,6 +36,8 @@ public class PlayerArrow : MonoBehaviour
     }
     void Start()
     {
+        inc.a = 0;
+        GetComponent<SpriteRenderer>().color = inc;
         if (!(playerComponent.wasHited))
         {
             playerComponent.CanMove = false;
@@ -61,6 +64,7 @@ public class PlayerArrow : MonoBehaviour
             if (!(d2.magnitude < 1.5f))
             {
                 Instantiate(Arrow, transform.position, Quaternion.identity);
+                
             }
             StartCoroutine(SelfDestroy(lifetime));
         }
@@ -70,6 +74,11 @@ public class PlayerArrow : MonoBehaviour
             StartCoroutine(SelfDestroy(lifetime));
         }
 
+        if (inc.a < 1)
+        {
+            inc.a += 0.01f;
+        }
+        GetComponent<SpriteRenderer>().color = inc;
         AttackDirrection();
     }
     

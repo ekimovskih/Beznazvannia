@@ -99,6 +99,10 @@ public class Arrow : MonoBehaviour
         Destroy(this.gameObject);
         
     }
+    public void IncDamage(int plus)
+    {
+        Damage += plus;
+    }
     IEnumerator SelfDestroy(float timer)
     {
         yield return new WaitForSeconds(timer);
