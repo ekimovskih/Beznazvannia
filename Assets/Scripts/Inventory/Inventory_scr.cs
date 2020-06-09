@@ -227,7 +227,7 @@ public class Inventory_scr : MonoBehaviour
             drop.IsEmpty();
             UpdateInventory();
         }
-        //ChangeInHandItem();
+        ChangeInHandItem();
     }
 
     public void TakeItem(Drop_scr drop)

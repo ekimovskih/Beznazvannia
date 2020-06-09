@@ -259,7 +259,7 @@ public class GridBuilder_scr : MonoBehaviour
         //Instantiate(arrowRight, thisObject.transform);
         arrowRight.transform.position = door1 + Vector3.left*2; 
         //Instantiate(arrowDown, thisObject.transform);
-        arrowDown.transform.position = door2 + Vector3.up * 2;
+        arrowDown.transform.position = door2 + Vector3.up * 2.5f;
         //Instantiate(arrowLeft, thisObject.transform);
         arrowLeft.transform.position = door3 + Vector3.right * 2;
         //Instantiate(arrowUp, thisObject.transform);

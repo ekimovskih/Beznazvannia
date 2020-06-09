@@ -49,6 +49,9 @@ public class Portal_scr : MonoBehaviour
             Symbols[i].SetActive(true);
             sequence++;
         }
+        StartCoroutine(GameObject.Find("DarkScreen").GetComponent<DarkScreen>().Darker());
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeLighter();
         SceneManager.LoadScene(WhereToPort);//, LoadSceneMode.Additive);
     }
     IEnumerator Minus()

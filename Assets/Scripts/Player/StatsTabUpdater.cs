@@ -24,7 +24,7 @@ public class StatsTabUpdater : MonoBehaviour
     {
         RR[0].text = "Здоровье: " + player.Health + "/" + player.MaxHealth;
         RR[1].text = "Скорость восстановления здоровья: " + player.RegenHP;
-        RR[2].text = "Выносливость: " + player.Health + "/" + player.MaxStamina;
+        RR[2].text = "Выносливость: " + player.Stamina + "/" + player.MaxStamina;
         RR[3].text = "Скорость восстановления выносливости: " + player.RegenSTM;
         RR[4].text = "Броня: " + player.Armor;
         /*
