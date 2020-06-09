@@ -51,4 +51,7 @@ MonoBehaviour:
   - {fileID: 6406550984765081669, guid: 387827a8b38665a4bb1974bc08d9e13a, type: 3}
   - {fileID: 373575020118841997, guid: bf9e88c0a783add4980059e0ba525c98, type: 3}
   - {fileID: 1209622819895161852, guid: afbab7969cd551142973ec25e1fa7789, type: 3}
+  - {fileID: 7100610331409046115, guid: 8f1b4d27ee4803243b18e4594fae0f40, type: 3}
+  - {fileID: 1875781015552870117, guid: aed614ab6c259fa4fb22cf321ca9134b, type: 3}
+  Craftable: []
   length: 0

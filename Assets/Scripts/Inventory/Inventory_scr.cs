@@ -23,7 +23,7 @@ public class Inventory_scr : MonoBehaviour
 
     //public bool SmthnHand = false;
     private GameObject Tabs = null;
-    private Cursor_scr Cursor;
+    private Cursor_scr CursorComponent;
 
     public int CraftPanelSize = 3;
     public InventorySlot[]  CraftSlots;
@@ -50,7 +50,7 @@ public class Inventory_scr : MonoBehaviour
         Tabs = GameObject.Find("Tabs");
         //CraftTab = GameObject.Find("CraftTab");
         cursor = GameObject.Find("Cursor");
-        Cursor = cursor.GetComponent<Cursor_scr>();
+        CursorComponent = cursor.GetComponent<Cursor_scr>();
         player = GameObject.Find("Player");
         //IVTR = GameObject.Find("Inventory");
         InventorySlot[] FS = FastPanel.GetComponentsInChildren<InventorySlot>();
@@ -101,13 +101,36 @@ public class Inventory_scr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             //IVTR.SetActive(!IVTR.activeSelf);
+            
+            if (CursorComponent.HandContainerFull)
+            {
+                CursorComponent.DropItemInHand();
+            }
+            if (CraftTab.activeSelf)
+            {
+                DropFromCraftSlots();
+                CraftSlotsCheker();
+            }
             Backpack.SetActive(!Backpack.activeSelf);
+
             //Tabs.SetActive(!CraftTab.activeSelf);
             //ResultSlots.SetActive(CraftTab.activeSelf);
 
             UpdateInventory();
         }
         SwitchActiveSlot();
+    }
+    public void DropFromCraftSlots()
+    {
+        for (int i = 0; i < CraftSlots.Length; i++)
+        {
+            if (CraftItems[i] != null)
+            {
+                CursorComponent.DropItemInHand(CraftItems[i]);
+                CraftItems[i] = null;
+            }
+        }
+        CraftSlotsCheker();
     }
 
     void UpdateInventory()
@@ -250,7 +273,7 @@ public class Inventory_scr : MonoBehaviour
         }
         if (Items[slot] != null && IVTR.activeSelf == true)
         {
-            Cursor.CursorContainerActivation(Items[slot], Counts[slot]);
+            CursorComponent.CursorContainerActivation(Items[slot], Counts[slot]);
             //SmthInHand = true;
             Slots[slot].SlotActivation(false);
             Counts[slot] = 0;
@@ -303,7 +326,7 @@ public class Inventory_scr : MonoBehaviour
                     {
                         Counts[slot] += HandCount;
                         //SmthInHand = false;
-                        Cursor.CursorContainerActivation();
+                        CursorComponent.CursorContainerActivation();
                         Slots[slot].SetCount(Counts[slot]);
                         //Debug.Log("Fit");
                     }
@@ -312,12 +335,12 @@ public class Inventory_scr : MonoBehaviour
                         if (HandCount< istack)
                         {
                             Counts[slot] = HandCount;
-                            Cursor.CursorContainerActivation(istack - HandCount);
+                            CursorComponent.CursorContainerActivation(istack - HandCount);
                         }
                     }
                     else
                     {
-                        Cursor.CursorContainerActivation(Counts[slot] - istack);
+                        CursorComponent.CursorContainerActivation(Counts[slot] - istack);
                         Counts[slot] = istack;
                         //SmthInHand = true;
                         Slots[slot].SetCount(Counts[slot]);
@@ -329,39 +352,39 @@ public class Inventory_scr : MonoBehaviour
                     GameObject SwitchHandContainer = Items[slot];
                     int SwitchHandCount = Counts[slot];
 
-                    Items[slot] = DropCatalog.GetGObyID(Cursor.HandContainer);
-                    Counts[slot] = Cursor.HandContainerCount;
+                    Items[slot] = DropCatalog.GetGObyID(CursorComponent.HandContainer);
+                    Counts[slot] = CursorComponent.HandContainerCount;
                     Slots[slot].SetCount(Counts[slot], Items[slot]);
 
                     //SmthInHand = true;
-                    Cursor.CursorContainerActivation(SwitchHandContainer, SwitchHandCount);
+                    CursorComponent.CursorContainerActivation(SwitchHandContainer, SwitchHandCount);
                 }           
             }
             else
             {
-                Items[slot] = DropCatalog.GetGObyID(Cursor.HandContainer);
+                Items[slot] = DropCatalog.GetGObyID(CursorComponent.HandContainer);
                 //Debug.Log(Items[slot].GetComponent<Drop_scr>().InStack);
                 int stack = Items[slot].GetComponent<Drop_scr>().InStack;
-                if (Cursor.HandContainerCount > stack)
+                if (CursorComponent.HandContainerCount > stack)
                 {
                     Counts[slot] = stack;
                     //Cursor.HandContainerCount -= stack;
-                    Cursor.CursorContainerActivation(- stack);
+                    CursorComponent.CursorContainerActivation(- stack);
                     Slots[slot].SetCount(Counts[slot], Items[slot]);
                 }
                 else
                 {
-                    Counts[slot] = Cursor.HandContainerCount;
+                    Counts[slot] = CursorComponent.HandContainerCount;
                     Slots[slot].SetCount(Counts[slot], Items[slot]);
                     //SmthInHand = false;
-                    Cursor.CursorContainerActivation();
+                    CursorComponent.CursorContainerActivation();
                 }
             }
             UpdateInventory();
             if (CraftTab.activeSelf)
             {
                 CraftSlotsCheker();
-                Debug.Log("Craft check");
+                //Debug.Log("Craft check");
             }
             ChangeInHandItem();
         }
@@ -447,7 +470,7 @@ public class Inventory_scr : MonoBehaviour
         int wheel = System.Convert.ToInt32(Math.Sign(Input.GetAxis("Mouse ScrollWheel")));
         if (wheel != 0 && Backpack.activeSelf == false)
         {
-            int support = ActiveSlot + wheel;
+            int support = ActiveSlot - wheel;
             if (support < 0)
             {
                 support = 11;

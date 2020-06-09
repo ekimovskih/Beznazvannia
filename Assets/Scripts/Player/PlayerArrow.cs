@@ -25,7 +25,7 @@ public class PlayerArrow : MonoBehaviour
     private void Awake()
     {
         Cursor = GameObject.Find("Cursor");
-        Item = Cursor.GetComponent<Cursor_scr>().InHand;
+        Item = Cursor.GetComponent<Cursor_scr>().InActiveSlot;
         damage = Item.DMG;
         KnockBack = Item.knockBack;
         player = GameObject.Find("Player");

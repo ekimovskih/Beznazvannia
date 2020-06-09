@@ -7,7 +7,7 @@ public class Drop_scr : MonoBehaviour
     // Start is called before the first frame update
     [Range (0,50)]public float BounceStr = 40f;
     public string type = "none";
-    public string sypertype;
+    public string supertype;
     public int id;
     public int InStack;
     public int count = 1;
@@ -24,6 +24,17 @@ public class Drop_scr : MonoBehaviour
     public GameObject AttackZone = null;
     public int Efficiency = 0;
     public int Armor = 0;
+    public int MaxHealth = 0;
+    public int Health = 0;
+    public int MaxStamina = 0;
+    public int Stamina = 0;
+    public int RegenHP = 0;
+    public int RegenSTM = 0;
+    public float speed = 0; // сорость бега
+    public float ShiftSpeed = 0; // + скорость с зажатым LeftShift
+    public float JumpStrengh = 0;
+    public int JumpWaste = 0;
+
     void Start()
     {
         

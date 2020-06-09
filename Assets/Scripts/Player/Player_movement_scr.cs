@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class Player_movement_scr : MonoBehaviour
 {
-    public int Health = 100;
-    public int Stamina = 20;
+    
     [HideInInspector] private float horizInput;
     [HideInInspector] private float verticInput;
     [HideInInspector] public Rigidbody2D rb;
     public bool Vulnerable = true;
     public bool CanMove = true;
     //public bool CanIteract = true;
-    public float speed = 3f; // сорость бега
-    public float ShiftSpeed = 2f; // + скорость с зажатым LeftShift
-    public float JumpStrengh = 3000f;
-    public int JumpWaste = 5;
+    
     public float JMPImune = 1f;
     private bool CanJump = true;
+
     [HideInInspector] public string playerView = "none";
     public Sprite[] playerStates = new Sprite[3]; // стоячие положения игрока
     private SpriteRenderer PlayerSprite;
@@ -31,9 +28,21 @@ public class Player_movement_scr : MonoBehaviour
     public GameObject AttackZone = null;
     public Transform Cursor;
     private bool regenerate = true;
+    [HideInInspector] public bool wasHited = false;
+
+    public int MaxHealth = 100;
+    public int Health = 100;
+    public int Stamina = 20;
+    public int MaxStamina = 20;
     public int RegenHP = 0;
     public int RegenSTM = 1;
-    [HideInInspector] public bool wasHited = false;
+    public float speed = 3f; // сорость бега
+    public float ShiftSpeed = 2f; // + скорость с зажатым LeftShift
+    public float JumpStrengh = 3000f;
+    public int JumpWaste = 5;
+    public int Armor = 0;
+
+    
 
     public Vector3 CameraOffset = new Vector3(0, 5, -30);
 
@@ -41,6 +50,7 @@ public class Player_movement_scr : MonoBehaviour
     {
         Cursor = GameObject.Find("Cursor").transform;
         PlayerContainer = GameObject.Find("PlayerContainer").transform;
+        //StatsTab = GameObject.Find("StatsTexts").GetComponent<StatsTabUpdater>();
         rb = GetComponent<Rigidbody2D>();
     }
     void Start()
@@ -219,7 +229,7 @@ public class Player_movement_scr : MonoBehaviour
         if (Vulnerable)
         {
             StartCoroutine(Imune());
-            Health -= dmg;
+            Health -= Mathf.Max(1, dmg - Armor);
             //wasHited = true;
             Debug.Log("You took dmg " + dmg + " Now Your health " + Health + " "+ wasHited);
             //wasHited = false;
@@ -232,7 +242,7 @@ public class Player_movement_scr : MonoBehaviour
         {
             StartCoroutine(Imune());
             //
-            Health -= dmg;
+            Health -= Mathf.Max(1,dmg-Armor);
             Debug.Log("You took dmg " + dmg + " Now Your health " + Health + " " + wasHited);
             KnockBackFromEnAttack(point, strength);
             //
@@ -284,10 +294,45 @@ public class Player_movement_scr : MonoBehaviour
         {
             regenerate = false;
             yield return new WaitForSeconds(1f);
-            Health += RegenHP;
-            Stamina += RegenSTM;
+            Health = Mathf.Min(Health + RegenHP,MaxHealth);
+            Stamina = Mathf.Min(Stamina + RegenSTM, MaxStamina);
             regenerate = true;
+        }
+    }
 
+    public void EquipmentEffects(Drop_scr drop, int sign)
+    {
+        /*
+    public int MaxHealth = 100;
+    public int Health = 100;
+    public int Stamina = 20;
+    public int MaxStamina = 20;
+    public int RegenHP = 0;
+    public int RegenSTM = 1;
+    public float speed = 3f; // сорость бега
+    public float ShiftSpeed = 2f; // + скорость с зажатым LeftShift
+    public float JumpStrengh = 3000f;
+    public int JumpWaste = 5;
+    public int Armor = 0;
+        */
+        MaxHealth += sign * drop.MaxHealth;
+        Health += sign * drop.Health;
+        Stamina += sign * drop.Stamina;
+        MaxStamina += sign * drop.MaxStamina;
+        RegenHP += sign * drop.RegenHP;
+        RegenSTM += sign * drop.RegenSTM;
+        speed += sign * drop.speed;
+        JumpStrengh += sign * drop.JumpStrengh;
+        JumpWaste += sign * drop.JumpWaste;
+        Armor += sign * drop.Armor;
+
+        if (Health > MaxHealth)
+        {
+            Health = MaxHealth;
+        }
+        if (Stamina > MaxStamina)
+        {
+            Stamina = MaxStamina;
         }
     }
 }

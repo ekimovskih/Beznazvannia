@@ -110,7 +110,7 @@ public class WorkBench_scr : MonoBehaviour
             CraftSlots[k].SetSlot();
         }
         //Destroy( CraftSlots[0].gameObject);
-        Debug.Log(CraftSlots[Sum-1].CraftItem);
+        //Debug.Log(CraftSlots[Sum-1].CraftItem);
     }
 
     public void CheckRecipe(GameObject[] craft, GameObject item, int[] Counts)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DungeonBuilder_scr : MonoBehaviour
 {
-
+    public string NextLevel;
     public GameObject GridBuilderPrefab = null;
     
     public Texture2D[] LevelMaps;

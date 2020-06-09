@@ -13,7 +13,7 @@ public class Portal_scr : MonoBehaviour
     private bool can = false;
     void Start()
     {
-
+        can = next;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

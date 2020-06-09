@@ -16,7 +16,17 @@ public class Door_scr : MonoBehaviour
         if (collision.tag == "Player")
         {
             //Debug.Log(papa);
-            papa.TeleportPlayer(Direction);
+            StartCoroutine(Timer(collision.GetComponent<Player_movement_scr>()));
+            //papa.TeleportPlayer(Direction);
         }
+    }
+    IEnumerator Timer(Player_movement_scr van)
+    {
+        van.CanMove = false;
+        StartCoroutine( GameObject.Find("DarkScreen").GetComponent<DarkScreen>().Darker());
+        yield return new WaitForSeconds(1f);
+        van.CanMove = true;
+        papa.TeleportPlayer(Direction);
+        
     }
 }

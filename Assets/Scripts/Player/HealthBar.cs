@@ -22,7 +22,7 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         float currentHP = hpController.Health;
-        fill = currentHP / 100; 
+        fill = currentHP / hpController.MaxStamina; 
         bar.fillAmount = fill;
     }
 }

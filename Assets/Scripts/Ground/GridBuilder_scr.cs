@@ -20,6 +20,13 @@ public class GridBuilder_scr : MonoBehaviour
     private Vector3 door4;
     private Vector2[] enemyCells = new Vector2[30];
     private int enemyCellsIndex = 0;
+    public GameObject arrowRight;
+    public GameObject arrowDown;
+    public GameObject arrowLeft;
+    public GameObject arrowUp;
+    public GameObject redportal;
+    public GameObject blueportal;
+
 
     public Sprite[] Textures = new Sprite[2];
 
@@ -65,6 +72,7 @@ public class GridBuilder_scr : MonoBehaviour
         }
         player.transform.position += player.GetComponent<Player_movement_scr>().PlayerContainer.position;
         GameObject.Find("Cursor").GetComponent<Cursor_scr>().GridBuilder = Next;
+        Next.GetComponent<GridBuilder_scr>().LightUp();
         this.gameObject.SetActive(false);
 
     }
@@ -78,6 +86,10 @@ public class GridBuilder_scr : MonoBehaviour
         Build();
         //Debug.Log(enemyCellsIndex + "   " + RoomMap.name);
         
+    }
+    public void LightUp()
+    {
+        StartCoroutine(GameObject.Find("DarkScreen").GetComponent<DarkScreen>().Lighter());
     }
     void Build()
     {
@@ -200,7 +212,7 @@ public class GridBuilder_scr : MonoBehaviour
                     {
                         if (RoomMap.GetPixel(i+1, j).b == 0)
                         {
-                            CellNum = 21;
+                            CellNum = 9;
                             Instantiate(LocationCells[22], new Vector3(i+1, j, j), Quaternion.identity, thisObject.transform);
                             door4 = (door4 + new Vector3(i, j,0)) * 0.5f;
                         }
@@ -219,6 +231,17 @@ public class GridBuilder_scr : MonoBehaviour
                     enemyCellsIndex++;
                     CellNum = 9;
                 }
+                else if ((blue == 0 && red == 1 && green == 0))
+                {
+                    CellNum = 9;
+                    Instantiate(redportal, new Vector3(i, j, 0), Quaternion.identity, thisObject.transform);
+                }
+                else if ((blue == 1 && red == 0 && green == 0))
+                {
+                    CellNum = 9;
+                    Instantiate(blueportal, new Vector3(i, j, 0), Quaternion.identity, thisObject.transform);
+                    blueportal.GetComponent<Portal_scr>().WhereToPort = GetComponentInParent<DungeonBuilder_scr>().NextLevel;
+                }
                 else //белый пустой
                 {
                     CellNum = 9;
@@ -233,6 +256,14 @@ public class GridBuilder_scr : MonoBehaviour
             }
             //Debug.Log(i);
         }
+        //Instantiate(arrowRight, thisObject.transform);
+        arrowRight.transform.position = door1 + Vector3.left*2; 
+        //Instantiate(arrowDown, thisObject.transform);
+        arrowDown.transform.position = door2 + Vector3.up * 2;
+        //Instantiate(arrowLeft, thisObject.transform);
+        arrowLeft.transform.position = door3 + Vector3.right * 2;
+        //Instantiate(arrowUp, thisObject.transform);
+        arrowUp.transform.position = door4 + Vector3.down * 2;
     }
     
     int CellType(int i, int j) //можно переписать на считывание 4 ячеек (просто оно работало и ладно)

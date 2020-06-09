@@ -28,8 +28,8 @@ public class Cursor_scr : MonoBehaviour
     //public GameObject testobject = null;
     public GameObject GridBuilder = null;
     //public GameObject testobject3 = null;
-    public Drop_scr EmptyHand;
-    public Drop_scr InHand;
+    //public Drop_scr EmptyHand;
+    public Drop_scr InActiveSlot;
     //private bool InvOpen = false;
     public int HandContainer;
     public int HandContainerCount;
@@ -144,20 +144,20 @@ public class Cursor_scr : MonoBehaviour
     {
         if (!MouseOverUi())
         {
-            if (InHand != null && InHand.Interactive && PlayerComponent.CanMove && !HandContainerFull)
+            if (InActiveSlot != null && InActiveSlot.Interactive && PlayerComponent.CanMove && !HandContainerFull)
             {
 
-                float WaitTime = InHand.ActionSpeed;
+                float WaitTime = InActiveSlot.ActionSpeed;
                 ActionPossible = Time.time + WaitTime;
-                if (InHand.type == "Weapon")
+                if (InActiveSlot.type == "Weapon")
                 {
-                    Instantiate(InHand.AttackZone, Player.transform.position, Quaternion.identity);
+                    Instantiate(InActiveSlot.AttackZone, Player.transform.position, Quaternion.identity);
                     ShowWork();
                     return;
                 }
                 else
                 {
-                    GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InHand);
+                    GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InActiveSlot);
                     //Debug.Log(Time.time + " Start");
                     //float WaitTime = InHand.ActionSpeed;
 
@@ -174,16 +174,29 @@ public class Cursor_scr : MonoBehaviour
             }
             else if (HandContainerFull)
             {
-                Vector3 newDirr = (transform.position - Player.transform.position).normalized;
-                Debug.Log(MouseOverUi());
-                GameObject newDrop = Instantiate(DropCatalog.GetGObyID(HandContainer), Player.transform.position+ newDirr*5f, Quaternion.identity);
-                CursorContainerActivation();
-                //Vector3 newDirr = transform.position - Player.transform.position;
-                newDrop.GetComponent<Rigidbody2D>().AddForce(newDirr * 1f);
-                
+                DropItemInHand();
             }
         }
         //Debug.Log("U CANT");
+    }
+
+    public void DropItemInHand()
+    {
+        Vector3 newDirr = (transform.position - Player.transform.position).normalized;
+        //Debug.Log(HandContainer);
+        GameObject newDrop = Instantiate(DropCatalog.GetGObyID(HandContainer), Player.transform.position + newDirr * 5f, Quaternion.identity);
+        CursorContainerActivation();
+        //Vector3 newDirr = transform.position - Player.transform.position;
+        newDrop.GetComponent<Rigidbody2D>().AddForce(newDirr * 1f);
+    }
+    public void DropItemInHand(GameObject trash)
+    {
+        Vector3 newDirr = (transform.position - Player.transform.position).normalized;
+        Debug.Log(trash);
+        GameObject newDrop = Instantiate(DropCatalog.GetGObyID(trash.GetComponent<Drop_scr>().id), Player.transform.position + newDirr * 5f, Quaternion.identity);
+        CursorContainerActivation();
+        //Vector3 newDirr = transform.position - Player.transform.position;
+        newDrop.GetComponent<Rigidbody2D>().AddForce(newDirr * 1f);
     }
 
     IEnumerator ShowWork(float WaitTime)
@@ -200,7 +213,7 @@ public class Cursor_scr : MonoBehaviour
 
     public void ChangeInHandItem(Drop_scr Hand)
     {
-        InHand = Hand;
+        InActiveSlot = Hand;
     }
     /*
     public void CursorContainerActivation(Sprite spr,bool active)
@@ -225,10 +238,10 @@ public class Cursor_scr : MonoBehaviour
     }
     public void CursorContainerActivation(GameObject item, int count)
     {
-        InHand = item.GetComponent<Drop_scr>();
+        InActiveSlot = item.GetComponent<Drop_scr>();
         InHandIndicator.SetActive(true);
         InHandIndicator.GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
-        HandContainer = InHand.id;
+        HandContainer = InActiveSlot.id;
         HandContainerCount = count;
         HandContainerFull = true;
         //return true;

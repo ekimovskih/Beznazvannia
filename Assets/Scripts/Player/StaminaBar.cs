@@ -22,7 +22,7 @@ public class StaminaBar : MonoBehaviour
     void Update()
     {
         float currentSTM = StaminaController.Stamina;
-        fill = currentSTM / 100;
+        fill = currentSTM / StaminaController.MaxStamina;
         bar.fillAmount = fill;
     }
 }
