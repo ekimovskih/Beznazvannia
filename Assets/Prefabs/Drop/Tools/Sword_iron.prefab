@@ -101,12 +101,12 @@ PrefabInstance:
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: Recipe.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: RecipeCount.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
@@ -116,7 +116,7 @@ PrefabInstance:
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: id
-      value: 701
+      value: 702
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
@@ -136,18 +136,18 @@ PrefabInstance:
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: ResultCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: Recipe.Array.data[0]
       value: 
-      objectReference: {fileID: 6832024348306267429, guid: bf398ccb13f783c4aab82b4872494081,
+      objectReference: {fileID: 5976738481849284557, guid: 66d1bab4817dba64aab228028729470b,
         type: 3}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: RecipeCount.Array.data[0]
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
@@ -168,7 +168,18 @@ PrefabInstance:
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: DMG
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: Recipe.Array.data[1]
+      value: 
+      objectReference: {fileID: 7719881895007296596, guid: 4f414eb7e8dfdca44a65740a24fb52ee,
+        type: 3}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: RecipeCount.Array.data[1]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99a9096ca7d0a7c408d44b08ebb7950e, type: 3}

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GridBuilder_scr : MonoBehaviour
 {
-    public int GridWidth = 2;
-    public int GridHigh = 2;
+    private GameObject[] EnemyList = null;
+    public GameObject[] ObjectList = null;
+    public int[] ObjectVariationsChanses;
+    private int GridWidth = 2;
+    private int GridHigh = 2;
     //public bool rebuildable = true;
     //public bool builded = false;
     //public string Location = "Vilage";
@@ -15,9 +18,9 @@ public class GridBuilder_scr : MonoBehaviour
     private int xONmap;
     private int yONmap;
     public Vector3 door1;
-    private Vector3 door2;
-    private Vector3 door3;
-    private Vector3 door4;
+    public Vector3 door2;
+    public Vector3 door3;
+    public Vector3 door4;
     private Vector2[] enemyCells = new Vector2[30];
     private int enemyCellsIndex = 0;
     public GameObject arrowRight;
@@ -26,6 +29,12 @@ public class GridBuilder_scr : MonoBehaviour
     public GameObject arrowUp;
     public GameObject redportal;
     public GameObject blueportal;
+    public GameObject LocalGrid;
+    public Vector3 door0;
+
+    public bool IsDungeon = true;
+    private int MaxEnemysInRoom = 5;
+    private int EnemyCellsAtAll = 0;
 
 
     public Sprite[] Textures = new Sprite[2];
@@ -33,7 +42,22 @@ public class GridBuilder_scr : MonoBehaviour
     private GameObject[,] Grid;
     private void Start()
     {
+        if (!IsDungeon)
+        {
+            Build();
+        }
         //Build();
+        //Debug.Log(enemyCells[0] == Vector2.zero);
+    }
+    public void TeleportPlayer()
+    {
+        GameObject player = GameObject.Find("Player");
+        player.transform.position = LocalGrid.GetComponent<GridBuilder_scr>().door0;
+        LocalGrid.SetActive(true);
+        player.transform.position += player.GetComponent<Player_movement_scr>().PlayerContainer.position;
+        GameObject.Find("Cursor").GetComponent<Cursor_scr>().GridBuilder = LocalGrid;
+        LocalGrid.GetComponent<GridBuilder_scr>().LightUp();
+        this.gameObject.SetActive(false);
     }
     public void TeleportPlayer(int  door)
     {
@@ -77,15 +101,19 @@ public class GridBuilder_scr : MonoBehaviour
 
     }
 
-    public void Set(Texture2D spr, int x, int y, GameObject[,] FullMap)
+    public void Set(Texture2D spr, int x, int y, GameObject[,] FullMap, GameObject[] EnemysVariations, GameObject[] ObjVariations, int[] ObjectChanses)
     {
+        ObjectVariationsChanses = ObjectChanses;
+        ObjectList = ObjVariations;
         RoomMap = spr;
         LocationGrids = FullMap;
         xONmap = x;
         yONmap = y;
+        EnemyList = EnemysVariations;
         Build();
-        //Debug.Log(enemyCellsIndex + "   " + RoomMap.name);
         
+        //Debug.Log(enemyCellsIndex + "   " + RoomMap.name);
+
     }
     public void LightUp()
     {
@@ -165,7 +193,7 @@ public class GridBuilder_scr : MonoBehaviour
                         if (RoomMap.GetPixel(i+1, j).r == 0)
                         {
                             CellNum = 16;
-                            door2 = (door2 + new Vector3(i, j,0)) / 2;
+                            door2 = (door2 + new Vector3(i+1, j,0)) / 2;
                         }
                         else
                         {
@@ -190,7 +218,7 @@ public class GridBuilder_scr : MonoBehaviour
                         if (RoomMap.GetPixel(i, j+1).r == 0)
                         {
                             CellNum = 19;
-                            door3 = (door3 + new Vector3(i, j,0))/2;
+                            door3 = (door3 + new Vector3(i, j+1,0))/2;
                         }
                         else
                         {
@@ -214,7 +242,7 @@ public class GridBuilder_scr : MonoBehaviour
                         {
                             CellNum = 9;
                             Instantiate(LocationCells[22], new Vector3(i+1, j, j), Quaternion.identity, thisObject.transform);
-                            door4 = (door4 + new Vector3(i, j,0)) * 0.5f;
+                            door4 = (door4 + new Vector3(i+1, j,0)) * 0.5f;
                         }
                         else
                         {
@@ -229,17 +257,26 @@ public class GridBuilder_scr : MonoBehaviour
                 {
                     enemyCells[enemyCellsIndex] = new Vector2(i+0.5f, j+0.5f);
                     enemyCellsIndex++;
+                    EnemyCellsAtAll++;
                     CellNum = 9;
                 }
-                else if ((blue == 0 && red == 1 && green == 0))
+                else if ((blue == 0 && red == 1 && green == 0)) // красный портал
                 {
                     CellNum = 9;
                     Instantiate(redportal, new Vector3(i, j, 0), Quaternion.identity, thisObject.transform);
+                        //Debug.Log(new Vector3(i, j, 0));
+                        Transform pl = GameObject.Find("Player").transform;
+                        
+                        pl.position = new Vector3(i, j, 0);
+                        pl.position += GameObject.Find("Player").GetComponent<Player_movement_scr>().PlayerContainer.position;
+                        //Debug.Log (pl.position);
+                    GameObject.Find("Cursor").GetComponent<Cursor_scr>().GridBuilder = this.gameObject;
                 }
-                else if ((blue == 1 && red == 0 && green == 0))
+                else if ((blue == 1 && red == 0 && green == 0)) // синий портал
                 {
                     CellNum = 9;
                     Instantiate(blueportal, new Vector3(i, j, 0), Quaternion.identity, thisObject.transform);
+                    //player.transform.position += player.GetComponent<Player_movement_scr>().PlayerContainer.position;
                     blueportal.GetComponent<Portal_scr>().WhereToPort = GetComponentInParent<DungeonBuilder_scr>().NextLevel;
                 }
                 else //белый пустой
@@ -253,19 +290,61 @@ public class GridBuilder_scr : MonoBehaviour
                 {
                     j++;
                 }
+                else if (CellNum == 10)
+                {
+                    Grid[j, i].GetComponent<Cell_class>().objOnIt =  ChoseObjOnCell();
+                }
             }
             //Debug.Log(i);
         }
-        //Instantiate(arrowRight, thisObject.transform);
         arrowRight.transform.position = door1 + Vector3.left*2; 
-        //Instantiate(arrowDown, thisObject.transform);
         arrowDown.transform.position = door2 + Vector3.up * 2.5f;
-        //Instantiate(arrowLeft, thisObject.transform);
         arrowLeft.transform.position = door3 + Vector3.right * 2;
-        //Instantiate(arrowUp, thisObject.transform);
-        arrowUp.transform.position = door4 + Vector3.down * 2;
+        arrowUp.transform.position = door4 + Vector3.down ;
+        SpawnMobs();
+    }
+
+    GameObject ChoseObjOnCell()
+    {
+        int num = Random.Range(0, ObjectVariationsChanses.Length);
+        //chance = ObjectVariationsChanses[num];
+        int chance = Random.Range(0, 100);
+        if (chance < ObjectVariationsChanses[num])
+        {
+            return ObjectList[num];
+        }
+        return null;
     }
     
+    void SpawnMobs()
+    {
+        //Debug.Log(EnemyCellsAtAll + "EnemyCellsAtAll");
+        if (EnemyCellsAtAll > 0)
+        {
+            for (int i = 0; i < enemyCells.Length; i++)
+            {
+                if (MaxEnemysInRoom > 0 && enemyCells[i] != Vector2.zero)
+                {
+                    int chanse = Random.Range(0, 100);
+                    if (chanse > 80)
+                    {
+                        int type = Random.Range(0, EnemyList.Length);
+                        Instantiate(EnemyList[type], enemyCells[i], Quaternion.identity, transform);
+                        MaxEnemysInRoom--;
+                        enemyCells[i] = Vector2.zero;
+                    }
+                }
+            }
+            //Debug.Log(MaxEnemysInRoom + " MaxEnemysInRoom");
+            
+            if (MaxEnemysInRoom > 0)
+            {
+                SpawnMobs();
+            }
+        }
+        
+    }
+
     int CellType(int i, int j) //можно переписать на считывание 4 ячеек (просто оно работало и ладно)
     {
         //float cur;
@@ -302,11 +381,6 @@ public class GridBuilder_scr : MonoBehaviour
             }
             d2 = RoomMap.GetPixel(i, j - 1).r; ;
         }
-
-
-
-
-
 
         if (Mathf.Max(u1, u2 , u3 , m1 , m3, d1, d2, d3) == 0 || i==0||j==0||i == GridWidth||j== GridHigh)
         {

@@ -74,7 +74,7 @@ public class CraftSlot : MonoBehaviour
         {
             if (!Cursor.HandContainerFull)
             {
-                Debug.Log(CraftItem);
+                //Debug.Log(CraftItem);
                 Cursor.CursorContainerActivation(CraftItem, CraftItemCount);
 
 

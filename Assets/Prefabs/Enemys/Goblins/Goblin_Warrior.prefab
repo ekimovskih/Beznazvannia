@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902a96929d8534241a2be608bef84cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 150
+  Health: 25
   MovementSpeed: 1.5
   AgroRadius: 5
   DisAgroRadius: 20

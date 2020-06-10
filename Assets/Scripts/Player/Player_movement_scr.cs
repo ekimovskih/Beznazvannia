@@ -187,7 +187,7 @@ public class Player_movement_scr : MonoBehaviour
     {
         StopCoroutine("MouseHitAction");
         CanMove = false;
-        Debug.Log("ghjfghf");
+        //Debug.Log("ghjfghf");
         //CanIteract = false;
         SpriteMoveChanger(CurrDir.x, CurrDir.y);
         yield return new WaitForSeconds(WaitTime);//+ WaitTime*0.5f);

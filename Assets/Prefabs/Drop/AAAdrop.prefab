@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 43064325596455538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BounceStr: 40
   type: none
+  supertype: 
   id: 0
   InStack: 1
   count: 1
@@ -82,6 +83,16 @@ MonoBehaviour:
   AttackZone: {fileID: 0}
   Efficiency: 0
   Armor: 0
+  MaxHealth: 0
+  Health: 0
+  MaxStamina: 0
+  Stamina: 0
+  RegenHP: 0
+  RegenSTM: 0
+  speed: 0
+  ShiftSpeed: 0
+  JumpStrengh: 0
+  JumpWaste: 0
 --- !u!212 &4887054445814681695
 SpriteRenderer:
   m_ObjectHideFlags: 0

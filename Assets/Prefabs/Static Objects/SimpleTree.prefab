@@ -52,7 +52,32 @@ PrefabInstance:
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: ItemType
-      value: axe
+      value: Axe
+      objectReference: {fileID: 0}
+    - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.06395373
+      objectReference: {fileID: 0}
+    - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.47790748
+      objectReference: {fileID: 0}
+    - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.04313159
+      objectReference: {fileID: 0}
+    - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.38272056
       objectReference: {fileID: 0}
     - target: {fileID: 4940420283676534236, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}

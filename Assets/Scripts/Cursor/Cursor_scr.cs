@@ -155,6 +155,12 @@ public class Cursor_scr : MonoBehaviour
                     ShowWork();
                     return;
                 }
+                if (InActiveSlot.type == "Potion")
+                {
+                    PlayerComponent.EquipmentEffects(InActiveSlot,1);
+                    GameObject.Find("InventoryManager").GetComponent<Inventory_scr>().DecreseFromActiveSlot();
+                    return;
+                }
                 else
                 {
                     GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InActiveSlot);
@@ -182,21 +188,23 @@ public class Cursor_scr : MonoBehaviour
 
     public void DropItemInHand()
     {
-        Vector3 newDirr = (transform.position - Player.transform.position).normalized;
+        Vector3 newDirr = (transform.position - Player.transform.position);
+        Vector3 dir = new Vector3(newDirr.x, newDirr.y, 0).normalized;
         //Debug.Log(HandContainer);
-        GameObject newDrop = Instantiate(DropCatalog.GetGObyID(HandContainer), Player.transform.position + newDirr * 5f, Quaternion.identity);
+        GameObject newDrop = Instantiate(DropCatalog.GetGObyID(HandContainer), Player.transform.position + dir, Quaternion.identity);
         CursorContainerActivation();
         //Vector3 newDirr = transform.position - Player.transform.position;
-        newDrop.GetComponent<Rigidbody2D>().AddForce(newDirr * 1f);
+        newDrop.GetComponent<Rigidbody2D>().AddForce(dir/5f);
     }
-    public void DropItemInHand(GameObject trash)
+    public void DropItemInHand(GameObject trash, int count)
     {
-        Vector3 newDirr = (transform.position - Player.transform.position).normalized;
+        //Vector3 newDirr = (transform.position - Player.transform.position).normalized;
         Debug.Log(trash);
-        GameObject newDrop = Instantiate(DropCatalog.GetGObyID(trash.GetComponent<Drop_scr>().id), Player.transform.position + newDirr * 5f, Quaternion.identity);
+        GameObject newDrop = Instantiate(DropCatalog.GetGObyID(trash.GetComponent<Drop_scr>().id), Player.transform.position, Quaternion.identity);
+        newDrop.GetComponent<Drop_scr>().count = count;
         CursorContainerActivation();
         //Vector3 newDirr = transform.position - Player.transform.position;
-        newDrop.GetComponent<Rigidbody2D>().AddForce(newDirr * 1f);
+        //newDrop.GetComponent<Rigidbody2D>().AddForce(newDirr * 1f);
     }
 
     IEnumerator ShowWork(float WaitTime)

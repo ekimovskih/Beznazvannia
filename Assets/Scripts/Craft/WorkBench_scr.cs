@@ -127,34 +127,55 @@ public class WorkBench_scr : MonoBehaviour
         int coincidences = 0;
         bool IdealCount = true;
 
+        int[] ceckedIds = new int[Clength];
+        int ceckedIdsCounter = 0;
+
         for (int i = 0; i < Clength; i++)
         {
             
             if (craft[i] != null)
             {
                 int Cid = craft[i].GetComponent<Drop_scr>().id;
-                for (int k = 0; k < Rlength; k++)
+                bool wasnt = true;
+                
+                for (int m = 0; m < ceckedIdsCounter; m++)
                 {
-                    if (Cid == recipe[k].GetComponent<Drop_scr>().id)
+                    if (ceckedIds[m] == Cid)
                     {
-                        if(Counts[i] < recipeCount[k])
-                        {
-                            IdealCount = false;
-                        }
-                        //Debug.Log("+ coincidence");
-                        coincidences++;
+                        wasnt = false;
+                        Debug.Log("ghjghjghj");
                         break;
                     }
-                    if (k== Rlength - 1)
-                    {
-                        coincidences = -10;
-                    }
                 }
-                if (coincidences < 0)
+                
+                if (wasnt)
                 {
-                    return;
+                    for (int k = 0; k < Rlength; k++)
+                    {
+                        if (Cid == recipe[k].GetComponent<Drop_scr>().id)
+                        {
+                            if (Counts[i] < recipeCount[k])
+                            {
+                                IdealCount = false;
+                            }
+                            //Debug.Log("+ coincidence");
+                            coincidences++;
+                            break;
+                        }
+                        if (k == Rlength - 1)
+                        {
+                            coincidences = -10;
+                        }
+                    }
+                    if (coincidences < 0)
+                    {
+                        return;
+                    }
+                    ceckedIds[ceckedIdsCounter] = Cid;
+                    ceckedIdsCounter++;
                 }
             }
+
         }
         if(coincidences>= Rlength)
         {

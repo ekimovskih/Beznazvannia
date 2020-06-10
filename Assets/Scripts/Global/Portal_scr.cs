@@ -17,7 +17,7 @@ public class Portal_scr : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player"&&can)
+        if (collision.tag == "Player"&&can&& WhereToPort != null)
         {
             StopAllCoroutines();
             StartCoroutine(Plus());
@@ -49,7 +49,7 @@ public class Portal_scr : MonoBehaviour
             Symbols[i].SetActive(true);
             sequence++;
         }
-        StartCoroutine(GameObject.Find("DarkScreen").GetComponent<DarkScreen>().Darker());
+        GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeDarker();
         yield return new WaitForSeconds(1f);
         GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeLighter();
         SceneManager.LoadScene(WhereToPort);//, LoadSceneMode.Additive);

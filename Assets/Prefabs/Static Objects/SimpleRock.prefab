@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: Droplist.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: DropRates.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: health
-      value: 15
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
@@ -52,7 +52,7 @@ PrefabInstance:
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: DropRates.Array.data[1].x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
@@ -63,6 +63,22 @@ PrefabInstance:
         type: 3}
       propertyPath: ItemType
       value: Pickaxe
+      objectReference: {fileID: 0}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: Droplist.Array.data[2]
+      value: 
+      objectReference: {fileID: 6638569788053813636, guid: be6e8cd2130d9344f8203256ff7912b0,
+        type: 3}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: DropRates.Array.data[2].x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: DropRates.Array.data[2].y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}

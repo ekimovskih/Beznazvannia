@@ -25,6 +25,8 @@ public class Enemy_propertys_scr : MonoBehaviour
     public float AttackPrepare = 3f;
     public float AttackDuration = 3f;
     public float AttackRelax =3f;
+    public GameObject[] DeathDrop;
+    public int[] DropRates;
 
     [HideInInspector]public GameObject player = null;
 
@@ -54,6 +56,7 @@ public class Enemy_propertys_scr : MonoBehaviour
     {
         if (Health<1)
         {
+            DropItems();
             Destroy(this.gameObject);
         }
     }
@@ -214,5 +217,18 @@ public class Enemy_propertys_scr : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(NewPatroleDirrection(2f));
         }     
+    }
+
+    public void DropItems()
+    {
+        for (int i = 0; i< DeathDrop.Length; i++)
+        {
+            int chance = Random.Range(0, 100);
+            if (chance < DropRates[i])
+            {
+                GameObject drop = Instantiate(DeathDrop[i], transform.position + Vector3.up * i / 100f, Quaternion.identity);
+                //drop.GetComponent<Drop_scr>().count = Random.Range(0, DropRates[i].y+1);
+            }
+        }
     }
 }

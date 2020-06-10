@@ -19,7 +19,7 @@ public class SwordMovement : MonoBehaviour
         
         xy = transform.rotation.eulerAngles.z;
         //transform.rotation = Quaternion.AngleAxis(30, new Vector3(0,0,1));
-        Debug.Log(mod);
+        //Debug.Log(mod);
     }
 
     // Update is called once per frame

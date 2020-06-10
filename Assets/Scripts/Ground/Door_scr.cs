@@ -6,6 +6,7 @@ public class Door_scr : MonoBehaviour
 {
     public int Direction = 0;
     private GridBuilder_scr papa;
+    public bool local = false;
     private void Awake()
     {
         papa = GetComponentInParent<GridBuilder_scr>();
@@ -15,6 +16,10 @@ public class Door_scr : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            if (local)
+            {
+                StartCoroutine(Timer(collision.GetComponent<Player_movement_scr>(), local));
+            }
             //Debug.Log(papa);
             StartCoroutine(Timer(collision.GetComponent<Player_movement_scr>()));
             //papa.TeleportPlayer(Direction);
@@ -23,10 +28,19 @@ public class Door_scr : MonoBehaviour
     IEnumerator Timer(Player_movement_scr van)
     {
         van.CanMove = false;
-        StartCoroutine( GameObject.Find("DarkScreen").GetComponent<DarkScreen>().Darker());
+        GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeDarker();
         yield return new WaitForSeconds(1f);
         van.CanMove = true;
         papa.TeleportPlayer(Direction);
         
+    }
+    IEnumerator Timer(Player_movement_scr van,bool asdfgh)
+    {
+        van.CanMove = false;
+        GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeDarker();
+        yield return new WaitForSeconds(1f);
+        van.CanMove = true;
+        papa.TeleportPlayer();
+
     }
 }

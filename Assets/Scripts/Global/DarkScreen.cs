@@ -21,6 +21,8 @@ public class DarkScreen : MonoBehaviour
     {
         if (can)
         {
+            StopCoroutine("Lighter");
+            //StopAllCoroutines();
             Parent.transform.position = on;
             can = false;
             for (int i = 0; i < 100; i++)
@@ -38,22 +40,30 @@ public class DarkScreen : MonoBehaviour
     }
     public IEnumerator Lighter()
     {
-        can = true;
+        //can = true;
         for (int i = 100; i > 0; i--)
         {
-            Debug.Log(sprite.color.a);
+            //Debug.Log(sprite.color.a);
             Color eh = sprite.color;
             eh.a = i / 50f;
             sprite.color = eh;
             yield return new WaitForSeconds(0f);
         }
         yield return new WaitForSeconds(1f);
-        Parent.transform.position = off;
+        if (can)
+        {
+            Parent.transform.position = off;
+        }
+        
     }
 
     public void MakeLighter()
     {
         StartCoroutine(Lighter());
     }
+    public void MakeDarker()
+    {
+        StartCoroutine(Darker());
 
+    }
 }

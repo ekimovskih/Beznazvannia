@@ -126,7 +126,7 @@ public class Inventory_scr : MonoBehaviour
         {
             if (CraftItems[i] != null)
             {
-                CursorComponent.DropItemInHand(CraftItems[i]);
+                CursorComponent.DropItemInHand(CraftItems[i],CraftCounts[i]);
                 CraftItems[i] = null;
             }
         }
@@ -481,6 +481,32 @@ public class Inventory_scr : MonoBehaviour
             }
             ActivateSlot(support);
         }
+    }
+    public void DeathLose()
+    {
+        for (int i = 12; i < InvItems.Length; i++)
+        {
+            if (InvItems != null)
+            {
+                int chance = UnityEngine.Random.Range(0, 100);
+                if (chance < 10)
+                {
+                    chance = UnityEngine.Random.Range(0, 10);
+                    DecreseFromSlot(i, chance);
+                    //drop.GetComponent<Drop_scr>().count = Random.Range(0, DropRates[i].y+1);
+                }
+            }
+        }
+    }
+    public void DecreseFromActiveSlot()
+    {
+        ItemsCount[ActiveSlot]--;
+        UpdateInventory();
+    }
+    public void DecreseFromSlot(int slot,int count)
+    {
+        ItemsCount[slot] -=count;
+        UpdateInventory();
     }
     void ChangeInHandItem()
     {

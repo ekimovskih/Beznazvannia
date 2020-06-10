@@ -38,6 +38,11 @@ PrefabInstance:
       propertyPath: AgroRadius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1295804890673955794, guid: b492140ad80b85d42b920f33f0d6cdae,
+        type: 3}
+      propertyPath: Health
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1295804890673955796, guid: b492140ad80b85d42b920f33f0d6cdae,
         type: 3}
       propertyPath: m_LocalPosition.x

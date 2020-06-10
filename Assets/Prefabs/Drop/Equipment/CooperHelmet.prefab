@@ -81,12 +81,12 @@ PrefabInstance:
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: Recipe.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: RecipeCount.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
@@ -106,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: RecipeCount.Array.data[0]
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
@@ -133,5 +133,11 @@ PrefabInstance:
       propertyPath: Interactive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: Recipe.Array.data[0]
+      value: 
+      objectReference: {fileID: 3042757959605977795, guid: 5c80d18c49dd70248930ea48dee661ff,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99a9096ca7d0a7c408d44b08ebb7950e, type: 3}

@@ -6,7 +6,11 @@ public class DungeonBuilder_scr : MonoBehaviour
 {
     public string NextLevel;
     public GameObject GridBuilderPrefab = null;
-    
+
+    public GameObject[] EnemysVariations;
+    public GameObject[] ObjectVariations;
+    public int[] ObjectVariationsChanses;
+
     public Texture2D[] LevelMaps;
     public Texture2D[] Grids1;
     public Texture2D[] Grids12;
@@ -194,15 +198,15 @@ public class DungeonBuilder_scr : MonoBehaviour
             //Debug.Log("Blue" + blue + " red" + red + " green" + green + " state" + state);
             //Debug.Log(Grids[x, y]);
             //Grids[x, y] = Grids[x, y].AddComponent< GridBuilder_scr(ExPortal[Random.Range(0, ExPortal.Length - 1)], x, y, Grids) > as GridBuilder_scr;
-            Grids[x, y].GetComponent<GridBuilder_scr>().Set(ExPortal[Random.Range(0, ExPortal.Length - 1)], x, y, Grids);
+            Grids[x, y].GetComponent<GridBuilder_scr>().Set(ExPortal[Random.Range(0, ExPortal.Length)], x, y, Grids, EnemysVariations, ObjectVariations, ObjectVariationsChanses); //ВОЗМОЖНЫ ОШИБКИ ИЗ-ЗА РЭНДЖА
             Grids[x, y].SetActive(false);
             return;
 
         }
         if (red == 1)
         {
-            //Debug.Log("Blue" + blue + " red" + red + " green" + green + " state" + state);
-            Grids[x, y].GetComponent<GridBuilder_scr>().Set(EnPortal[Random.Range(0, EnPortal.Length - 1)], x, y, Grids);
+            //Debug.Log(EnPortal.Length - 1);
+            Grids[x, y].GetComponent<GridBuilder_scr>().Set(EnPortal[Random.Range(0, EnPortal.Length)], x, y, Grids, EnemysVariations , ObjectVariations, ObjectVariationsChanses);
             Grids[x, y].SetActive(true);
             GameObject.Find("Cursor").GetComponent<Cursor_scr>().GridBuilder = Grids[x, y];
             //Grids[x, y] = new GridBuilder_scr(EnPortal[Random.Range(0, EnPortal.Length - 1)], x, y, Grids);
@@ -211,7 +215,7 @@ public class DungeonBuilder_scr : MonoBehaviour
         else
         {
             //Debug.Log("Blue" + blue + " red" + red + " green" + green + " state" + state);
-            Grids[x, y].GetComponent<GridBuilder_scr>().Set(Room[Random.Range(0, Room.Length - 1)], x, y, Grids);
+            Grids[x, y].GetComponent<GridBuilder_scr>().Set(Room[Random.Range(0, Room.Length)], x, y, Grids, EnemysVariations, ObjectVariations, ObjectVariationsChanses);
             Grids[x, y].SetActive(false);
             //Grids[x, y] = new GridBuilder_scr(Room[Random.Range(0, Room.Length - 1)], x, y, Grids);
             return;
