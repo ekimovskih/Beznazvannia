@@ -36,7 +36,7 @@ public class PlayerAttack_scr : MonoBehaviour
         if (!(playerComponent.wasHited))
         {
             playerComponent.CanMove = false;
-            playerComponent.WorkInd.GetComponent<SpriteRenderer>().enabled = true;
+            //playerComponent.WorkInd.GetComponent<SpriteRenderer>().enabled = true;
             //playerComponent.WorkInd.SetActive(true);
             AttackDirrection();
         }
@@ -74,7 +74,7 @@ public class PlayerAttack_scr : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             playerComponent.CanMove = true;
-            StartCoroutine(SelfDestroy(lifetime));
+            StartCoroutine(SelfDestroy(lifetime/200));
         }
 
         if (Cursor.transform.position.y > transform.position.y)

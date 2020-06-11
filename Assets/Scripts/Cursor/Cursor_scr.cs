@@ -34,6 +34,10 @@ public class Cursor_scr : MonoBehaviour
     public int HandContainer;
     public int HandContainerCount;
     public bool HandContainerFull = false;
+    public Texture2D CursorDefault;
+    public Texture2D CursorClick;
+    public Texture2D CursorTake;
+
 
 
 
@@ -43,6 +47,7 @@ public class Cursor_scr : MonoBehaviour
         DropCatalog = GameObject.Find("DropCatalog").GetComponent<DropCatalog_scr>();
         PlayerComponent = Player.GetComponent<Player_movement_scr>();
         //InHandIndicator = GameObject.Find("WorkIndicator");
+        //Cursor.SetCursor(CursorDefault, Vector2.zero, CursorMode.Auto);
     }
     void Start()
     {
@@ -70,6 +75,14 @@ public class Cursor_scr : MonoBehaviour
                 MouseLMBaction();
 
             }
+        }
+        if (Input.GetMouseButtonDown(0)&& !HandContainerFull)
+        {
+            Cursor.SetCursor(CursorClick, Vector2.zero, CursorMode.Auto);
+        }
+        if (Input.GetMouseButtonUp(0) && !HandContainerFull)
+        {
+            Cursor.SetCursor(CursorDefault, Vector2.zero, CursorMode.Auto);
         }
     }
 
@@ -152,7 +165,7 @@ public class Cursor_scr : MonoBehaviour
                 if (InActiveSlot.type == "Weapon")
                 {
                     Instantiate(InActiveSlot.AttackZone, Player.transform.position, Quaternion.identity, Player.transform);
-                    ShowWork();
+                    //ShowWork();
                     return;
                 }
                 if (InActiveSlot.type == "Potion")
@@ -170,6 +183,7 @@ public class Cursor_scr : MonoBehaviour
                     //Debug.Log(ActionPossible + " Needed");
 
                 }
+                
                 StartCoroutine(ShowWork(WaitTime));
 
                 //Vector3 plpos = Player.transform.position;
@@ -196,6 +210,7 @@ public class Cursor_scr : MonoBehaviour
         CursorContainerActivation();
         //Vector3 newDirr = transform.position - Player.transform.position;
         newDrop.GetComponent<Rigidbody2D>().AddForce(dir/5f);
+        Cursor.SetCursor(CursorDefault, Vector2.zero, CursorMode.Auto);
     }
     public void DropItemInHand(GameObject trash, int count)
     {
@@ -204,6 +219,7 @@ public class Cursor_scr : MonoBehaviour
         GameObject newDrop = Instantiate(DropCatalog.GetGObyID(trash.GetComponent<Drop_scr>().id), Player.transform.position, Quaternion.identity);
         newDrop.GetComponent<Drop_scr>().count = count;
         CursorContainerActivation();
+        Cursor.SetCursor(CursorDefault, Vector2.zero, CursorMode.Auto);
         //Vector3 newDirr = transform.position - Player.transform.position;
         //newDrop.GetComponent<Rigidbody2D>().AddForce(newDirr * 1f);
     }
@@ -241,6 +257,7 @@ public class Cursor_scr : MonoBehaviour
         HandContainer = 0;
         HandContainerCount = 0;
         HandContainerFull = false;
+        Cursor.SetCursor(CursorTake, Vector2.zero, CursorMode.Auto);
         //Debug.Log("Hand Empty");
         //return false;
 
@@ -253,11 +270,13 @@ public class Cursor_scr : MonoBehaviour
         HandContainer = InActiveSlot.id;
         HandContainerCount = count;
         HandContainerFull = true;
+        Cursor.SetCursor(CursorTake, Vector2.zero, CursorMode.Auto);
         //return true;
     }
     public void CursorContainerActivation(int count)
     {
         HandContainerCount += count;
+        Cursor.SetCursor(CursorTake, Vector2.zero, CursorMode.Auto);
     }
 
 

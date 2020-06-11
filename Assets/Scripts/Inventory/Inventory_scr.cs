@@ -489,7 +489,7 @@ public class Inventory_scr : MonoBehaviour
             if (InvItems != null)
             {
                 int chance = UnityEngine.Random.Range(0, 100);
-                if (chance < 10)
+                if (chance < 25)
                 {
                     chance = UnityEngine.Random.Range(0, 10);
                     DecreseFromSlot(i, chance);

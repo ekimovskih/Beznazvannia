@@ -14,5 +14,6 @@ public class HpRestorer_scr : MonoBehaviour
         }
         player.Health = player.MaxHealth;
         player.Stamina = player.MaxStamina;
+        player.Completedlevels = 0;
     }
 }

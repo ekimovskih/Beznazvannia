@@ -325,6 +325,10 @@ public class GridBuilder_scr : MonoBehaviour
         {
             for (int i = 0; i < enemyCells.Length; i++)
             {
+                if (EnemyCellsAtAll < 0)
+                {
+                    return;
+                }
                 if (MaxEnemysInRoom > 0 && enemyCells[i] != Vector2.zero)
                 {
                     int chanse = Random.Range(0, 100);
@@ -334,6 +338,7 @@ public class GridBuilder_scr : MonoBehaviour
                         Instantiate(EnemyList[type], enemyCells[i], Quaternion.identity, transform);
                         MaxEnemysInRoom--;
                         enemyCells[i] = Vector2.zero;
+                        EnemyCellsAtAll--;
                     }
                 }
             }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_propertys_scr : MonoBehaviour
 {
     public float Health = 100f;
-    //public float Damage;
+    public int Damage;
     
     public float MovementSpeed = 50f;
     public float AgroRadius;
@@ -58,16 +58,19 @@ public class Enemy_propertys_scr : MonoBehaviour
     {
         if (Health<1)
         {
-            Health = 1000;
+            StopAllCoroutines();
+            Health = 10001;
             DropItems();
             Instantiate(rip, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+            //Destroy(this.gameObject);
         }
     }
 
     public void TakeDamage(int dmg, float KnockBack, Vector3 point)
     {
-        
+        if (Health< 10000)
+        {
             Health -= dmg;
             TookDMG = true;
             Debug.Log(this.gameObject + " took dmg " + dmg);
@@ -75,8 +78,7 @@ public class Enemy_propertys_scr : MonoBehaviour
             StartCoroutine(Stopattck());
             CheckLives();
             GetComponent<Rigidbody2D>().AddForce((transform.position - point) * KnockBack);
-        
-        
+        }
     }
     public IEnumerator Stopattck()
     {
@@ -135,7 +137,8 @@ public class Enemy_propertys_scr : MonoBehaviour
             yield return new WaitForSeconds(AttackPrepare);
             StartCoroutine(Stopattck());
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(dirrection * JumpAttackSpeed);
-            Instantiate(AttackZone, this.gameObject.transform);
+            GameObject attack = Instantiate(AttackZone, this.gameObject.transform);
+            attack.GetComponent<EnemyAttack_scr>().Damage = Damage;
             //StartCoroutine(Stopattck());
             //Debug.Log("Attack " + Time.time);
         }

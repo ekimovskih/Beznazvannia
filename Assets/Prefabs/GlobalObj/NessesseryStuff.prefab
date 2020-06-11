@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4350687220836988163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350687218856691110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b259a5bca9034b4394f6c08977aa699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 4350687220312164334}
+  fill: 1
+--- !u!114 &4350687220836988165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350687218856691110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5663dbf62dd7cd24f9a7963140e8e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 4350687220812391510}
+  fill: 1
 --- !u!1 &4350687218908521777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,7 +2108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13673107, g: 0.6509434, b: 0.11360805, a: 1}
+  m_Color: {r: 0.049044468, g: 0.5566038, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2933,7 +2961,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1500, y: 1093.3}
+  m_SizeDelta: {x: 1800, y: 1093.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4350687220758186931
 CanvasRenderer:
@@ -3246,34 +3274,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.106343806}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4350687220836988165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4350687218856691110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5663dbf62dd7cd24f9a7963140e8e6c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 4350687220812391510}
-  fill: 1
---- !u!114 &4350687220836988163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4350687218856691110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b259a5bca9034b4394f6c08977aa699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 4350687220312164334}
-  fill: 1
 --- !u!1 &4350687220908842755
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,11 +3653,11 @@ MonoBehaviour:
   open: 0
   isFull: 0
   InvItems:
-  - {fileID: 1209622819895161852, guid: afbab7969cd551142973ec25e1fa7789, type: 3}
-  - {fileID: 373575020118841997, guid: bf9e88c0a783add4980059e0ba525c98, type: 3}
+  - {fileID: 4723014109091334670, guid: 78e85de7542ee044189cd7e2fb6a9d0f, type: 3}
+  - {fileID: 8816249110570740495, guid: af14698677a7ca745980911d91bc46ce, type: 3}
   - {fileID: 6406550984765081669, guid: 387827a8b38665a4bb1974bc08d9e13a, type: 3}
-  - {fileID: 7100610331409046115, guid: 8f1b4d27ee4803243b18e4594fae0f40, type: 3}
-  - {fileID: 1875781015552870117, guid: aed614ab6c259fa4fb22cf321ca9134b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -6937,6 +6937,21 @@ PrefabInstance:
       propertyPath: GridBuilder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3494378678997855243, guid: 3183b05359ccf294f9e9cd271b750745,
+        type: 3}
+      propertyPath: CursorDefault
+      value: 
+      objectReference: {fileID: 2800000, guid: 8c61b8ddea9627b4ca786928163cee43, type: 3}
+    - target: {fileID: 3494378678997855243, guid: 3183b05359ccf294f9e9cd271b750745,
+        type: 3}
+      propertyPath: CursorClick
+      value: 
+      objectReference: {fileID: 2800000, guid: f63f52b9255bb51438760f6d36991325, type: 3}
+    - target: {fileID: 3494378678997855243, guid: 3183b05359ccf294f9e9cd271b750745,
+        type: 3}
+      propertyPath: CursorTake
+      value: 
+      objectReference: {fileID: 2800000, guid: 8063a7d20c7b0e04da107b00230fd849, type: 3}
     - target: {fileID: 3494378678997855245, guid: 3183b05359ccf294f9e9cd271b750745,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13547,6 +13562,36 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.600307
       objectReference: {fileID: 0}
+    - target: {fileID: 7056560435239850053, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056560435239850053, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056560435239850053, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056560435239850053, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056560435239850053, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056560435239850053, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
         type: 3}
       propertyPath: AttackZone
@@ -13560,7 +13605,7 @@ PrefabInstance:
     - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
         type: 3}
       propertyPath: speed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
         type: 3}
@@ -13577,6 +13622,57 @@ PrefabInstance:
       propertyPath: StatsTab
       value: 
       objectReference: {fileID: 4350687220615369923}
+    - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: Grave
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b8f805c0fc404d478c3b8b801ba108f,
+        type: 3}
+    - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: JumpShadow
+      value: 
+      objectReference: {fileID: 5861482813043187814, guid: bf54be7db2e2d3b47920a2cdaff2bd59,
+        type: 3}
+    - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: JumpShadowAmoung
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: playerStates.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 68d5079e8a9f32a4992f9e3ebd14207a,
+        type: 3}
+    - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: playerStates.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 83fe583051f9449498734fc77bcb6577,
+        type: 3}
+    - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: playerStates.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3288601542fb8db49b6301c3fb916c45,
+        type: 3}
+    - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056560435239850054, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: Health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056560435239850055, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 68d5079e8a9f32a4992f9e3ebd14207a,
+        type: 3}
     - target: {fileID: 7056560435239850058, guid: 9aad2c0677594bf438a71d6f7ceeeb6e,
         type: 3}
       propertyPath: m_LinearDrag

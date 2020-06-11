@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_movement_scr : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class Player_movement_scr : MonoBehaviour
     public bool Vulnerable = true;
     public bool CanMove = true;
     //public bool CanIteract = true;
-    
+    private bool alive = true;
+    public Sprite Grave;
     public float JMPImune = 1f;
     private bool CanJump = true;
     public GameObject JumpShadow;
@@ -69,29 +71,35 @@ public class Player_movement_scr : MonoBehaviour
     {
         Camera.main.transform.position = transform.position + CameraOffset;
         //InventoryFull = Inventory.GetComponent<Inventory_scr>().isFull;
-        if (CanMove)
+        if (alive)
         {
-            Movement(speed);
-            Jump();
-        }
-        else
-        {
-            Movement(speed/4);
+            if (CanMove)
+            {
+                Movement(speed);
+                Jump();
+            }
+            else
+            {
+                Movement(speed / 4);
+            }
         }
     }
+   
     private void Update()
     {
-        
-        if (Health < 0)
+        if (alive)
         {
-            StopAllCoroutines();
-            this.gameObject.SetActive(false);
-            
-        }
-        else
-        {
-            StartCoroutine(Regen());
-        }
+            if (Health < 0)
+            {
+                StartCoroutine(Death());
+                //this.gameObject.SetActive(false);
+
+            }
+            else if (regenerate)
+            {
+                StartCoroutine(Regen());
+            }
+        } 
     }
     public void Movement(float speed)
     {
@@ -131,6 +139,21 @@ public class Player_movement_scr : MonoBehaviour
         {
             SpriteMoveChanger(horizInput, verticInput);
         }
+    }
+    IEnumerator Death()
+    {
+        alive = false;
+        GetComponent<SpriteRenderer>().sprite = Grave;
+        yield return new WaitForSeconds(3f);
+        GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeDarker();
+        yield return new WaitForSeconds(1.3f);
+        SceneManager.LoadScene("Village");
+        GetComponent<SpriteRenderer>().sprite = playerStates[0];
+        Inventory.DeathLose();
+        GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeLighter();
+        alive = true;
+
+        //GetComponent<SpriteRenderer>().sprite = Grave;
     }
 
     void Jump()
@@ -280,7 +303,7 @@ public class Player_movement_scr : MonoBehaviour
         //Debug.Log("cant JUMP");
         for (int i = 0; i < JumpShadowAmoung; i++)
         {
-            Instantiate(JumpShadow, transform.position, Quaternion.identity);
+            Instantiate(JumpShadow, transform.position + new Vector3(0,0,0.01f), Quaternion.identity);
             yield return new WaitForSeconds(time/ JumpShadowAmoung);
         }
         //yield return new WaitForSeconds(time);
@@ -298,14 +321,13 @@ public class Player_movement_scr : MonoBehaviour
     }
     IEnumerator Regen()
     {
-        if (regenerate)
-        {
+        
             regenerate = false;
             yield return new WaitForSeconds(1f);
             Health = Mathf.Min(Health + RegenHP,MaxHealth);
             Stamina = Mathf.Min(Stamina + RegenSTM, MaxStamina);
             regenerate = true;
-        }
+        
     }
 
     public void EquipmentEffects(Drop_scr drop, int sign)
