@@ -90,6 +90,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
+      propertyPath: Recipe.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: RecipeCount.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
       propertyPath: id
       value: 800
       objectReference: {fileID: 0}
@@ -106,7 +116,7 @@ PrefabInstance:
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: DMG
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
@@ -132,6 +142,33 @@ PrefabInstance:
     - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: InStack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: Recipe.Array.data[0]
+      value: 
+      objectReference: {fileID: 7719881895007296596, guid: 4f414eb7e8dfdca44a65740a24fb52ee,
+        type: 3}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: RecipeCount.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: Recipe.Array.data[1]
+      value: 
+      objectReference: {fileID: 4365569012970580583, guid: fb50c93517c696b4ca7d91fa14ef8b19,
+        type: 3}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: RecipeCount.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: ResultCount
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

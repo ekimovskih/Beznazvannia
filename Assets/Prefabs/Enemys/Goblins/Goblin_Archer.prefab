@@ -14,6 +14,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1295804890673955794, guid: b492140ad80b85d42b920f33f0d6cdae,
         type: 3}
+      propertyPath: DeathDrop.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1295804890673955794, guid: b492140ad80b85d42b920f33f0d6cdae,
+        type: 3}
+      propertyPath: DropRates.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1295804890673955794, guid: b492140ad80b85d42b920f33f0d6cdae,
+        type: 3}
       propertyPath: AttackZone
       value: 
       objectReference: {fileID: 8482598399051994983, guid: 6a62a1f41b6da594cb9404d172d3a677,
@@ -41,8 +51,14 @@ PrefabInstance:
     - target: {fileID: 1295804890673955794, guid: b492140ad80b85d42b920f33f0d6cdae,
         type: 3}
       propertyPath: Health
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1295804890673955794, guid: b492140ad80b85d42b920f33f0d6cdae,
+        type: 3}
+      propertyPath: DeathDrop.Array.data[0]
+      value: 
+      objectReference: {fileID: 4365569012970580583, guid: fb50c93517c696b4ca7d91fa14ef8b19,
+        type: 3}
     - target: {fileID: 1295804890673955796, guid: b492140ad80b85d42b920f33f0d6cdae,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_movement_scr : MonoBehaviour
 {
-    
+    public int Completedlevels = 0;
     [HideInInspector] private float horizInput;
     [HideInInspector] private float verticInput;
     [HideInInspector] public Rigidbody2D rb;
@@ -14,6 +14,8 @@ public class Player_movement_scr : MonoBehaviour
     
     public float JMPImune = 1f;
     private bool CanJump = true;
+    public GameObject JumpShadow;
+    public int JumpShadowAmoung;
 
     [HideInInspector] public string playerView = "none";
     public Sprite[] playerStates = new Sprite[3]; // стоячие положения игрока
@@ -151,21 +153,6 @@ public class Player_movement_scr : MonoBehaviour
             playerView = "none";
             //PlayerSprite.flipX = false;
         }
-        else if (playerView== "none" && horizInput != 0 || Mathf.Abs(verticInput) <= Mathf.Abs(horizInput))
-        {
-            if (horizInput > 0)
-            {
-                playerView = "right";
-                PlayerSprite.flipX = false;
-                PlayerSprite.sprite = playerStates[1];
-            }
-            else
-            {
-                playerView = "left";
-                PlayerSprite.flipX = true;
-                PlayerSprite.sprite = playerStates[1];
-            }
-        }
         else if (playerView == "none" && verticInput != 0 || Mathf.Abs(verticInput) >= Mathf.Abs(horizInput))
         {
             if (verticInput > 0)
@@ -181,6 +168,22 @@ public class Player_movement_scr : MonoBehaviour
                 PlayerSprite.flipX = false;
             }
         }
+        else if (playerView== "none" && horizInput != 0 || Mathf.Abs(verticInput) <= Mathf.Abs(horizInput))
+        {
+            if (horizInput > 0)
+            {
+                playerView = "right";
+                PlayerSprite.flipX = false;
+                PlayerSprite.sprite = playerStates[1];
+            }
+            else
+            {
+                playerView = "left";
+                PlayerSprite.flipX = true;
+                PlayerSprite.sprite = playerStates[1];
+            }
+        }
+        
     }
 
     public IEnumerator MouseHitAction(float WaitTime, Vector2 CurrDir)
@@ -275,7 +278,12 @@ public class Player_movement_scr : MonoBehaviour
         CanMove = false;
         CanJump = false;
         //Debug.Log("cant JUMP");
-        yield return new WaitForSeconds(time);
+        for (int i = 0; i < JumpShadowAmoung; i++)
+        {
+            Instantiate(JumpShadow, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(time/ JumpShadowAmoung);
+        }
+        //yield return new WaitForSeconds(time);
         CanMove = true;
         Vulnerable = true;
         yield return new WaitForSeconds(0.5f);

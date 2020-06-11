@@ -117,6 +117,10 @@ MonoBehaviour:
   AttackPrepare: 1
   AttackDuration: 0.5
   AttackRelax: 1
+  DeathDrop: []
+  DropRates: 
+  imune: 0
+  rip: {fileID: 9161633694537799697, guid: fa7419454dacd7a4db6ba9e74a78f052, type: 3}
   player: {fileID: 0}
 --- !u!50 &1295804890673955795
 Rigidbody2D:

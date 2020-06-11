@@ -52,12 +52,12 @@ PrefabInstance:
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: DropRates.Array.data[1].x
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: DropRates.Array.data[1].y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
@@ -73,7 +73,7 @@ PrefabInstance:
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: DropRates.Array.data[2].x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}

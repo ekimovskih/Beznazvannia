@@ -27,6 +27,8 @@ public class Enemy_propertys_scr : MonoBehaviour
     public float AttackRelax =3f;
     public GameObject[] DeathDrop;
     public int[] DropRates;
+    public bool imune = false;
+    public GameObject rip;
 
     [HideInInspector]public GameObject player = null;
 
@@ -56,20 +58,25 @@ public class Enemy_propertys_scr : MonoBehaviour
     {
         if (Health<1)
         {
+            Health = 1000;
             DropItems();
+            Instantiate(rip, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
 
     public void TakeDamage(int dmg, float KnockBack, Vector3 point)
     {
-        Health -= dmg;
-        TookDMG = true;
-        Debug.Log(this.gameObject + " took dmg " + dmg);
-        StopAllCoroutines();
-        StartCoroutine(Stopattck());
-        CheckLives();
-        GetComponent<Rigidbody2D>().AddForce((transform.position - point)* KnockBack); 
+        
+            Health -= dmg;
+            TookDMG = true;
+            Debug.Log(this.gameObject + " took dmg " + dmg);
+            StopAllCoroutines();
+            StartCoroutine(Stopattck());
+            CheckLives();
+            GetComponent<Rigidbody2D>().AddForce((transform.position - point) * KnockBack);
+        
+        
     }
     public IEnumerator Stopattck()
     {
@@ -85,6 +92,7 @@ public class Enemy_propertys_scr : MonoBehaviour
 
             //CanAttack = false;
             yield return new WaitForSeconds(AttackRelax);
+            //imune = false ;
             CanMove = true;
             CanAttack = true;
             SupportBool = true; ;

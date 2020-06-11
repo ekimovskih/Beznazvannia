@@ -9,7 +9,7 @@ public class DarkScreen : MonoBehaviour
     private Image sprite;
     bool can = true;
     Vector3 on = new Vector3(200, 0,0);
-    Vector3 off = new Vector3(200, -1000,0);
+    Vector3 off = new Vector3(-5000, -5000,0);
     public GameObject Parent;
     void Start()
     {

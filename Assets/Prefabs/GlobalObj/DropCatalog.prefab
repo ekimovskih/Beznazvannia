@@ -69,5 +69,6 @@ MonoBehaviour:
   - {fileID: 4723014109091334670, guid: 78e85de7542ee044189cd7e2fb6a9d0f, type: 3}
   - {fileID: 1676646137493546373, guid: f54df667ed3ac8542ae8d8124babd8fe, type: 3}
   - {fileID: 5878971575581374784, guid: d26ff7a2ecabaef4195b9eac84346381, type: 3}
+  - {fileID: 4365569012970580583, guid: fb50c93517c696b4ca7d91fa14ef8b19, type: 3}
   Craftable: []
   length: 0

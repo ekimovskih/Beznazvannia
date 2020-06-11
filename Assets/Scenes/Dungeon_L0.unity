@@ -346,17 +346,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611690e5f1de17d4bb9056bc503710dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: Village
+  NextLevel: Dungeon_L1
   GridBuilderPrefab: {fileID: 4683030305729760072, guid: 6be8daf575404d149b4bd1ad62f7730c,
     type: 3}
   EnemysVariations:
-  - {fileID: 1845444049172156633, guid: 197458f998322284a8b47268846f6f6d, type: 3}
-  - {fileID: 1295804890673955793, guid: b492140ad80b85d42b920f33f0d6cdae, type: 3}
   - {fileID: 6823897712486434738, guid: b758079efbd1a1849b2cb2935a2f639a, type: 3}
+  - {fileID: 1295804890673955793, guid: b492140ad80b85d42b920f33f0d6cdae, type: 3}
   ObjectVariations:
   - {fileID: 776519380266923594, guid: 8a5dc10fd6dfc2c4f932edc8ea82d2a8, type: 3}
-  - {fileID: 5276483267051902700, guid: 2a8efe3d043246246801fa501d2b4513, type: 3}
-  ObjectVariationsChanses: 5500000032000000
+  - {fileID: 735631205283246512, guid: 2a1a68b8051590a44adeb6805a37b128, type: 3}
+  ObjectVariationsChanses: 550000000a000000
   LevelMaps:
   - {fileID: 2800000, guid: 03a4236f652743546bf847d52cb9d5fe, type: 3}
   Grids1:

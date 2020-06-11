@@ -54,6 +54,11 @@ PrefabInstance:
       propertyPath: health
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -6458047233736292662, guid: 37e08722e683d574493afd7dcd36f3cc,
+        type: 3}
+      propertyPath: ItemType
+      value: Pickaxe
+      objectReference: {fileID: 0}
     - target: {fileID: -689161148374304465, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -82,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 4940420283676534236, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}
       propertyPath: m_Name
-      value: CooperRock
+      value: CooperRock Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4940420283676534237, guid: 37e08722e683d574493afd7dcd36f3cc,
         type: 3}

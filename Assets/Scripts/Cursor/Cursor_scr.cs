@@ -192,6 +192,7 @@ public class Cursor_scr : MonoBehaviour
         Vector3 dir = new Vector3(newDirr.x, newDirr.y, 0).normalized;
         //Debug.Log(HandContainer);
         GameObject newDrop = Instantiate(DropCatalog.GetGObyID(HandContainer), Player.transform.position + dir, Quaternion.identity);
+        newDrop.GetComponent<Drop_scr>().count = HandContainerCount;
         CursorContainerActivation();
         //Vector3 newDirr = transform.position - Player.transform.position;
         newDrop.GetComponent<Rigidbody2D>().AddForce(dir/5f);

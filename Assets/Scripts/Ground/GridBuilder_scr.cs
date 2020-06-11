@@ -42,6 +42,7 @@ public class GridBuilder_scr : MonoBehaviour
     private GameObject[,] Grid;
     private void Start()
     {
+        MaxEnemysInRoom = MaxEnemysInRoom + GameObject.Find("Player").GetComponent<Player_movement_scr>().Completedlevels*2;
         if (!IsDungeon)
         {
             Build();
@@ -275,9 +276,10 @@ public class GridBuilder_scr : MonoBehaviour
                 else if ((blue == 1 && red == 0 && green == 0)) // синий портал
                 {
                     CellNum = 9;
-                    Instantiate(blueportal, new Vector3(i, j, 0), Quaternion.identity, thisObject.transform);
+                    GameObject bp = Instantiate(blueportal, new Vector3(i, j, 0), Quaternion.identity, thisObject.transform);
+                    bp.GetComponent<Portal_scr>().WhereToPort = GetComponentInParent<DungeonBuilder_scr>().NextLevel;
                     //player.transform.position += player.GetComponent<Player_movement_scr>().PlayerContainer.position;
-                    blueportal.GetComponent<Portal_scr>().WhereToPort = GetComponentInParent<DungeonBuilder_scr>().NextLevel;
+                    //blueportal.GetComponent<Portal_scr>().WhereToPort = GetComponentInParent<DungeonBuilder_scr>().NextLevel;
                 }
                 else //белый пустой
                 {
