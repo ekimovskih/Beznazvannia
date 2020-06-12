@@ -25,14 +25,14 @@ public class Goblin_1_scr : Enemy_propertys_scr
                 if (CanAttack && CanMove)
                 {
                     StartCoroutine(RadiusAttack());
-                    audioController.PlayAudio(Random.Range(1,5));
+                    //audioController.PlayAudio(Random.Range(1,5));
                 }
             }
             else if (CanAttack && Agred && CanMove)
             {
                 //StartCoroutine(Jump(dirrection));
                 AgredMovement();
-                audioController.PlayAudio(0);
+                //audioController.PlayAudio(0);
                 
             }
             else if (!Agred && CanMove)
