@@ -14,6 +14,11 @@ public class Portal_scr : MonoBehaviour
     void Start()
     {
         can = next;
+        if (!next)
+        {
+            GetComponent<AudioManager>().PlayAudioMine(0);
+        }
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -47,8 +52,10 @@ public class Portal_scr : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             Symbols[i].SetActive(true);
+            GetComponent<AudioManager>().PlayAudioAttack();
             sequence++;
         }
+        GetComponent<AudioManager>().PlayAudioHit();
         GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeDarker();
         yield return new WaitForSeconds(1f);
         GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeLighter();
@@ -67,6 +74,7 @@ public class Portal_scr : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             Symbols[i].SetActive(false);
+            GetComponent<AudioManager>().PlayAudioAttack();
             sequence--;
         }
         //Application.LoadLevel(WhereToPort);

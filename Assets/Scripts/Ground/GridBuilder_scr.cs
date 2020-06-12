@@ -265,6 +265,7 @@ public class GridBuilder_scr : MonoBehaviour
                 {
                     CellNum = 9;
                     Instantiate(redportal, new Vector3(i, j, 0), Quaternion.identity, thisObject.transform);
+                    //rp.GetComponent<Portal_scr>().JustTeleported();
                         //Debug.Log(new Vector3(i, j, 0));
                         Transform pl = GameObject.Find("Player").transform;
                         

@@ -177,14 +177,7 @@ public class Cursor_scr : MonoBehaviour
                 else
                 {
                     GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InActiveSlot);
-                    if (InActiveSlot.type == "Axe")
-                    {
-                        Player.GetComponent<AudioManager>().PlayAudioMine(1);
-                    }
-                    else if(InActiveSlot.type == "Pickaxe")
-                    {
-                        Player.GetComponent<AudioManager>().PlayAudioMine(0);
-                    }
+                    
                         
                     //Debug.Log(Time.time + " Start");
                     //float WaitTime = InHand.ActionSpeed;

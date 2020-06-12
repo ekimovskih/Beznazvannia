@@ -72,15 +72,16 @@ public class CraftSlot : MonoBehaviour
         Cursor_scr Cursor = GameObject.Find("Cursor").GetComponent<Cursor_scr>();
         if (CanCraft)
         {
+            GameObject Inventory = GameObject.Find("InventoryManager");
             if (!Cursor.HandContainerFull)
             {
                 //Debug.Log(CraftItem);
                 Cursor.CursorContainerActivation(CraftItem, CraftItemCount);
 
-
+               
                 if (InventoryComponent == null)
                 {
-                    InventoryComponent = GameObject.Find("InventoryManager").GetComponent<Inventory_scr>();
+                    InventoryComponent = Inventory.GetComponent<Inventory_scr>();
                 }
                 InventoryComponent.TakeItem(CraftItemComponent);
             }
@@ -89,6 +90,7 @@ public class CraftSlot : MonoBehaviour
                 Cursor.CursorContainerActivation(CraftItemCount);
                 InventoryComponent.TakeItem(CraftItemComponent);
             }
+            InventoryComponent.CraftSlotsCheker();
         }
         else
         {

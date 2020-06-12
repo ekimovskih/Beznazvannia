@@ -87,6 +87,7 @@ public class Enemy_propertys_scr : MonoBehaviour
             Debug.Log(this.gameObject + " took dmg " + dmg);
             StopAllCoroutines();
             StartCoroutine(Stopattck());
+            StartCoroutine(ColorDamage());
             CheckLives();
             GetComponent<Rigidbody2D>().AddForce((transform.position - point) * KnockBack);
             
@@ -137,7 +138,19 @@ public class Enemy_propertys_scr : MonoBehaviour
         Debug.Log("Hello");
         */
     }
+    IEnumerator ColorDamage()
+    {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        for (int i = 0; i < 2; i++)
+        {
+            Debug.Log("change color");
+            sprite.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            sprite.color = Color.white;
+            yield return new WaitForSeconds(0.1f);
+        }
 
+    }
 
     public IEnumerator JumpAttack()
     {

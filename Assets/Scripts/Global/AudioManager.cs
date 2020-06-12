@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] Hit;
     public AudioClip[] Mine;
 
+    public int state = 0;
+
     public void PlayAudioAgred()
     {
         //Debug.Log(Agred.Length);

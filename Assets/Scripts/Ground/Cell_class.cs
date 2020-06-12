@@ -42,20 +42,36 @@ public class Cell_class : MonoBehaviour
     }
     public void GetObj(Drop_scr InHand)
     {
+        GameObject Player = GameObject.Find("Player");
         if (objOnIt != null)
         {
             string ObjType = objOnIt.GetComponent<ObjOnCell_scr>().ItemType;
             string InHandType = InHand.type;
+            Debug.Log(ObjType);
             if (ObjType.Equals(InHandType))
             {
+                if (InHandType == "Axe")
+                {
+                    Player.GetComponent<AudioManager>().PlayAudioMine(1);
+                }
+                else if (InHandType == "Pickaxe")
+                {
+                    Player.GetComponent<AudioManager>().PlayAudioMine(0);
+                }
                 if (objOnIt.transform.GetComponent<ObjOnCell_scr>().LastHit(InHand))
                 {
                     objOnIt = null;
                 }
             }
+            
+            else
+            {
+                Player.GetComponent<AudioManager>().PlayAudioAttack();
+            }
         }
         else
         {
+            Player.GetComponent<AudioManager>().PlayAudioAttack();
             //Debug.Log(objOnIt);
             //Debug.Log("Cell is empty");
         }

@@ -45,8 +45,10 @@ public class Player_movement_scr : MonoBehaviour
     public float JumpStrengh = 3000f;
     public int JumpWaste = 5;
     public int Armor = 0;
-    
-    private GameObject go1 = null;
+    private AudioManager PlayerContainerAudio;
+    private AudioSource PlayerContainerAudioSource;
+
+    //private GameObject go1 = null;
     private AudioManager audioController;
     
 
@@ -56,6 +58,8 @@ public class Player_movement_scr : MonoBehaviour
     {
         Cursor = GameObject.Find("Cursor").transform;
         PlayerContainer = GameObject.Find("PlayerContainer").transform;
+        PlayerContainerAudio = PlayerContainer.GetComponent<AudioManager>();
+        PlayerContainerAudioSource = PlayerContainer.GetComponent<AudioSource>();
         //StatsTab = GameObject.Find("StatsTexts").GetComponent<StatsTabUpdater>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -126,6 +130,30 @@ public class Player_movement_scr : MonoBehaviour
         }
         transform.Translate(horizInput * (speed + Boost) * Time.deltaTime, 0, 0);
         transform.Translate(0, verticInput * (speed + Boost) * Time.deltaTime, 0);
+        if(horizInput!=0||verticInput!=0)
+        {
+            if (speed > 2&& PlayerContainerAudio.state != 2)
+            {
+                PlayerContainerAudioSource.Stop();
+                PlayerContainerAudioSource.clip = PlayerContainerAudio.Mine[1];
+                PlayerContainerAudioSource.Play();
+                //PlayerContainerAudio.PlayAudioMine(1);
+                PlayerContainerAudio.state = 2;
+            }
+            else if (speed < 2 && PlayerContainerAudio.state != 1)
+            {
+                PlayerContainerAudioSource.Stop();
+                //PlayerContainerAudio.PlayAudioMine(0);
+                PlayerContainerAudioSource.clip = PlayerContainerAudio.Mine[0];
+                PlayerContainerAudioSource.Play();
+                PlayerContainerAudio.state = 1;
+            }
+        }
+        else if(PlayerContainerAudio.state != 0)
+        {
+            PlayerContainerAudioSource.Stop();
+            PlayerContainerAudio.state = 0;
+        }
         
 
         //float x = horizInput * (speed + Boost) * Time.deltaTime;
@@ -163,13 +191,24 @@ public class Player_movement_scr : MonoBehaviour
     }
 
     void Jump()
-    { if (Input.GetKeyDown(KeyCode.Space) && CanJump && (Stamina- JumpWaste > 0))
+    { if (Input.GetKeyDown(KeyCode.Space) && CanJump)
         {
-            //Vector2 Move = new Vector2(JumpStrengh * horizInput, JumpStrengh * verticInput);
-            Stamina -= JumpWaste;
-            Vector2 f = new Vector2(horizInput, verticInput);
-            this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(f.normalized * JumpStrengh);
-            StartCoroutine(JumpImune(JMPImune));
+            if (Stamina - JumpWaste > 0)
+            {
+                //Vector2 Move = new Vector2(JumpStrengh * horizInput, JumpStrengh * verticInput);
+                Stamina -= JumpWaste;
+                Vector2 f = new Vector2(horizInput, verticInput);
+                this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(f.normalized * JumpStrengh);
+                StartCoroutine(JumpImune(JMPImune));
+                audioController.PlayAudioAgred();
+            }
+            else
+            {
+
+                GetComponent<AudioSource>().Stop();
+                audioController.PlayAudioAggroLost();
+            }
+            
             
             //rb.velocity = Move;
             //Debug.Log("Jump");
@@ -261,6 +300,7 @@ public class Player_movement_scr : MonoBehaviour
         if (Vulnerable)
         {
             StartCoroutine(Imune());
+            audioController.PlayAudioHit();
             Health -= Mathf.Max(1, dmg - Armor);
             //wasHited = true;
             Debug.Log("You took dmg " + dmg + " Now Your health " + Health + " "+ wasHited);
@@ -294,12 +334,29 @@ public class Player_movement_scr : MonoBehaviour
         Vulnerable = false;
         CanMove = false;
         wasHited = true;
+        if (alive)
+        {
+            StartCoroutine(ColorDamage());
+        }
         yield return new WaitForSeconds(JMPImune);
         CanMove = true;
         wasHited = false;
         yield return new WaitForSeconds(1 - JMPImune);
         Vulnerable = true;
 
+    }
+    IEnumerator ColorDamage()
+    {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        for (int i = 0; i < 3; i++)
+        {
+            Debug.Log("change color");
+            sprite.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            sprite.color = Color.white;
+            yield return new WaitForSeconds(0.1f);
+        }
+        
     }
     IEnumerator JumpImune(float time)
     {
@@ -309,7 +366,7 @@ public class Player_movement_scr : MonoBehaviour
         //Debug.Log("cant JUMP");
         for (int i = 0; i < JumpShadowAmoung; i++)
         {
-            Instantiate(JumpShadow, transform.position + new Vector3(0,0,0.01f), Quaternion.identity);
+            Instantiate(JumpShadow, transform.position + new Vector3(0,0,0.05f), Quaternion.identity);
             yield return new WaitForSeconds(time/ JumpShadowAmoung);
         }
         //yield return new WaitForSeconds(time);
