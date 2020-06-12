@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9eacd525-e214-416e-883b-e9b3825887fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Beznazvannia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beznazvannia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemys/Goblins/Goblin_Archer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemys/Goblins/Goblin_Archer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemys/Goblins/Goblin_Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemys/Goblins/Goblin_Warrior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy_propertys_scr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy_propertys_scr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemys/Goblin_1_scr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemys/Goblin_1_scr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Global/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Global/AudioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player_movement_scr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player_movement_scr.cs" afterDir="false" />
-    </list>
+    <list default="true" id="9eacd525-e214-416e-883b-e9b3825887fc" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy_propertys_scr.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="314">
-              <caret line="85" column="43" lean-forward="true" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
               <folding>
                 <marker date="1591961570962" expanded="false" signature="6:78" ph="..." />
                 <marker date="1591961570962" expanded="true" signature="128:7940" ph="{...}" />
@@ -128,7 +120,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Enemys/Goblin_1_scr.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="568">
@@ -214,8 +206,8 @@
       <find>image</find>
       <find>img</find>
       <find>currentit</find>
-      <find>playaudio</find>
       <find>Took</find>
+      <find>playaudio</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -337,12 +329,12 @@
       <workItem from="1590324568194" duration="4797000" />
       <workItem from="1591263004206" duration="7003000" />
       <workItem from="1591377356544" duration="731000" />
-      <workItem from="1591950341950" duration="8802000" />
+      <workItem from="1591950341950" duration="9226000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41529000" />
+    <option name="totallyTimeSpent" value="41953000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -622,10 +614,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Enemys/Goblin_1_scr.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="51" column="32" lean-forward="true" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+          <folding>
+            <marker date="1591961706520" expanded="false" signature="6:78" ph="..." />
+            <marker date="1591961706520" expanded="true" signature="127:1529" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="151:299" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="357:1525" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="406:1409" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="486:712" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="542:698" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="764:1060" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="895:1029" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="1100:1399" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="1192:1317" ph="{...}" />
+            <marker date="1591961706520" expanded="true" signature="1437:1519" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy_propertys_scr.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
-          <caret line="85" column="43" lean-forward="true" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
           <folding>
             <marker date="1591961570962" expanded="false" signature="6:78" ph="..." />
             <marker date="1591961570962" expanded="true" signature="128:7940" ph="{...}" />
@@ -663,27 +676,6 @@
             <marker date="1591961570962" expanded="true" signature="7525:7938" ph="{...}" />
             <marker date="1591961570962" expanded="true" signature="7581:7932" ph="{...}" />
             <marker date="1591961570962" expanded="true" signature="7677:7922" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Enemys/Goblin_1_scr.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="51" column="32" lean-forward="true" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
-          <folding>
-            <marker date="1591961706520" expanded="false" signature="6:78" ph="..." />
-            <marker date="1591961706520" expanded="true" signature="127:1529" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="151:299" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="357:1525" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="406:1409" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="486:712" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="542:698" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="764:1060" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="895:1029" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="1100:1399" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="1192:1317" ph="{...}" />
-            <marker date="1591961706520" expanded="true" signature="1437:1519" ph="{...}" />
           </folding>
         </state>
       </provider>

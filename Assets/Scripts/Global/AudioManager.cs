@@ -25,42 +25,42 @@ public class AudioManager : MonoBehaviour
     {
         //Debug.Log(Agred.Length);
         int i = Random.Range(0, Death.Length);
-        GetComponent<AudioSource>().PlayOneShot(Agred[i]);
+        GetComponent<AudioSource>().PlayOneShot(Death[i]);
     }
     
     public void PlayAudioAttack()
     {
         //Debug.Log(Agred.Length);
         int i = Random.Range(0, Attack.Length);
-        GetComponent<AudioSource>().PlayOneShot(Agred[i]);
+        GetComponent<AudioSource>().PlayOneShot(Attack[i]);
     }
     
     public void PlayAudioAggroLost()
     {
         //Debug.Log(Agred.Length);
         int i = Random.Range(0, AggroLost.Length);
-        GetComponent<AudioSource>().PlayOneShot(Agred[i]);
+        GetComponent<AudioSource>().PlayOneShot(AggroLost[i]);
     }
     
     public void PlayAudioPickUp()
     {
         //Debug.Log(Agred.Length);
         int i = Random.Range(0, PickUp.Length);
-        GetComponent<AudioSource>().PlayOneShot(Agred[i]);
+        GetComponent<AudioSource>().PlayOneShot(PickUp[i]);
     }
     
     public void PlayAudioHit()
     {
         //Debug.Log(Agred.Length);
         int i = Random.Range(0, Hit.Length);
-        GetComponent<AudioSource>().PlayOneShot(Agred[i]);
+        GetComponent<AudioSource>().PlayOneShot(Hit[i]);
     }
     
     public void PlayAudioMine()
     {
         //Debug.Log(Agred.Length);
         int i = Random.Range(0, Mine.Length);
-        GetComponent<AudioSource>().PlayOneShot(Agred[i]);
+        GetComponent<AudioSource>().PlayOneShot(Mine[i]);
     }
 
 }
