@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 3494378678997855245}
   - component: {fileID: 3494378678997855242}
   - component: {fileID: 3494378678997855243}
+  - component: {fileID: 4480778011643385007}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Cursor
@@ -347,11 +348,35 @@ MonoBehaviour:
   cell: {fileID: 6665617853437010322}
   InHandIndicator: {fileID: 687273996}
   GridBuilder: {fileID: 0}
-  EmptyHand: {fileID: 0}
-  InHand: {fileID: 0}
+  InActiveSlot: {fileID: 0}
   HandContainer: 0
   HandContainerCount: 0
   HandContainerFull: 0
+  CursorDefault: {fileID: 2800000, guid: 8c61b8ddea9627b4ca786928163cee43, type: 3}
+  CursorClick: {fileID: 2800000, guid: f63f52b9255bb51438760f6d36991325, type: 3}
+  CursorTake: {fileID: 2800000, guid: 8063a7d20c7b0e04da107b00230fd849, type: 3}
+--- !u!114 &4480778011643385007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494378678997855240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7b3343336618d49943e2a56a564285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Agred: []
+  Death: []
+  Attack: []
+  AggroLost: []
+  PickUp: []
+  Hit: []
+  Mine:
+  - {fileID: 8300000, guid: effd5e4f7ec89c34f8de20841dadb4d4, type: 3}
+  - {fileID: 8300000, guid: 58964393c39768341aacf75a035782fc, type: 3}
+  - {fileID: 8300000, guid: d48fde863f5bbb046b77b20ab68241d3, type: 3}
 --- !u!1 &3494378679412952006
 GameObject:
   m_ObjectHideFlags: 0

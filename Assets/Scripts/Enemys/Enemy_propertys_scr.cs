@@ -29,6 +29,7 @@ public class Enemy_propertys_scr : MonoBehaviour
     public int[] DropRates;
     public bool imune = false;
     public GameObject rip;
+    public int DeathSound = 0;
     public int state = 0;
     
     //protected GameObject go2 = null;
@@ -66,7 +67,8 @@ public class Enemy_propertys_scr : MonoBehaviour
             StopAllCoroutines();
             Health = 10001;
             DropItems();
-            Instantiate(rip, transform.position, Quaternion.identity);
+            GameObject grave = Instantiate(rip, transform.position, Quaternion.identity);
+            grave.GetComponent<AudioManager>().PlayAudioDeath(DeathSound);
             this.gameObject.SetActive(false);
             //Destroy(this.gameObject);
         }
@@ -77,13 +79,17 @@ public class Enemy_propertys_scr : MonoBehaviour
         if (Health< 10000)
         {
             Health -= dmg;
+            if (!TookDMG)
+            {
+                audioController.PlayAudioHit();
+            }
             TookDMG = true;
             Debug.Log(this.gameObject + " took dmg " + dmg);
             StopAllCoroutines();
             StartCoroutine(Stopattck());
             CheckLives();
             GetComponent<Rigidbody2D>().AddForce((transform.position - point) * KnockBack);
-            audioController.PlayAudioHit();
+            
         }
     }
     public IEnumerator Stopattck()

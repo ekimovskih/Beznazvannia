@@ -124,6 +124,7 @@ MonoBehaviour:
   DropRates: 
   imune: 0
   rip: {fileID: 9161633694537799697, guid: fa7419454dacd7a4db6ba9e74a78f052, type: 3}
+  DeathSound: 0
   state: 0
   player: {fileID: 0}
 --- !u!50 &1295804890673955795
@@ -299,12 +300,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Agred:
   - {fileID: 8300000, guid: f562197861ac5904a82ef76f39e310b4, type: 3}
+  - {fileID: 8300000, guid: 05d99b5771e01bf4dbbe82356fbdc730, type: 3}
   Death:
   - {fileID: 8300000, guid: c99598d131578e14f9c96b5f498add99, type: 3}
+  - {fileID: 8300000, guid: 1f92d28f74429d54f831533cc66adf1f, type: 3}
   Attack:
   - {fileID: 8300000, guid: 1c01260535b665d4a945be1b77fb58b9, type: 3}
   - {fileID: 8300000, guid: 688cfad9c1c77b247be25f1963b035d1, type: 3}
-  - {fileID: 8300000, guid: 1f92d28f74429d54f831533cc66adf1f, type: 3}
   AggroLost:
   - {fileID: 8300000, guid: 82555cec5f8502d43aa9479ad23ce88d, type: 3}
   - {fileID: 8300000, guid: 528cee8e1235d1246a8f47f5b4ec8cb0, type: 3}
@@ -312,4 +314,5 @@ MonoBehaviour:
   PickUp: []
   Hit:
   - {fileID: 8300000, guid: f01068cd6a88f5d47b8b45655c603fa5, type: 3}
+  - {fileID: 8300000, guid: 1f92d28f74429d54f831533cc66adf1f, type: 3}
   Mine: []

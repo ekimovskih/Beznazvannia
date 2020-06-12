@@ -155,7 +155,7 @@ public class Cursor_scr : MonoBehaviour
 
     void MouseLMBaction()
     {
-        if (!MouseOverUi())
+        if (!MouseOverUi()&& PlayerComponent.alive)
         {
             if (InActiveSlot != null && InActiveSlot.Interactive && PlayerComponent.CanMove && !HandContainerFull)
             {
@@ -177,6 +177,15 @@ public class Cursor_scr : MonoBehaviour
                 else
                 {
                     GridBuilder.transform.GetComponent<GridBuilder_scr>().GetFromCell(ActiveCell.x, ActiveCell.y, InActiveSlot);
+                    if (InActiveSlot.type == "Axe")
+                    {
+                        Player.GetComponent<AudioManager>().PlayAudioMine(1);
+                    }
+                    else if(InActiveSlot.type == "Pickaxe")
+                    {
+                        Player.GetComponent<AudioManager>().PlayAudioMine(0);
+                    }
+                        
                     //Debug.Log(Time.time + " Start");
                     //float WaitTime = InHand.ActionSpeed;
 

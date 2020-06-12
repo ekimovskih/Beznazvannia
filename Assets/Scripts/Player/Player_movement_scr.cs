@@ -12,7 +12,7 @@ public class Player_movement_scr : MonoBehaviour
     public bool Vulnerable = true;
     public bool CanMove = true;
     //public bool CanIteract = true;
-    private bool alive = true;
+    [HideInInspector] public bool alive = true;
     public Sprite Grave;
     public float JMPImune = 1f;
     private bool CanJump = true;
@@ -68,8 +68,7 @@ public class Player_movement_scr : MonoBehaviour
         //ChangeInHand(CurrInvSlot);
         PlayerSprite = this.gameObject.GetComponent<SpriteRenderer>();
         
-        go1 = this.gameObject;
-        audioController = go1.GetComponent<AudioManager>();
+        audioController = this.gameObject.GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -98,7 +97,7 @@ public class Player_movement_scr : MonoBehaviour
             if (Health < 0)
             {
                 StartCoroutine(Death());
-                audioController.PlayAudioDeath();
+                //
                 //this.gameObject.SetActive(false);
 
             }
@@ -150,6 +149,7 @@ public class Player_movement_scr : MonoBehaviour
     IEnumerator Death()
     {
         alive = false;
+        audioController.PlayAudioDeath(0);
         GetComponent<SpriteRenderer>().sprite = Grave;
         yield return new WaitForSeconds(3f);
         GameObject.Find("DarkScreen").GetComponent<DarkScreen>().MakeDarker();

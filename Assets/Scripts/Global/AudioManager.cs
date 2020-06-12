@@ -20,16 +20,15 @@ public class AudioManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(Agred[i], 0.5f);
     }
     
-    public void PlayAudioDeath()
+    public void PlayAudioDeath(int i)
     {
         //Debug.Log(Agred.Length);
-        int i = Random.Range(0, Death.Length);
+        //int i = Random.Range(0, Death.Length);
         GetComponent<AudioSource>().PlayOneShot(Death[i], 0.5f);
     }
     
     public void PlayAudioAttack()
     {
-        
         int i = Random.Range(0, Attack.Length);
         Debug.Log(i);
         GetComponent<AudioSource>().PlayOneShot(Attack[i], 0.5f);
@@ -56,10 +55,10 @@ public class AudioManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(Hit[i], 0.5f);
     }
     
-    public void PlayAudioMine()
+    public void PlayAudioMine(int i)
     {
         //Debug.Log(Agred.Length);
-        int i = Random.Range(0, Mine.Length);
+        //int i = Random.Range(0, Mine.Length);
         GetComponent<AudioSource>().PlayOneShot(Mine[i], 0.5f);
     }
 
