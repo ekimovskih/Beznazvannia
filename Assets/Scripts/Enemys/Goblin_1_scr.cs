@@ -42,7 +42,13 @@ public class Goblin_1_scr : Enemy_propertys_scr
             else if (!Agred && CanMove)
             {
                 //Debug.Log("Tupa otdihaem");
-                state = 0;
+                if (state == 1)
+                {
+                    audioController.PlayAudioAggroLost();
+                    state = 0;
+                }
+                
+
                 SimplePatrole();
                 
             }
