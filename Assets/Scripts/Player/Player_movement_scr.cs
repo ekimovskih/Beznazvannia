@@ -48,7 +48,6 @@ public class Player_movement_scr : MonoBehaviour
     
     private GameObject go1 = null;
     private AudioManager audioController;
-
     
 
     public Vector3 CameraOffset = new Vector3(0, 5, -30);
@@ -105,7 +104,7 @@ public class Player_movement_scr : MonoBehaviour
             {
                 StartCoroutine(Regen());
             }
-        } 
+        }
     }
     public void Movement(float speed)
     {
