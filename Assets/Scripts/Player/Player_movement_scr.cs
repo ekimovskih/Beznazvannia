@@ -98,7 +98,7 @@ public class Player_movement_scr : MonoBehaviour
             if (Health < 0)
             {
                 StartCoroutine(Death());
-                audioController.PlayAudio(2);
+                //audioController.PlayAudio(2);
                 //this.gameObject.SetActive(false);
 
             }

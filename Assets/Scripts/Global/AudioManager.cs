@@ -6,17 +6,12 @@ using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioClip[] clip;
+    public AudioClip[] Agred;
 
-    public void Start()
+    public void PlayAudioAgred()
     {
-        int i = Random.Range(2, clip.Length);
-        //PlayAudio(i);
-    }
-
-    public void PlayAudio(int i)
-    {
-        Debug.Log(clip.Length);
-        GetComponent<AudioSource>().PlayOneShot(clip[i]);
+        //Debug.Log(Agred.Length);
+        int i = Random.Range(0, Agred.Length);
+        GetComponent<AudioSource>().PlayOneShot(Agred[i]);
     }
 }

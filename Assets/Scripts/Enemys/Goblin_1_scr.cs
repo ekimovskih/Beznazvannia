@@ -34,7 +34,7 @@ public class Goblin_1_scr : Enemy_propertys_scr
                 AgredMovement();
                 if (state == 0)
                 {
-                    GetComponent<AudioManager>().PlayAudio(0);
+                    GetComponent<AudioManager>().PlayAudioAgred();
                     state = 1;
                 }
                 
