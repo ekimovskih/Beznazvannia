@@ -6,6 +6,7 @@
     <e p="C:\Users\CapitanBaklawan\Desktop\Новая папка\Beznazvannia" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="audioPause.cs" t="Include" />
         <e p="FreePixelGear" t="Include">
           <e p="ReadMe.txt" t="Include" />
         </e>
@@ -43,6 +44,7 @@
             <e p="GlobalTime_scr.cs" t="Include" />
             <e p="HpRestorer_scr.cs" t="Include" />
             <e p="Portal_scr.cs" t="Include" />
+            <e p="testttt.cs" t="Include" />
           </e>
           <e p="Ground" t="Include">
             <e p="Cell_class.cs" t="Include" />
@@ -80,6 +82,11 @@
           </e>
           <e p="test.cs" t="Include" />
           <e p="test1.cs" t="Include" />
+        </e>
+        <e p="Sprites" t="Include">
+          <e p="Main menu" t="Include">
+            <e p="menu_button.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Beznazvannia.sln" t="IncludeFlat" />
