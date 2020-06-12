@@ -9,7 +9,16 @@
         <e p="FreePixelGear" t="Include">
           <e p="ReadMe.txt" t="Include" />
         </e>
+        <e p="Pixel Art Icon Pack - RPG" t="Include">
+          <e p="Shader" t="Include">
+            <e p="SH Sprite Icon Outline Color.shader" t="Include" />
+            <e p="SH UI Icon Outline Color.shader" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
+          <e p="Armor" t="Include">
+            <e p="ArmorSlot_scr.cs" t="Include" />
+          </e>
           <e p="Craft" t="Include">
             <e p="CraftInventory_scr.cs" t="Include" />
             <e p="CraftSlot.cs" t="Include" />
@@ -18,7 +27,6 @@
           <e p="Cursor" t="Include">
             <e p="Cursor_scr.cs" t="Include" />
           </e>
-          <e p="DontDestroy_scr.cs" t="Include" />
           <e p="Enemys" t="Include">
             <e p="Arrow.cs" t="Include" />
             <e p="Enemy_propertys_scr.cs" t="Include" />
@@ -27,14 +35,21 @@
             <e p="Slime_1_scr.cs" t="Include" />
           </e>
           <e p="Global" t="Include">
+            <e p="AudioManager.cs" t="Include" />
             <e p="CameraFollow.cs" t="Include" />
+            <e p="DarkScreen.cs" t="Include" />
+            <e p="DontDestroy_scr.cs" t="Include" />
             <e p="DropCatalog_scr.cs" t="Include" />
             <e p="GlobalTime_scr.cs" t="Include" />
+            <e p="HpRestorer_scr.cs" t="Include" />
             <e p="Portal_scr.cs" t="Include" />
           </e>
           <e p="Ground" t="Include">
             <e p="Cell_class.cs" t="Include" />
+            <e p="Door_scr.cs" t="Include" />
+            <e p="DungeonBuilder_scr.cs" t="Include" />
             <e p="GridBuilder_scr.cs" t="Include" />
+            <e p="HideArrows_scr.cs" t="Include" />
           </e>
           <e p="Inventory" t="Include">
             <e p="Bin_scr.cs" t="Include" />
@@ -46,14 +61,25 @@
           <e p="Objects" t="Include">
             <e p="Drop_scr.cs" t="Include" />
             <e p="ObjOnCell_scr.cs" t="Include" />
+            <e p="SwordMovement.cs" t="Include" />
+          </e>
+          <e p="PathFinder" t="Include">
+            <e p="Point.cs" t="Include" />
+            <e p="PointsBuilder.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
             <e p="DropMagnit_scr.cs" t="Include" />
             <e p="HealthBar.cs" t="Include" />
+            <e p="JumpShadow_scr.cs" t="Include" />
             <e p="Player_movement_scr.cs" t="Include" />
+            <e p="PlayerArrow.cs" t="Include" />
             <e p="PlayerAttack_scr.cs" t="Include" />
+            <e p="StaminaBar.cs" t="Include" />
+            <e p="StatsTabUpdater.cs" t="Include" />
             <e p="WorkIndicator_scr.cs" t="Include" />
           </e>
+          <e p="test.cs" t="Include" />
+          <e p="test1.cs" t="Include" />
         </e>
       </e>
       <e p="Beznazvannia.sln" t="IncludeFlat" />
