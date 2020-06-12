@@ -29,7 +29,11 @@ public class Enemy_propertys_scr : MonoBehaviour
     public int[] DropRates;
     public bool imune = false;
     public GameObject rip;
+    
+    protected GameObject go2 = null;
+    protected AudioManager audioController;
 
+    
     [HideInInspector]public GameObject player = null;
 
     public void Zcorrector()

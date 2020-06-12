@@ -45,6 +45,9 @@ public class Player_movement_scr : MonoBehaviour
     public float JumpStrengh = 3000f;
     public int JumpWaste = 5;
     public int Armor = 0;
+    
+    private GameObject go1 = null;
+    private AudioManager audioController;
 
     
 
@@ -64,6 +67,9 @@ public class Player_movement_scr : MonoBehaviour
         InventoryFull = Inventory.isFull;
         //ChangeInHand(CurrInvSlot);
         PlayerSprite = this.gameObject.GetComponent<SpriteRenderer>();
+        
+        go1 = this.gameObject;
+        audioController = go1.GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -92,6 +98,7 @@ public class Player_movement_scr : MonoBehaviour
             if (Health < 0)
             {
                 StartCoroutine(Death());
+                audioController.PlayAudio(2);
                 //this.gameObject.SetActive(false);
 
             }
