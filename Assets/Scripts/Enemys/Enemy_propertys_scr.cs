@@ -145,6 +145,7 @@ public class Enemy_propertys_scr : MonoBehaviour
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(dirrection * JumpAttackSpeed);
             GameObject attack = Instantiate(AttackZone, this.gameObject.transform);
             attack.GetComponent<EnemyAttack_scr>().Damage = Damage;
+            audioController.PlayAudioAttack();
             //StartCoroutine(Stopattck());
             //Debug.Log("Attack " + Time.time);
         }
@@ -178,6 +179,7 @@ public class Enemy_propertys_scr : MonoBehaviour
             yield return new WaitForSeconds(AttackPrepare);
             StartCoroutine(Stopattck());
             Instantiate(AttackZone, this.gameObject.transform.position, Quaternion.identity, this.gameObject.transform);
+            audioController.PlayAudioAttack();
             //StartCoroutine(Stopattck());
             //Debug.Log("Attack " + Time.time);
         }

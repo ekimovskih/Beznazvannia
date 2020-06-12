@@ -58,6 +58,11 @@ public class Goblin_1_scr : Enemy_propertys_scr
             StopAllCoroutines();
             CanMove = false;
         }
+
+        if (Health < 1)
+        {
+            audioController.PlayAudioDeath();
+        }
     }
 
 
