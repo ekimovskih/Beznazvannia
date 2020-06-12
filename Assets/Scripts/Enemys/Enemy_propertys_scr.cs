@@ -83,6 +83,7 @@ public class Enemy_propertys_scr : MonoBehaviour
             StartCoroutine(Stopattck());
             CheckLives();
             GetComponent<Rigidbody2D>().AddForce((transform.position - point) * KnockBack);
+            audioController.PlayAudioHit();
         }
     }
     public IEnumerator Stopattck()

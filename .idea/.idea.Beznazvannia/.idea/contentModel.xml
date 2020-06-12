@@ -61,7 +61,6 @@
           <e p="Objects" t="Include">
             <e p="Drop_scr.cs" t="Include" />
             <e p="ObjOnCell_scr.cs" t="Include" />
-            <e p="SwordMovement.cs" t="Include" />
           </e>
           <e p="PathFinder" t="Include">
             <e p="Point.cs" t="Include" />
@@ -76,6 +75,7 @@
             <e p="PlayerAttack_scr.cs" t="Include" />
             <e p="StaminaBar.cs" t="Include" />
             <e p="StatsTabUpdater.cs" t="Include" />
+            <e p="SwordMovement.cs" t="Include" />
             <e p="WorkIndicator_scr.cs" t="Include" />
           </e>
           <e p="test.cs" t="Include" />
