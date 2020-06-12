@@ -11,11 +11,12 @@ public class AudioManager : MonoBehaviour
     public void Start()
     {
         int i = Random.Range(2, clip.Length);
-        PlayAudio(i);
+        //PlayAudio(i);
     }
 
     public void PlayAudio(int i)
     {
+        Debug.Log(clip.Length);
         GetComponent<AudioSource>().PlayOneShot(clip[i]);
     }
 }
