@@ -8,8 +8,8 @@ public class Goblin_1_scr : Enemy_propertys_scr
     void Start()
     {
         player = GameObject.Find("Player");
-        go2 = this.gameObject;
-        audioController = go2.GetComponent<AudioManager>();
+        //go2 = this.gameObject;
+        audioController = this.gameObject.GetComponent<AudioManager>();
 
     }
 

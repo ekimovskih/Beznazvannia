@@ -31,7 +31,7 @@ public class Enemy_propertys_scr : MonoBehaviour
     public GameObject rip;
     public int state = 0;
     
-    protected GameObject go2 = null;
+    //protected GameObject go2 = null;
     protected AudioManager audioController;
 
     
@@ -153,24 +153,6 @@ public class Enemy_propertys_scr : MonoBehaviour
 
     public IEnumerator RadiusAttack()
     {
-        /*
-        Debug.Log("Start Attak " + Time.time);
-        CanAttack = false;
-        CanMove = false;
-        StopCoroutine(Stopattck());
-        //StartCoroutine(Stopattck());
-        yield return new WaitForSeconds(AttackPrepare);
-        if (!CanMove)
-        {
-            Instantiate(AttackZone, this.gameObject.transform.position, Quaternion.identity, this.gameObject.transform);
-        }
-        
-        yield return new WaitForSeconds(AttackRelax);
-        CanAttack = true;
-        CanMove = true;
-        Debug.Log("Stop Attak " + Time.time);
-        */
-        //Debug.Log("Start Attak " + Time.time);
         if (SupportBool)
         {
             CanAttack = false;

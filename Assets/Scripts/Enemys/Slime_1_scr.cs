@@ -13,6 +13,7 @@ public class Slime_1_scr : Enemy_propertys_scr
     void Start()
     {
         player = GameObject.Find("Player");
+        audioController = this.gameObject.GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
