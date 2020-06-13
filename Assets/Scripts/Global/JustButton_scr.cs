@@ -19,4 +19,5 @@ public class JustButton_scr : MonoBehaviour
         count++;
         text.text = count.ToString();
     }
+
 }

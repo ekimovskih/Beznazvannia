@@ -16,7 +16,6 @@ public class CraftSlot : MonoBehaviour
 
     private void Awake()
     {
-        
         //InventoryComponent = Inventory.GetComponent<Inventory_scr>();
     }
     // Start is called before the first frame update
@@ -97,6 +96,4 @@ public class CraftSlot : MonoBehaviour
             Debug.Log("Для сотворения чего-то  не хватает");
         }
     }
-
-
 }
