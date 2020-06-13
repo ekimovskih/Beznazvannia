@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 43064325596455538, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: m_Name
-      value: HealthPot_medium
+      value: HealthPot_medium Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1613987228802755208, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
@@ -71,7 +71,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1f97848f18817cc43ba66da5a2d0ccfa,
+      objectReference: {fileID: 21300000, guid: 7b3876a2b72c44540a4bbd5aaba9e506,
         type: 3}
     - target: {fileID: 4887054445814681695, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
@@ -139,6 +139,12 @@ PrefabInstance:
         type: 3}
       propertyPath: Interactive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: supertype
+      value: "\u0421\u0440\u0435\u0434\u043D\u0435\u0435 \u0437\u0435\u043B\u044C\u0435
+        \u043B\u0435\u0447\u0435\u043D\u0438\u044F"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99a9096ca7d0a7c408d44b08ebb7950e, type: 3}

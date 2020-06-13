@@ -8592,6 +8592,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350687220758186930, guid: 3389e820ecf36094db9dbf44c77a19e5,
+        type: 3}
+      propertyPath: playOnStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4512436386616250780, guid: 3389e820ecf36094db9dbf44c77a19e5,
         type: 3}
       propertyPath: m_AnchorMin.y

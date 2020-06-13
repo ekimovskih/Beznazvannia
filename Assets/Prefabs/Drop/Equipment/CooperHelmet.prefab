@@ -139,5 +139,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3042757959605977795, guid: 5c80d18c49dd70248930ea48dee661ff,
         type: 3}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: supertype
+      value: "\u041C\u0435\u0434\u043D\u044B\u0439 \u0448\u043B\u0435\u043C"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99a9096ca7d0a7c408d44b08ebb7950e, type: 3}

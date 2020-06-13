@@ -165,6 +165,11 @@ PrefabInstance:
       propertyPath: ActionSpeed
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: supertype
+      value: "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u0430\u044F \u043A\u0438\u0440\u043A\u0430"
+      objectReference: {fileID: 0}
     - target: {fileID: 5848539116449080557, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: m_Radius

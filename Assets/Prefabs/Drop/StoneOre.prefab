@@ -118,6 +118,11 @@ PrefabInstance:
       propertyPath: InStack
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 5306670984250195186, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
+        type: 3}
+      propertyPath: supertype
+      value: "\u041A\u0430\u043C\u0435\u043D\u044C"
+      objectReference: {fileID: 0}
     - target: {fileID: 5848539116449080557, guid: 99a9096ca7d0a7c408d44b08ebb7950e,
         type: 3}
       propertyPath: m_Radius

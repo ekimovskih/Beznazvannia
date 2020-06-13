@@ -8,12 +8,17 @@ public class DarkScreen : MonoBehaviour
     // Start is called before the first frame update
     private Image sprite;
     bool can = true;
-    Vector3 on = new Vector3(200, 0,0);
-    Vector3 off = new Vector3(-5000, -5000,0);
+    public Vector3 on = new Vector3(200, 0,0);
+    public Vector3 off = new Vector3(-5000, -5000,0);
     public GameObject Parent;
+    public bool playOnStart = false;
     void Start()
     {
         sprite = GetComponent<Image>();
+        if (playOnStart)
+        {
+           // StartCoroutine(LighterFromStart());
+        }
     }
 
     // Update is called once per frame
@@ -55,6 +60,24 @@ public class DarkScreen : MonoBehaviour
             Parent.transform.position = off;
         }
         
+    }
+    public IEnumerator LighterFromStart()
+    {
+        Parent.transform.position = on;
+        //can = true;
+        for (int i = 100; i > 0; i--)
+        {
+            //Debug.Log(sprite.color.a);
+            Color eh = sprite.color;
+            eh.a = i / 50f;
+            sprite.color = eh;
+            yield return new WaitForSeconds(0f);
+        }
+        Parent.transform.position = off;
+        sprite.color = Color.black;
+
+
+
     }
 
     public void MakeLighter()

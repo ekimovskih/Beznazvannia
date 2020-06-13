@@ -33,6 +33,7 @@ public class Player_movement_scr : MonoBehaviour
     public Transform Cursor;
     private bool regenerate = true;
     [HideInInspector] public bool wasHited = false;
+    private LeftUpShowPanel_scr NewDropPanel;
 
     public int MaxHealth = 100;
     public int Health = 100;
@@ -62,6 +63,7 @@ public class Player_movement_scr : MonoBehaviour
         PlayerContainerAudioSource = PlayerContainer.GetComponent<AudioSource>();
         //StatsTab = GameObject.Find("StatsTexts").GetComponent<StatsTabUpdater>();
         rb = GetComponent<Rigidbody2D>();
+        NewDropPanel = GameObject.Find("NewDropPanel").GetComponent<LeftUpShowPanel_scr>();
     }
     void Start()
     {
@@ -283,6 +285,7 @@ public class Player_movement_scr : MonoBehaviour
             {
                 Inventory.AddItem(collision.gameObject);
                 audioController.PlayAudioPickUp();
+                NewDropPanel.CheckDrops(collision.gameObject);
             }
         }
         

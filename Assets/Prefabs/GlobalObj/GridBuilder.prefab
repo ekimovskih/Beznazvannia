@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ed950bff145ab4ba2b9b9fcd52b817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridWidth: 10
-  GridHigh: 10
+  ObjectList: []
+  ObjectVariationsChanses: 
   RoomMap: {fileID: 0}
   LocationCells:
   - {fileID: 3180794103080533044, guid: ef2a8182136face4aabdd57053970bcd, type: 3}
@@ -264,6 +264,9 @@ MonoBehaviour:
   - {fileID: 8696218187028175196, guid: a2b6e490f74109a4f884748ba1961bc9, type: 3}
   - {fileID: 1527720221203010175, guid: 1afefcd8e15df1b4ca5bb52c4bb33194, type: 3}
   door1: {x: 0, y: 0, z: 0}
+  door2: {x: 0, y: 0, z: 0}
+  door3: {x: 0, y: 0, z: 0}
+  door4: {x: 0, y: 0, z: 0}
   arrowRight: {fileID: 889408171582679258}
   arrowDown: {fileID: 7114946928686784879}
   arrowLeft: {fileID: 8507683766326755434}
@@ -272,6 +275,9 @@ MonoBehaviour:
     type: 3}
   blueportal: {fileID: 6324695481534734486, guid: ccf624872a59e1847879b946c51ba21a,
     type: 3}
+  LocalGrid: {fileID: 0}
+  door0: {x: 0, y: 0, z: 0}
+  IsDungeon: 1
   Textures:
   - {fileID: 21300000, guid: f26b14c12c4cf85418d1f3211f2efb9d, type: 3}
   - {fileID: 0}
