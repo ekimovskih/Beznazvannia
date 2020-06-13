@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Goblin_1_scr : Enemy_propertys_scr
 {
-    
     void Start()
     {
         player = GameObject.Find("Player");
@@ -32,20 +31,20 @@ public class Goblin_1_scr : Enemy_propertys_scr
             {
                 //StartCoroutine(Jump(dirrection));
                 AgredMovement();
-                if (state == 0)
+                if (EnemyState == 0)
                 {
                     GetComponent<AudioManager>().PlayAudioAgred();
-                    state = 1;
+                    EnemyState = 1;
                 }
                 
             }
             else if (!Agred && CanMove)
             {
                 //Debug.Log("Tupa otdihaem");
-                if (state == 1)
+                if (EnemyState == 1)
                 {
                     audioController.PlayAudioAggroLost();
-                    state = 0;
+                    EnemyState = 0;
                 }
                 
 
@@ -59,6 +58,5 @@ public class Goblin_1_scr : Enemy_propertys_scr
             CanMove = false;
         }
     }
-
 
 }

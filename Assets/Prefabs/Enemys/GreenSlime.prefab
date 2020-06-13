@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: f82eb58de06b4934591177a430939a84, type: 3}
-  m_Color: {r: 0.5989702, g: 1, b: 0.1745283, a: 1}
+  m_Sprite: {fileID: 21300000, guid: df2a1709ff8ee2e4b9b1b69bc1ce5c28, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -162,7 +162,10 @@ MonoBehaviour:
   imune: 0
   rip: {fileID: 9161633694537799697, guid: fa7419454dacd7a4db6ba9e74a78f052, type: 3}
   DeathSound: 1
-  state: 0
+  EnemyState: 0
+  SpriteDown: {fileID: 0}
+  SpriteSide: {fileID: 0}
+  SpriteUp: {fileID: 0}
   player: {fileID: 0}
   JumpMoveWaitTime: 1
 --- !u!82 &5280132316033675909
@@ -283,3 +286,4 @@ MonoBehaviour:
   Hit:
   - {fileID: 8300000, guid: 4f81f9489f9a66245943c4b344526e48, type: 3}
   Mine: []
+  state: 0

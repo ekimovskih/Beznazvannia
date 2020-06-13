@@ -30,8 +30,11 @@ public class Enemy_propertys_scr : MonoBehaviour
     public bool imune = false;
     public GameObject rip;
     public int DeathSound = 0;
-    public int state = 0;
-    
+    public int EnemyState = 0;
+    public Sprite SpriteDown;
+    public Sprite SpriteSide;
+    public Sprite SpriteUp;
+
     //protected GameObject go2 = null;
     protected AudioManager audioController;
 
@@ -189,12 +192,14 @@ public class Enemy_propertys_scr : MonoBehaviour
     public void AgredMovement()
     {
         transform.Translate(dirrection * Time.deltaTime * MovementSpeed);
+        SpriteMoveChanger(transform.position + new Vector3(dirrection.x, dirrection.y, 0));
     }
     public void SimplePatrole()
     {
         if (CanChillWalk)
         {
             //Debug.Log("Just move");
+            SpriteMoveChanger(transform.position + new Vector3( dirrection.x, dirrection.y,0));
             transform.Translate(dirrection * Time.deltaTime * MovementSpeed/2);
         }
         else
@@ -248,6 +253,44 @@ public class Enemy_propertys_scr : MonoBehaviour
             {
                 GameObject drop = Instantiate(DeathDrop[i], transform.position + Vector3.up * i / 100f, Quaternion.identity);
                 //drop.GetComponent<Drop_scr>().count = Random.Range(0, DropRates[i].y+1);
+            }
+        }
+    }
+
+    public void SpriteMoveChanger(Vector3 dir)
+    {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        Vector3 pos = transform.position;
+        float y = dir.y - pos.y;
+        float x = dir.x - pos.x;
+        if (y > 0)
+        {
+            sprite.sprite = SpriteUp;
+            sprite.flipX = false;
+            return;
+        }
+        if (x > 0)
+        {
+            sprite.flipX = false;
+            if (x > -y)
+            {
+                sprite.sprite = SpriteSide;
+            }
+            else
+            {
+                sprite.sprite = SpriteDown;
+            }
+        }
+        else
+        {
+            sprite.flipX = true;
+            if (x < y)
+            {
+                sprite.sprite = SpriteSide;
+            }
+            else
+            {
+                sprite.sprite = SpriteDown;
             }
         }
     }

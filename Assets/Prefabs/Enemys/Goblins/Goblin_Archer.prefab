@@ -28,6 +28,7 @@ MonoBehaviour:
   Hit:
   - {fileID: 8300000, guid: f01068cd6a88f5d47b8b45655c603fa5, type: 3}
   Mine: []
+  state: 0
 --- !u!1001 &605675031620883208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,6 +87,24 @@ PrefabInstance:
       propertyPath: DeathDrop.Array.data[0]
       value: 
       objectReference: {fileID: 4365569012970580583, guid: fb50c93517c696b4ca7d91fa14ef8b19,
+        type: 3}
+    - target: {fileID: 1295804890673955794, guid: b492140ad80b85d42b920f33f0d6cdae,
+        type: 3}
+      propertyPath: SpriteDown
+      value: 
+      objectReference: {fileID: 21300000, guid: 5a61928501ad12e4aa83afe14f63322a,
+        type: 3}
+    - target: {fileID: 1295804890673955794, guid: b492140ad80b85d42b920f33f0d6cdae,
+        type: 3}
+      propertyPath: SpriteSide
+      value: 
+      objectReference: {fileID: 21300000, guid: 7cc42c37eceab954fb3caf6721cd745e,
+        type: 3}
+    - target: {fileID: 1295804890673955794, guid: b492140ad80b85d42b920f33f0d6cdae,
+        type: 3}
+      propertyPath: SpriteUp
+      value: 
+      objectReference: {fileID: 21300000, guid: d197988f00a5f73428e00313fbf67ba7,
         type: 3}
     - target: {fileID: 1295804890673955796, guid: b492140ad80b85d42b920f33f0d6cdae,
         type: 3}

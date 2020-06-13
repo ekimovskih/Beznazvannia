@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
     public void PlayAudioAttack()
     {
         int i = Random.Range(0, Attack.Length);
-        Debug.Log(i);
+        //Debug.Log(i);
         GetComponent<AudioSource>().PlayOneShot(Attack[i], 0.5f);
     }
     

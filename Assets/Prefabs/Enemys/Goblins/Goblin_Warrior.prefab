@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: acd4bf308b798834aba53c65e30584f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57c53e48ae3c09b4da4f404e7bb924ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,10 @@ MonoBehaviour:
   imune: 0
   rip: {fileID: 9161633694537799697, guid: fa7419454dacd7a4db6ba9e74a78f052, type: 3}
   DeathSound: 0
-  state: 0
+  EnemyState: 0
+  SpriteDown: {fileID: 21300000, guid: 57c53e48ae3c09b4da4f404e7bb924ed, type: 3}
+  SpriteSide: {fileID: 21300000, guid: d1542a0cb729bea48b40809155ef6812, type: 3}
+  SpriteUp: {fileID: 21300000, guid: 4be55bd2fa65e75439d012cb7993a94f, type: 3}
   player: {fileID: 0}
 --- !u!50 &1295804890673955795
 Rigidbody2D:
@@ -180,8 +183,8 @@ BoxCollider2D:
   m_Offset: {x: -0.013676763, y: 0.4490385}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5477896, y: 0.08407014}
-    oldSize: {x: 1, y: 2}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 1}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -316,3 +319,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f01068cd6a88f5d47b8b45655c603fa5, type: 3}
   - {fileID: 8300000, guid: 1f92d28f74429d54f831533cc66adf1f, type: 3}
   Mine: []
+  state: 0

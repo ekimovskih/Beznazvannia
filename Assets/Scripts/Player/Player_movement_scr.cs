@@ -176,6 +176,7 @@ public class Player_movement_scr : MonoBehaviour
     IEnumerator Death()
     {
         alive = false;
+        GameObject.Find("MusicPlayer").GetComponent<AudioSource>().Stop();
         audioController.PlayAudioDeath(0);
         GetComponent<SpriteRenderer>().sprite = Grave;
         yield return new WaitForSeconds(3f);
@@ -191,7 +192,8 @@ public class Player_movement_scr : MonoBehaviour
     }
 
     void Jump()
-    { if (Input.GetKeyDown(KeyCode.Space) && CanJump)
+    { 
+        if (Input.GetKeyDown(KeyCode.Space) && CanJump)
         {
             if (Stamina - JumpWaste > 0)
             {
@@ -213,6 +215,8 @@ public class Player_movement_scr : MonoBehaviour
             //rb.velocity = Move;
             //Debug.Log("Jump");
         }
+        //Debug.Log(Input.GetKeyDown(KeyCode.Space));
+        //Debug.Log(CanJump);
     }
     public void SpriteMoveChanger(float horizInput, float verticInput)
     {
@@ -278,6 +282,7 @@ public class Player_movement_scr : MonoBehaviour
             else if (Inventory != null)
             {
                 Inventory.AddItem(collision.gameObject);
+                audioController.PlayAudioPickUp();
             }
         }
         
