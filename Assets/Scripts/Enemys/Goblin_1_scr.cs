@@ -43,6 +43,7 @@ public class Goblin_1_scr : Enemy_propertys_scr
                 //Debug.Log("Tupa otdihaem");
                 if (EnemyState == 1)
                 {
+                    Debug.Log("jnjhdfkcz");
                     audioController.PlayAudioAggroLost();
                     EnemyState = 0;
                 }

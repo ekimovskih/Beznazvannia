@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
@@ -18,5 +19,9 @@ public class MenuButton : MonoBehaviour
             ButtonOFF.SetActive(!ButtonOFF.activeSelf);
             //Debug.Log("sdfsdfsdf");
         }
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

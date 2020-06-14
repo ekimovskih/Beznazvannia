@@ -103,7 +103,7 @@ MonoBehaviour:
   Damage: 0
   MovementSpeed: 1.5
   AgroRadius: 5
-  DisAgroRadius: 20
+  DisAgroRadius: 10
   Agred: 0
   distance: 0
   AttackRadius: 1
@@ -183,8 +183,8 @@ BoxCollider2D:
   m_Offset: {x: -0.013676763, y: 0.4490385}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 1}
+    pivot: {x: 0.5, y: 0.12}
+    oldSize: {x: 1, y: 2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -313,7 +313,6 @@ MonoBehaviour:
   AggroLost:
   - {fileID: 8300000, guid: 82555cec5f8502d43aa9479ad23ce88d, type: 3}
   - {fileID: 8300000, guid: 528cee8e1235d1246a8f47f5b4ec8cb0, type: 3}
-  - {fileID: 8300000, guid: 05d99b5771e01bf4dbbe82356fbdc730, type: 3}
   PickUp: []
   Hit:
   - {fileID: 8300000, guid: f01068cd6a88f5d47b8b45655c603fa5, type: 3}

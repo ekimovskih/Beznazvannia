@@ -37,7 +37,10 @@ public class Portal_scr : MonoBehaviour
                 can = true;
             } 
             StopAllCoroutines();
-            StartCoroutine(Minus());
+            if (sequence > 0)
+            {
+                StartCoroutine(Minus());
+            }
         }
         
     }
@@ -68,13 +71,14 @@ public class Portal_scr : MonoBehaviour
         {
             sequence = 4;
         }
-        //StopAllCoroutines();
-        //StopCoroutine("Plus");
         for (int i = sequence; i > -1; i--)
         {
             yield return new WaitForSeconds(1f);
             Symbols[i].SetActive(false);
-            GetComponent<AudioManager>().PlayAudioAttack();
+            if (i > 0)
+            {
+                GetComponent<AudioManager>().PlayAudioAttack();
+            }
             sequence--;
         }
         //Application.LoadLevel(WhereToPort);

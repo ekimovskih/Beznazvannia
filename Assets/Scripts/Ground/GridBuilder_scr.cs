@@ -21,7 +21,7 @@ public class GridBuilder_scr : MonoBehaviour
     public Vector3 door2;
     public Vector3 door3;
     public Vector3 door4;
-    private Vector2[] enemyCells = new Vector2[30];
+    private Vector2[] enemyCells = new Vector2[60];
     private int enemyCellsIndex = 0;
     public GameObject arrowRight;
     public GameObject arrowDown;
@@ -300,10 +300,45 @@ public class GridBuilder_scr : MonoBehaviour
             }
             //Debug.Log(i);
         }
-        arrowRight.transform.position = door1 + Vector3.left*2; 
-        arrowDown.transform.position = door2 + Vector3.up * 2.5f;
-        arrowLeft.transform.position = door3 + Vector3.right * 2;
-        arrowUp.transform.position = door4 + Vector3.down ;
+        if (door1 != Vector3.zero)
+        {
+            arrowRight.transform.position = door1 + Vector3.left * 2;
+        }
+        else
+        {
+            arrowRight.transform.position = Vector3.down * 100;
+        }
+
+        if (door2 != Vector3.zero)
+        {
+            arrowDown.transform.position = door2 + Vector3.up * 2.5f;
+        }
+        else
+        {
+            arrowDown.transform.position = Vector3.down * 100;
+        }
+
+        if (door3 != Vector3.zero)
+        {
+            arrowLeft.transform.position = door3 + Vector3.right * 2;
+        }
+        else
+        {
+            arrowLeft.transform.position = Vector3.down * 100;
+        }
+
+        if (door4 != Vector3.zero)
+        {
+            arrowUp.transform.position = door4 + Vector3.down;
+        }
+        else
+        {
+            arrowUp.transform.position = Vector3.down * 100;
+        }
+
+
+
+        
         SpawnMobs();
     }
 

@@ -10,7 +10,7 @@ public class Enemy_propertys_scr : MonoBehaviour
     public float MovementSpeed = 50f;
     public float AgroRadius;
     public float DisAgroRadius;
-    [HideInInspector] public bool Agred = false;
+    public bool Agred = false;
     [HideInInspector] public float distance;
     public float AttackRadius;
     [HideInInspector] public Vector2 dirrection;

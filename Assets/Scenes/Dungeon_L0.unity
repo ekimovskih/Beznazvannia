@@ -430,113 +430,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &737929972
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 737929973}
-  - component: {fileID: 737929974}
-  m_Layer: 0
-  m_Name: DungeonBuilder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &737929973
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737929972}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &737929974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737929972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611690e5f1de17d4bb9056bc503710dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextLevel: Dungeon_L1
-  GridBuilderPrefab: {fileID: 4683030305729760072, guid: 6be8daf575404d149b4bd1ad62f7730c,
-    type: 3}
-  EnemysVariations:
-  - {fileID: 6823897712486434738, guid: b758079efbd1a1849b2cb2935a2f639a, type: 3}
-  - {fileID: 1295804890673955793, guid: b492140ad80b85d42b920f33f0d6cdae, type: 3}
-  ObjectVariations:
-  - {fileID: 776519380266923594, guid: 8a5dc10fd6dfc2c4f932edc8ea82d2a8, type: 3}
-  - {fileID: 735631205283246512, guid: 2a1a68b8051590a44adeb6805a37b128, type: 3}
-  ObjectVariationsChanses: 550000000a000000
-  LevelMaps:
-  - {fileID: 2800000, guid: 03a4236f652743546bf847d52cb9d5fe, type: 3}
-  Grids1:
-  - {fileID: 2800000, guid: bb2f9c338eb30d54b85de9ade8531932, type: 3}
-  Grids12: []
-  Grids13: []
-  Grids14: []
-  Grids123: []
-  Grids124: []
-  Grids134: []
-  Grids1234: []
-  Grids2:
-  - {fileID: 2800000, guid: 6240b23c24208834887de71439cd9e19, type: 3}
-  Grids23: []
-  Grids24: []
-  Grids234: []
-  Grids3:
-  - {fileID: 2800000, guid: aae77ce09072dd34ea422c8b2b2431c4, type: 3}
-  Grids34: []
-  Grids4: []
-  EnrerGrids1: []
-  EnrerGrids12: []
-  EnrerGrids13: []
-  EnrerGrids14: []
-  EnrerGrids123: []
-  EnrerGrids124: []
-  EnrerGrids134: []
-  EnrerGrids1234:
-  - {fileID: 2800000, guid: 8e7a0e429f49da04b8762ede13363737, type: 3}
-  - {fileID: 2800000, guid: a7ef21ad4eda01144a7f11d704e8435e, type: 3}
-  EnrerGrids2: []
-  EnrerGrids23: []
-  EnrerGrids24: []
-  EnrerGrids234: []
-  EnrerGrids3: []
-  EnrerGrids34: []
-  EnrerGrids4: []
-  ExitGrids1: []
-  ExitGrids12: []
-  ExitGrids13: []
-  ExitGrids14: []
-  ExitGrids123: []
-  ExitGrids124: []
-  ExitGrids134: []
-  ExitGrids1234: []
-  ExitGrids2: []
-  ExitGrids23: []
-  ExitGrids24: []
-  ExitGrids234: []
-  ExitGrids3: []
-  ExitGrids34: []
-  ExitGrids4:
-  - {fileID: 2800000, guid: 78a8c3f9f266e1d4ea5f70ae1274a942, type: 3}
-  CurrentMap: {fileID: 0}
 --- !u!1001 &775886466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1773,6 +1666,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b492140ad80b85d42b920f33f0d6cdae, type: 3}
+--- !u!1001 &4219655572033431099
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865038, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219655572719865039, guid: bba319f358471034aa560d44aecaa966,
+        type: 3}
+      propertyPath: m_Name
+      value: DungeonBuilder
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bba319f358471034aa560d44aecaa966, type: 3}
 --- !u!1001 &6823897713681640329
 PrefabInstance:
   m_ObjectHideFlags: 0

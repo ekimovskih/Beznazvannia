@@ -172,7 +172,15 @@ public class Cursor_scr : MonoBehaviour
                 {
                     PlayerComponent.EquipmentEffects(InActiveSlot,1);
                     GameObject.Find("InventoryManager").GetComponent<Inventory_scr>().DecreseFromActiveSlot();
-                    return;
+                    GetComponent<AudioManager>().PlayAudioMine(0);
+                    //return;
+                }
+                if(InActiveSlot.type == "Food")
+                {
+                    PlayerComponent.EquipmentEffects(InActiveSlot, 1);
+                    GameObject.Find("InventoryManager").GetComponent<Inventory_scr>().DecreseFromActiveSlot();
+                    GetComponent<AudioManager>().PlayAudioMine(1);
+                    //return;
                 }
                 else
                 {
