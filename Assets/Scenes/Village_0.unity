@@ -2452,6 +2452,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &731245634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2083964478, guid: 3389e820ecf36094db9dbf44c77a19e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4350687220460588805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ec3c094beed994cadb60940aa53a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &773398220
 GameObject:
   m_ObjectHideFlags: 0
@@ -7488,6 +7500,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 759881971, guid: 3389e820ecf36094db9dbf44c77a19e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 731245634}
+    - target: {fileID: 759881971, guid: 3389e820ecf36094db9dbf44c77a19e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Mute
+      objectReference: {fileID: 0}
+    - target: {fileID: 759881971, guid: 3389e820ecf36094db9dbf44c77a19e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386071771, guid: 3389e820ecf36094db9dbf44c77a19e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 731245634}
+    - target: {fileID: 1386071771, guid: 3389e820ecf36094db9dbf44c77a19e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnMute
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386071771, guid: 3389e820ecf36094db9dbf44c77a19e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3011535925905539660, guid: 3389e820ecf36094db9dbf44c77a19e5,
         type: 3}
       propertyPath: m_AnchorMin.y

@@ -25,4 +25,18 @@ public class MenuButton : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Mute()
+    {
+        //AudioSource[] Asources = 
+        AudioListener camera = GameObject.Find("Main Camera").GetComponent<AudioListener>();
+        AudioListener.volume = 0f;
+        //camera.enabled = !camera.isActiveAndEnabled;
+    }
+    public void UnMute()
+    {
+        //AudioSource[] Asources = 
+        AudioListener camera = GameObject.Find("Main Camera").GetComponent<AudioListener>();
+        AudioListener.volume = 1f;
+        //camera.enabled = !camera.isActiveAndEnabled;
+    }
 }
