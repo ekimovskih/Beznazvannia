@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GridBuilder_scr : MonoBehaviour
 {
-    private GameObject[] EnemyList = null;
+    public GameObject[] EnemyList = null;
     public GameObject[] ObjectList = null;
     public int[] ObjectVariationsChanses;
-    private int GridWidth = 2;
-    private int GridHigh = 2;
+    [SerializeField]private int GridWidth = 2;
+    [SerializeField] private int GridHigh = 2;
     //public bool rebuildable = true;
     //public bool builded = false;
     //public string Location = "Vilage";
@@ -127,7 +127,7 @@ public class GridBuilder_scr : MonoBehaviour
             GameObject thisObject = this.gameObject;
             GridWidth = RoomMap.width;
             GridHigh = RoomMap.height;
-            Grid = new GameObject[GridWidth, GridHigh];
+            //Grid = new GameObject[GridWidth, GridHigh];
             
             BuildGrid();
         }
@@ -138,12 +138,12 @@ public class GridBuilder_scr : MonoBehaviour
         GridWidth = RoomMap.width;
         GridHigh = RoomMap.height;
         //Debug.Log(GridWidth);
-        Grid = new GameObject[GridWidth, GridHigh];
+        Grid = new GameObject[GridHigh,GridWidth];
         float red, green, blue;
 
-        for (int i = 0; i < GridHigh; i++)
+        for (int i = 0; i < GridWidth; i++)
         {
-            for (int j = 0; j < GridWidth; j++)
+            for (int j = 0; j < GridHigh; j++)
             {
                 int CellNum;
                 red = (RoomMap.GetPixel(i, j).r);

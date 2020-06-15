@@ -33,6 +33,7 @@ public class menu_button : MonoBehaviour
     }
     public void Mute()
     {
+        //AudioSource[] Asources = 
         AudioListener camera = GameObject.Find("Main Camera").GetComponent<AudioListener>();
         camera.enabled = !camera.isActiveAndEnabled;
     }
@@ -44,7 +45,7 @@ public class menu_button : MonoBehaviour
     }
     IEnumerator VolumeDown()
     {
-        AudioSource camera = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+        AudioSource camera = GameObject.Find("Camera").GetComponent<AudioSource>();
         for (int i = 0; i < 100; i++)
         {
             camera.volume -= 0.004f;

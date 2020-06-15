@@ -93,6 +93,7 @@ public class CraftSlot : MonoBehaviour
         }
         else
         {
+            GameObject.Find("NewDropPanel").GetComponent<LeftUpShowPanel_scr>().CheckRecepy(CraftItem);
             Debug.Log("Для сотворения чего-то  не хватает");
         }
     }

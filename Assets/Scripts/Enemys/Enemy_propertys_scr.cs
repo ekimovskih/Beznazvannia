@@ -87,6 +87,7 @@ public class Enemy_propertys_scr : MonoBehaviour
                 audioController.PlayAudioHit();
             }
             TookDMG = true;
+            Agred = true;
             Debug.Log(this.gameObject + " took dmg " + dmg);
             StopAllCoroutines();
             StartCoroutine(Stopattck());

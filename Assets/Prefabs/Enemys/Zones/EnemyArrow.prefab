@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee91345ea34638144b115048e9f10e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 10
   Strength: 50
   sprite: {fileID: 0}
   friendly: 0

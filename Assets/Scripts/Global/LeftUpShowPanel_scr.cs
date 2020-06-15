@@ -21,6 +21,19 @@ public class LeftUpShowPanel_scr : MonoBehaviour
         }
         ShowNewDrop(drop);
     }
+    public void CheckRecepy(GameObject item)
+    {
+        if (RecepiPanel.activeSelf == true)
+        {
+            RecepiPanel.GetComponent<RecepiPanel_scr>().CheckID(item);
+        }
+        else
+        {
+            RecepiPanel.SetActive(true);
+            RecepiPanel.GetComponent<RecepiPanel_scr>().newAsk(item);
+        }
+
+    }
     public void ShowNewDrop(GameObject drop)
     {
         GameObject dropPan = Instantiate(DropPanel, gameObject.transform);
